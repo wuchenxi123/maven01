@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<syscode-config>
+	<!-- 注意：definition的值要唯一，推荐统一用大写字母 -->
+	<!-- 这里的VO实际上要对应数据库里的一张表 -->
+	
+	<!-- 注意：【字典配置方式】
+		 1."$" 是固定参数必须的一个定义，该项不能删除
+		 2.在表格中使用，<j:code2Name definition="$SEX" code="mbSex" />
+		 3.在表单中使用：<j:selector name="param._se_mbSex" definition="$SEX" cssClass="form_input_1x"/>
+	 -->
+	<syscode-dynamic>
+		<definition>$</definition>
+		<value-object>com.core.sys.dictitem.persistent.DictItemVO</value-object>
+		<code>dictCode</code>
+		<name>dictName</name>
+	</syscode-dynamic>
+	
+	<!-- 注意：【动态数据方式】
+		1.如果需要使用该code2Name项， StoreCustomerVO需要提供一个带MemberVO(id,name)的构造函数
+		2.在表格中使用，<j:code2Name definition="#Member" code="mbId" />  
+		3.在表单中使用，<j:selector name="param._se_mbId" definition="#Member" cssClass="form_input_1x"/>
+	-->
+	<syscode-dynamic>
+		<definition>Gradlass</definition>
+		<value-object>com.manage.gradlass.persistent.GradlassVO</value-object>
+		<code>csId</code>
+		<name>csName</name>
+	</syscode-dynamic>
+<!-- 	<syscode-dynamic>
+		<definition>Infocatalog</definition>
+		<value-object>com.tios.info.infocatalog.persistent.InfocatalogVO</value-object>
+		<code>ctId</code>
+		<name>ctName</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>InfoSpecial</definition>
+		<value-object>com.tios.info.infospecial.persistent.InfospecialVO</value-object>
+		<code>isId</code>
+		<name>isTitle</name>
+	</syscode-dynamic> -->
+	
+	<!-- 注意：【静态常量方式】
+		1.在表格中使用：<j:code2Name definition="LOG_LEVEL" code="wbLogLevel" />
+		2.在表单中使用：<j:selector name="param._se_logLevel" definition="LOG_LEVEL" cssClass="form_input_1x"/>
+	-->
+	<syscode-local>
+		<definition>State</definition>
+		<items>
+			<itemvalue code="0">禁用</itemvalue>
+			<itemvalue code="1">有效</itemvalue>
+			<itemvalue code="-1">已删除</itemvalue>			
+		</items>
+	</syscode-local>
+</syscode-config>

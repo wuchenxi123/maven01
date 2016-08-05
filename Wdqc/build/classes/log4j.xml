@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+    
+
+    <!-- 架构核心,上线时需要控制单个日志文件大小,下同 -->
+    <appender name="INFRA" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${catalina.home}/core-logs.html" />
+        <param name="Threshold" value="WARN"/>
+        <param name="Append" value="true" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+        <layout class="com.util.LogHTMLLayout">
+            <!-- <param name="ConversionPattern" value="%d (%F,%L) - %m%n" /> -->
+        </layout>
+    </appender>
+
+    <!-- 业务功能, 生产环境下 business, web 两个目录下 应该按模块再细分配置 -->
+    <appender name="CONTROL" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${catalina.home}/control-logs.html" />
+        <param name="Threshold" value="WARN"/>
+        <param name="Append" value="true" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+        <layout class="com.util.LogHTMLLayout">
+            <!-- <param name="ConversionPattern" value="%d (%F,%L) - %m%n" /> -->
+        </layout>
+    </appender>
+    
+    <!-- 所有输出到一个文件，开发，测试时使用。hekun -->
+    <appender name="FULL" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${catalina.home}/full-logs.log" />
+        <param name="Append" value="true" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+        <layout class="com.util.LogHTMLLayout">
+            <!-- <param name="ConversionPattern" value="%d (%F,%L) - %m%n" /> -->
+        </layout>
+    </appender>
+    
+    <appender name="Hibernate_SQL" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${catalina.home}/Hibernate_SQL.html" />
+        <param name="Append" value="true" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+        <layout class="com.util.LogHTMLLayout">
+            <!-- <param name="ConversionPattern" value="%d [%-5p](%C,%L) - %m%n" /> -->
+        </layout>
+    </appender>
+
+    <!-- 每个业务种类一个日志 -->
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />      
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%-5p](%F,%L) - %m%n" />
+        </layout>
+    </appender>
+    
+    
+    
+    
+    <appender name="SimpleConsole" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />      
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%-5p](%C,%L) - %m%n"/>
+        </layout>
+    </appender>
+    
+    <!-- Hibernate log -->
+    <category name="org.hibernate.SQL" >
+        <priority value="INFO" />      
+        <appender-ref ref="Hibernate_SQL" />
+    </category>
+    
+    <category name="org.hibernate.type" >
+        <priority value="INFO" />      
+        <appender-ref ref="Hibernate_SQL" />
+    </category>
+    
+    <category name="org.springframework">
+        <priority value="WARN" />       
+        <appender-ref ref="CONSOLE" />
+    </category>
+
+    <category name="org.springframework.aop.interceptor.JamonPerformanceMonitorInterceptor">
+        <priority value="WARN" />       
+    </category>
+    
+    <!-- JBOSS 日志-->
+     <category name="org.apache">
+      <priority value="INFO"/>
+   </category>
+
+
+    <root>
+        <priority value="WARN" />   
+        <appender-ref ref="CONSOLE" />  
+    </root>
+    
+    
+
+</log4j:configuration>

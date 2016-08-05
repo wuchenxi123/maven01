@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop>
+	<interceptorHandlers>	
+		<interceptorHandler name="DAOInterceptorHandler" description="for dao layer use, Cache">	
+			<interceptor class="com.core.jop.infrastructure.dproxy.interceptor.CacheInterceptor"/>
+			<interceptor class="com.core.jop.infrastructure.dproxy.interceptor.LogInterceptor"/>
+		</interceptorHandler>
+		
+		
+		<interceptorHandler name="WebViewInterceptorHandler" description="for web layer use, Cache">
+			<interceptor class="com.core.jop.ui.interceptor.Code2NameCacheInterceptor"/>
+		</interceptorHandler>
+		
+		<interceptorHandler name="RoleModuleCacheInterceptor" description="for business layer use, Cache">
+			<interceptor class="com.core.sys.interceptor.RoleModuleCacheInterceptor"/>
+		</interceptorHandler>
+	</interceptorHandlers>	
+</aop>

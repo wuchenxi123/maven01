@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <constant name="struts.action.extension" value="ac" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.multipart.saveDir" value="/tmp" />
+	<constant name="struts.multipart.maxSize" value="524288000"/>   <!-- 500M -->
+	
+	<include file="common-support.xml"/> <!--平台通用相关-->
+    <include file="wagon-default.xml"/> <!--平台基础相关-->
+</struts>
