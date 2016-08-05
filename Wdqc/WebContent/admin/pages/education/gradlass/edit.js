@@ -86,7 +86,7 @@ $.page.set({
 				},
 				function(data, textStatus, jqXHR) {
 					if ("success" == textStatus) {
-						alert($("#form.csOpendatestart").val());
+						alert("请编辑信息");
 						$("[id='reservation']").val($("[id='form.csOpendatestart']").val()+"--"+$("[id='form.csOpendateend']").val());
 //						$("#reservation").val(start+"--"+end);
 						$("[id='form.csOpendatestart']").val($("[id='form.csOpendatestart']").val());

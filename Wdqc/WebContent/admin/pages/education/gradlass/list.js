@@ -59,11 +59,11 @@ $(document).ready(function() {
 	          {orderable : false ,searchable : false,defaultContent : '' , width : 130}
 	      ], 
 	      fnRowCallback : function(nRow,aData,iDataIndex){			    	  
-	    		var studentPage = ctx + '/admin/pages/education/gradlass/view.jsp';
+	    		var gradlassPage = ctx + '/admin/pages/education/gradlass/view.jsp';
 			   	var editPage = ctx + '/admin/pages/education/gradlass/edit.jsp';
 			   	var Delete = ctx + '/cs_Del.ac';
 				var html = '<div class="btn-group btn-group-xs" role="group" aria-label="...">';
-				html = html + '<a class="btn" href="javascript:loadPage(\'' + studentPage + '\',\'' + aData.csId + '\');"> <i class="fa fa-edit"></i> 查看</a>';
+				html = html + '<a class="btn" href="javascript:loadPage(\'' + gradlassPage + '\',\'' + aData.csId + '\');"> <i class="fa fa-edit"></i> 查看</a>';
 				html = html + '<a class="btn" href="javascript:loadPage(\'' + editPage + '\',\'' + aData.csId + '\');"><i class="fa fa-eye"></i>修改</a>';
 				html = html + '<a class="btn" onclick="$.page.del(\'' +Delete+ '?ids=' + aData.csId + '\');"> <i class="fa fa-times"></i> 删除</a>';
 				html = html + '</div>';

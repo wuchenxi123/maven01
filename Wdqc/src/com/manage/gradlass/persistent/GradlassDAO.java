@@ -129,8 +129,8 @@ public class GradlassDAO extends AbstractDAO {
 			if (ac) {
 				con.setAutoCommit(false);
 			}
-			dsi.executeBatch();
 			ds.executeBatch();
+			dsi.executeBatch();
 			con.commit();
 			con.setAutoCommit(ac);
 		} catch (Exception e) {
@@ -139,6 +139,9 @@ public class GradlassDAO extends AbstractDAO {
 		} finally {
 			if (null != ds) {
 				ds.close();
+			}
+			if (null != dsi) {
+				dsi.close();
 			}
 		}
     }

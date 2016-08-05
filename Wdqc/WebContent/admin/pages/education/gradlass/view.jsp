@@ -218,7 +218,7 @@
 <!--  	 <form role="form" class="form-horizontal">--> 
 	<div class="panel panel-primary">
 			<div class="panel-heading">
-							<h3 class="panel-title">学生列表信息</h3>
+							<h3 class="panel-title">班级列表信息</h3>
 						</div>
 			<div class="row">
 			<div class="col-xs-12">
@@ -231,37 +231,31 @@
 							class="table table-bordered table-striped table-hover">
 							<thead>
 								<tr>
-									<th></th>																
-									<th>姓名</th>
-									<th>性别</th>
-									<th>年龄</th>
-									<th>电话</th>
-									<th>email</th>
-									<th>家长电话</th>
-									<th>状态</th>
-									<th>居住地</th>
-									<th>生日</th>									
-									<th>销售人</th>
-									<th>报名时间</th>
 									<th></th>
+									<th>班级名称</th>
+									<th>人数</th>
+									<th>教师</th>
+									<th>课程</th>
+									<th>开班</th>
+									<th>校区</th>
+									<th>教室</th>
+									<th>学费</th>
+									<th>操作</th>
 								</tr>
 							</thead>
-
+	
 							<tfoot>
 								<tr>
-									<th></th>																	
-									<th>姓名</th>
-									<th>性别</th>
-									<th>年龄</th>
-									<th>电话</th>
-									<th>email</th>
-									<th>家长电话</th>
-									<th>状态</th>
-									<th>居住地</th>
-									<th>生日</th>									
-									<th>销售人</th>
-									<th>报名时间</th>
 									<th></th>
+									<th>班级名称</th>
+									<th>人数</th>
+									<th>教师</th>
+									<th>课程</th>
+									<th>开班</th>
+									<th>校区</th>
+									<th>教室</th>
+									<th>学费</th>
+									<th>操作</th>
 								</tr>
 							</tfoot>
 						</table>
