@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.manage.coursegroup.persistent.CourseGroupVO" table="ms_course_group">
+<id column="cgp_id" name="cgpId" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="courseId" length="10" name="courseid" not-null="true" type="java.lang.Integer"/>
+<property column="groupId" length="10" name="groupid" not-null="true" type="java.lang.Integer"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.manage.subdivide.persistent.SubdivideVO" table="ms_subdivide">
+<id column="ms_sdid" name="msSdid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="ms_gpid" length="5" name="msGpid" type="java.lang.Short"/>
+<property column="sd_name" length="100" name="sdName" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.manage.member.persistent.MemberVO" table="ms_member">
+<id column="mb_id" name="mbId" type="java.lang.Integer">
+<generator class="native"/>
+</id>
+<property column="mb_name" length="50" name="mbName" not-null="true" type="java.lang.String"/>
+<property column="mb_pet_name" length="20" name="mbPetName" type="java.lang.String"/>
+<property column="mb_password" length="128" name="mbPassword" not-null="true" type="java.lang.String"/>
+<property column="mb_email" length="60" name="mbEmail" type="java.lang.String"/>
+<property column="mb_avatar" length="255" name="mbAvatar" type="java.lang.String"/>
+<property column="mb_avatar_tmp" length="255" name="mbAvatarTmp" type="java.lang.String"/>
+<property column="mb_phone" length="20" name="mbPhone" type="java.lang.String"/>
+<property column="mb_sex" length="2" name="mbSex" type="java.lang.String"/>
+<property column="mb_type" length="10" name="mbType" type="java.lang.Integer"/>
+<property column="mb_question" length="512" name="mbQuestion" type="java.lang.String"/>
+<property column="mb_answer" length="512" name="mbAnswer" type="java.lang.String"/>
+<property column="mb_register_date" name="mbRegisterDate" not-null="true" type="java.util.Date"/>
+<property column="mb_lastlogin_date" name="mbLastloginDate" type="java.util.Date"/>
+</class>
+</hibernate-mapping>
