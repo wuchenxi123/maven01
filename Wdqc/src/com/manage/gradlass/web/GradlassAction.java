@@ -31,7 +31,7 @@ import com.util.Constants;
  */
 public class GradlassAction extends BaseAction{
 	/**
-	 * 
+	 * 班级管理模块
 	 */
 	private static final long serialVersionUID = -186254440537726608L;
 	private final Log log = LogFactory.getLog(GradlassAction.class);
