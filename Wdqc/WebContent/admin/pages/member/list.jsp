@@ -46,7 +46,7 @@
 									<th>真实姓名</th>
 									<th>邮箱</th>
 									<th>手机</th>
-									<th></th>
+									<th>操作</th>
 								</tr>
 							</thead>
 
@@ -59,7 +59,7 @@
 									<th>真实姓名</th>
 									<th>邮箱</th>
 									<th>手机</th>
-									<th></th>
+									<th>操作</th>
 								</tr>
 							</tfoot>
 						</table>

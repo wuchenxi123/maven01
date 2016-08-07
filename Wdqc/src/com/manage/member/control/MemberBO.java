@@ -7,9 +7,14 @@ import com.core.jop.infrastructure.control.AbstractControlBean;
 import com.core.jop.infrastructure.db.DAOFactory;
 import com.core.jop.infrastructure.db.DataPackage;
 import com.manage.classroom.persistent.ClassroomDAO;
+import com.manage.course.persistent.CourseDAO;
+import com.manage.course.persistent.CourseVO;
+import com.manage.gradlass.persistent.GradlassVO;
 import com.manage.member.persistent.MemberDAO;
 import com.manage.member.persistent.MemberDBParam;
 import com.manage.member.persistent.MemberVO;
+import com.manage.role.persistent.RoleDAO;
+import com.manage.role.persistent.RoleVO;
 
 /**
  * Title: MemberBO
@@ -68,7 +73,23 @@ public class MemberBO extends AbstractControlBean implements
 	public DataPackage doQuery(MemberDBParam params)
 			throws Exception {
 		MemberDAO dao = (MemberDAO) DAOFactory.build(MemberDAO.class,user);
+		DataPackage dp = dao.query(params);
+		if (dp.getRowCount() > 0) {
+			for (Object vo : dp.getDatas()) {
+				MemberVO o = (MemberVO) vo;
+				if(o.getRoleId()!=null){
+					this.fillRole(o);
+				}
+			}
+		}
+
 		return dao.query(params);
+	}
+	private MemberVO fillRole(MemberVO vo) throws Exception {
+		RoleDAO dao = (RoleDAO) DAOFactory.build(RoleDAO.class, user);
+		RoleVO c = (RoleVO) dao.findByPk(Integer.valueOf(vo.getRoleId()));
+		vo.setRoleName(c.getRoleName());
+		return vo;
 	}
 	public void doDel(List<String> ids)throws Exception {
 		try {

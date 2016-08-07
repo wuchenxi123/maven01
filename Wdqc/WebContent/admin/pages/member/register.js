@@ -54,7 +54,6 @@ $finish=function(url, rtnUrl) {
 
 },
 $(document).ready(function() {
-//	alert($.md5("Hello,Liehuo.Net"));
 	$.page.config.fnLoadRole();
 	$.page.formLoad();
 });

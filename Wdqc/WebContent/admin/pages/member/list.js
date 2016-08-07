@@ -36,7 +36,7 @@ $(document).ready(function() {
 			  { orderable : false ,searchable : false ,defaultContent : ''},			  
 	          { data : "mbName" },
 	          { data : "mbSex" } ,
-	          { data : "roleId" } ,
+	          { data : "roleName" } ,
 	          { data : "mbPetName" },
 	          { data : "mbEmail" } ,
 	          { data : "mbPhone" },
@@ -52,7 +52,7 @@ $(document).ready(function() {
 				html = html + '<a class="btn" onclick="$.page.del(\'' +Delete+ '?ids=' + aData.mbId + '\');"> <i class="fa fa-times"></i> 删除</a>';
 				html = html + '</div>';
 				$('td:eq(-1)', nRow).html(html);
-				$('td:eq(3)', nRow).html(aData.stSex=='0'?'男':'女');
+				$('td:eq(2)', nRow).html(aData.mbSex=='0'?'男':'女');
 				return nRow;
 	      },
 	      oLanguage : $.dt.oLanguage,

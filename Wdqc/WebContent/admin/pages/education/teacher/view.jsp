@@ -19,7 +19,7 @@
 	<section class="content-header">
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
-		<li><a href="#">j教师管理</a></li>
+		<li><a href="#">教师管理</a></li>
 		<li class="active">查看教师</li>
 	</ol>
 	</section>
