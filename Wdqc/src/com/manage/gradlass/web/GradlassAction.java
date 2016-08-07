@@ -19,12 +19,9 @@ import com.core.jop.infrastructure.db.DataPackage;
 import com.core.jop.ui.struts2.BaseAction;
 import com.core.sys.util.PageUtils;
 import com.core.sys.util.object.DataTablePage;
-import com.manage.course.persistent.CourseVO;
 import com.manage.gradlass.control.Gradlass;
 import com.manage.gradlass.control.GradlassBO;
 import com.manage.gradlass.persistent.GradlassVO;
-import com.manage.student.control.Student;
-import com.manage.student.control.StudentBO;
 import com.util.Constants;
 
 /**
@@ -33,6 +30,10 @@ import com.util.Constants;
  * @version 1.0
  */
 public class GradlassAction extends BaseAction{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -186254440537726608L;
 	private final Log log = LogFactory.getLog(GradlassAction.class);
 	public GradlassAction() {
 		super();
@@ -110,7 +111,9 @@ public class GradlassAction extends BaseAction{
 		params.set_ne_csId(params.get_pk());
 		DataPackage dp = bo.doQuery(params);
 		List<GradlassVO> al=dp.getDatas();	
-		form.setTeaList(al.get(0).getTeaList());
+		if(al!=null&&al.size()>0){
+			form.setTeaList(al.get(0).getTeaList());
+		}
 		PageUtils.writePage(form, response, "yyyy-MM-dd");
 		return null;
 	}

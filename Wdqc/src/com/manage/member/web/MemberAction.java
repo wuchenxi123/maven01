@@ -1,6 +1,7 @@
 package com.manage.member.web;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,15 +14,15 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.ServletActionContext;
 
-import com.manage.member.persistent.MemberVO ;
 import com.core.jop.common.utils.bean.BeanUtils;
 import com.core.jop.infrastructure.control.BOFactory;
 import com.core.jop.infrastructure.db.DataPackage;
-import com.core.jop.ui.struts2.BaseAction ;
+import com.core.jop.ui.struts2.BaseAction;
 import com.core.sys.util.PageUtils;
 import com.core.sys.util.object.DataTablePage;
-import com.manage.member.control.Member ;
+import com.manage.member.control.Member;
 import com.manage.member.control.MemberBO;
+import com.manage.member.persistent.MemberVO;
 import com.opensymphony.xwork2.ActionContext;
 import com.util.Constants;
 import com.util.StringUtil;
@@ -90,6 +91,7 @@ public class MemberAction extends BaseAction{
 			Member bo = (Member) BOFactory.build(MemberBO.class, this.getDBAccessUser());
 			if (null == vo.getMbId()) {
 				/*vo.setCreator(this.getDBAccessUser().getOperid());*/
+				vo.setMbRegisterDate(new Date());
 				vo = bo.doCreate(vo);
 			} else {
 				vo = bo.doUpdate(vo);
@@ -128,7 +130,7 @@ public class MemberAction extends BaseAction{
 			String ids = request.getParameter("ids");
 			Member bo = (Member) BOFactory.build(MemberBO.class, this.getDBAccessUser());
 			List<String> list = Arrays.asList(ids.split(","));
-			/*bo.doDel(list);*/
+			bo.doDel(list);
 			dp.put(Constants.AC, Constants.AC_success);
 			dp.put(Constants.AC_msg, "");
 		} catch (Exception e) {

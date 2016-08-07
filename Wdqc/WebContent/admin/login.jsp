@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
 <title>提奥信息 | 登录</title>
-<link rel="stylesheet" href="../admin/dist/css/login.css" />
+<link rel="stylesheet" href="../admin/dist/css/login.css" type="text/css"/>
 </head>
 <body class="hold-transition">
 	<div id="header">

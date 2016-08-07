@@ -1,13 +1,15 @@
 package com.manage.member.control;
 
 import java.io.Serializable;
+import java.util.List;
 
-import com.manage.member.persistent.MemberDBParam;
-import com.manage.member.persistent.MemberDAO;
-import com.manage.member.persistent.MemberVO;
 import com.core.jop.infrastructure.control.AbstractControlBean;
 import com.core.jop.infrastructure.db.DAOFactory;
 import com.core.jop.infrastructure.db.DataPackage;
+import com.manage.classroom.persistent.ClassroomDAO;
+import com.manage.member.persistent.MemberDAO;
+import com.manage.member.persistent.MemberDBParam;
+import com.manage.member.persistent.MemberVO;
 
 /**
  * Title: MemberBO
@@ -67,5 +69,18 @@ public class MemberBO extends AbstractControlBean implements
 			throws Exception {
 		MemberDAO dao = (MemberDAO) DAOFactory.build(MemberDAO.class,user);
 		return dao.query(params);
+	}
+	public void doDel(List<String> ids)throws Exception {
+		try {
+			if(ids!=null&&ids.size()>0){
+				MemberDAO dao = (MemberDAO) DAOFactory.build(MemberDAO.class,user);
+				for (int i = 0; i < ids.size(); i++) {
+					dao.removeByPk(Integer.valueOf(ids.get(i)));
+				}
+			}
+		} catch (Exception ex) {
+			sessionContext.setRollbackOnly();
+			throw ex;
+		}
 	}
 }

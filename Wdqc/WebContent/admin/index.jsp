@@ -23,7 +23,7 @@
 				<li><a href="#fin" data-toggle="tab">财务管理</a></li>
 				<li><a href="#mar" data-toggle="tab">市场分析</a></li>
 				<li><a href="#che" data-toggle="tab">磁卡考勤</a></li>
-				<li><a href="#che" data-toggle="tab">系统设置</a></li>
+				<li><a href="#sys" data-toggle="tab">系统设置</a></li>
 			</ul>
 		</div>
 	</div>
@@ -93,7 +93,7 @@
 			</div>
 			<div class="currmenu tab-pane fade" id="cou">
 				<ul class="rig_nav">
-					<li><a
+					<li class="rig_seleli"><a
 						href="javascript:loadPage('<%=ctx%>/admin/pages/education/gradlass/add.jsp');">新增班级</a></li>
 					<li><a
 						href="javascript:loadPage('<%=ctx%>/admin/pages/education/gradlass/list.jsp');">班级查询</a></li>
@@ -137,6 +137,16 @@
 					<li><a href="#">线形图</a></li>
 				</ul>
 			</div>
+			<div class="currmenu tab-pane fade" id="sys">
+				<ul class="rig_nav">
+					<li class="rig_seleli">
+						<a href="javascript:loadPage('<%=ctx%>/admin/pages/member/register.jsp');">注册</a>
+					</li>
+					<li>
+						<a href="javascript:loadPage('<%=ctx%>/admin/pages/member/list.jsp');">用户列表</a>
+					</li>
+				</ul>
+			</div>
 			<div class="rig_lm02">
 				<div class="title">
 					<img src="dist/images/listicon.jpg" class="icon"
@@ -145,7 +155,6 @@
 				</div>
 				<div class="content-wrapper" id="content-wrapper-div"></div>
 			</div>
-
 		</div>
 
 	</div>

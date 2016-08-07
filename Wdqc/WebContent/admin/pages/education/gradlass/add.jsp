@@ -147,7 +147,7 @@
 								                  <div class="control-group">
 								                    <div class="controls">
 								                     <div class="input-prepend input-group">
-								                       <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span><input type="text" readonly="readonly" style="width: 200px" name="reservation" id="reservation" class="form-control" value="2014-5-21 - 2014-6-21" /> 
+								                       <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span><input type="text" readonly="readonly" style="width: 200px" name="reservation" id="reservation" class="form-control" /> 
 								                     </div>
 								                    </div>
 								                  </div>

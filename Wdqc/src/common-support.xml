@@ -18,6 +18,12 @@
 		<action name="st_*" method="{1}"
 			class="com.manage.student.web.StudentAction">
 		</action>
+		<!-- 角色 -->
+
+
+		<action name="role_*" method="{1}"
+			class="com.manage.role.web.RoleAction">
+		</action>
 
 		<!-- 刷卡业务 -->
 
