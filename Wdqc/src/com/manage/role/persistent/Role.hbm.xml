@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.manage.role.persistent.RoleVO" table="ms_role">
+<id column="role_id" name="roleId" type="java.lang.Integer">
+<generator class="native"/>
+</id>
+<property column="role_name" length="11" name="roleName" type="java.lang.String"/>
+</class>
+</hibernate-mapping>
