@@ -214,16 +214,7 @@ $.page.set({
 //				alert($("[id='form.teaList']").val());		
 //			}
 });
-//$("[id='form.coId']").change(function() {
-////	alert($("[id='form.course.coId']").val().length);
-//	if($("[id='form.coId']").val()==0){
-//		$("[id='form.coClassify']").empty();
-//		return;
-//	}
-//	var selected = $(this).find("option:selected").val();
-////	alert(selected);
-//	$.page.config.fnLoadClassify(selected);
-//});
+
 
 $("[id='form.csOpendatestatus']").on('click',function(e){
 	if($("[id='form.csOpendatestatus']").is(':checked')) {
