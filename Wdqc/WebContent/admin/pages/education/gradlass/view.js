@@ -18,7 +18,6 @@ $.page.set({
 									$("[id='form.crId']").append(html);
 								}
 							}
-//							$.page.formLoad();
 						});
 			},
 			fnLoadCampus : function() {
@@ -35,7 +34,6 @@ $.page.set({
 									$("[id='form.cpId']").append(html);
 								}
 							}
-//							$.page.formLoad();
 						});
 			},
 			fnLoadGradlassList:function(url, pk){

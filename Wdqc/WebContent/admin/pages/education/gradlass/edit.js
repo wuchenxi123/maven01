@@ -210,9 +210,7 @@ $.page.set({
 //				alert(html1);
 				k++;
 			},
-//			getTeaList:function(){
-//				alert($("[id='form.teaList']").val());		
-//			}
+
 });
 
 
@@ -226,8 +224,7 @@ $("[id='form.csOpendatestatus']").on('click',function(e){
 		$("[id='reservation']").attr("disabled",false);
 		$("[id='form.csOpendatestatus']").val('0');
 	}
-//	alert($("[id='reservation']").val());
-//	alert($("[id='form.csOpenSateStatus']").val());
+
 });
 $("[id='form.csArriveinform']").on('click',function(e){
 	if($("[id='form.csArriveinform']").is(':checked')) {
