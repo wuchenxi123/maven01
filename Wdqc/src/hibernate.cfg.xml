@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+	<!--以下为使用Hibernate管理连接时要提供的设置-->
+	<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+	<property name="connection.url">jdbc:mysql://127.0.0.1:3306/wdqctest</property>
+	<property name="connection.username">root</property>
+	<property name="connection.password">sa</property>
+	<property name="connection.characterEncoding">utf-8</property>
+	<property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+	<property name="show_sql">true</property>
+	<property name="hbm2ddl.auto">update</property>
+	 
+	<property name="hibernate.connection.provider_class ">com.mchange.v2.c3p0.ComboPooledDataSource</property>
+	<property name="hibernate.c3p0.acquire_increment">5</property>
+	<property name="hibernate.c3p0.idle_test_period">3000</property>
+	<property name="hibernate.c3p0.max_size">30</property>
+	<property name="hibernate.c3p0.min_size">5</property>
+	<property name="hibernate.c3p0.timeout">3000</property>
+	<property name="hibernate.c3p0.max_statements">0</property>
+	<property name="jdbc.batch_size">30</property>
+	<property name="jdbc.fetch_size">50</property>
+	<property name="max_fetch_depth">1</property>
+	
+ 	<mapping resource="com/manage/member/persistent/Member.hbm.xml" />
+ 	<mapping resource="com/manage/course/persistent/Course.hbm.xml" />
+ 	<mapping resource="com/manage/advisory/persistent/Advisory.hbm.xml" />
+ 	<mapping resource="com/manage/student/persistent/Student.hbm.xml" />
+ 	<mapping resource="com/manage/teacher/persistent/Teacher.hbm.xml" />
+ 	<mapping resource="com/manage/gradlass/persistent/Gradlass.hbm.xml" />
+ 	<mapping resource="com/manage/classroom/persistent/Classroom.hbm.xml" />
+ 	<mapping resource="com/manage/campus/persistent/Campus.hbm.xml" />
+ 	<mapping resource="com/manage/gradlassTeacher/persistent/GradlassTeacher.hbm.xml" />
+ 	
+ 	<mapping resource="com/manage/group/persistent/Group.hbm.xml" />
+ 	<mapping resource="com/manage/coursegroup/persistent/CourseGroup.hbm.xml" />
+ 	
+ 	<mapping resource="com/manage/studentclass/persistent/Studentclass.hbm.xml" />
+ 	
+ 	<mapping resource="com/manage/costlist/persistent/Costlist.hbm.xml" />
+ 	<mapping resource="com/manage/material/persistent/Material.hbm.xml" />
+ 	<mapping resource="com/manage/saler/persistent/Saler.hbm.xml" />
+
+</session-factory>
+</hibernate-configuration>

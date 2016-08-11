@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.manage.material.persistent.MaterialVO" table="ms_material">
+<id column="mtl_id" name="mtlId" type="java.lang.Long">
+<generator class="native"/>
+</id>
+<property column="co_id" length="10" name="coId" type="java.lang.Integer"/>
+<property column="mtl_name" length="255" name="mtlName" type="java.lang.String"/>
+<property column="mtl_price" length="22" name="mtlPrice" type="java.lang.Double"/>
+<property column="mtl_volume" length="10" name="mtlVolume" type="java.lang.Integer"/>
+<property column="mtl_saled" length="10" name="mtlSaled" type="java.lang.Integer"/>
+<property column="mtl_remain" length="10" name="mtlRemain" type="java.lang.Integer"/>
+<property column="creator" length="10" name="creator" type="java.lang.Integer"/>
+<property column="create_time" name="createTime" type="java.util.Date"/>
+<property column="updator" length="10" name="updator" type="java.lang.Integer"/>
+<property column="update_time" name="updateTime" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

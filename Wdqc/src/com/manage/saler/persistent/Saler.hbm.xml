@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.manage.saler.persistent.SalerVO" table="ms_saler">
+<id column="sl_id" name="slId" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="cp_Id" length="3" name="cpId" type="java.lang.String"/>
+<property column="sl_name" length="20" name="slName" type="java.lang.String"/>
+<property column="sl_acheive" length="10" name="slAcheive" type="java.lang.Integer"/>
+</class>
+</hibernate-mapping>

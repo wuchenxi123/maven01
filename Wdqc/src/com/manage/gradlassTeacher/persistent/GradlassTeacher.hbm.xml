@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.manage.gradlassTeacher.persistent.GradlassTeacherVO" table="ms_class_teacher">
+<id column="ct_id" name="ctId" type="java.lang.Long">
+<generator class="native"/>
+</id>
+<property column="teacherId" length="10" name="teacherid" not-null="true" type="java.lang.Integer"/>
+<property column="gradlassId" length="10" name="gradlassid" not-null="true" type="java.lang.Integer"/>
+</class>
+</hibernate-mapping>

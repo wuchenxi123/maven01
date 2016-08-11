@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.manage.student.persistent.StudentVO" table="ms_student">
+<id column="st_id" name="stId" type="java.lang.Long">
+<generator class="native"/>
+</id>
+<property column="cs_id" length="10" name="csId" type="java.lang.Integer"/>
+<property column="clt_id" length="10" name="cltId" type="java.lang.Integer"/>
+<property column="sl_id" length="10" name="slId" type="java.lang.Integer"/>
+<property column="st_avatar" length="255" name="stAvatar" type="java.lang.String"/>
+<property column="st_avatar_tmp" length="255" name="stAvatarTmp" type="java.lang.String"/>
+<property column="st_sex" length="3" name="stSex" type="java.lang.String"/>
+<property column="st_name" length="50" name="stName" type="java.lang.String"/>
+<property column="st_age" length="3" name="stAge" type="java.lang.String"/>
+<property column="st_mobile" length="20" name="stMobile" type="java.lang.String"/>
+<property column="st_email" length="255" name="stEmail" type="java.lang.String"/>
+<property column="st_location_school" length="255" name="stLocationSchool" type="java.lang.String"/>
+<property column="st_hobbies" length="255" name="stHobbies" type="java.lang.String"/>
+<property column="st_remark" length="255" name="stRemark" type="java.lang.String"/>
+<property column="st_grade_class" length="100" name="stGradeClass" type="java.lang.String"/>
+<property column="st_class_count" length="3" name="stClassCount" type="java.lang.String"/>
+<property column="st_reality_tuition" length="22" name="stRealityTuition" type="java.lang.Double"/>
+<property column="st_status" length="3" name="stStatus" type="java.lang.String"/>
+<property column="st_type" length="3" name="stType" type="java.lang.String"/>
+<property column="st_transaction_date" name="stTransactionDate" type="java.util.Date"/>
+<property column="st_reside" length="100" name="stReside" type="java.lang.String"/>
+<property column="st_birthday" name="stBirthday" type="java.util.Date"/>
+<property column="st_mother_mobile" length="20" name="stMotherMobile" type="java.lang.String"/>
+<property column="st_father_mobile" length="20" name="stFatherMobile" type="java.lang.String"/>
+<property column="st_magcard_number" length="30" name="stMagcardNumber" type="java.lang.String"/>
+<property column="saler_name" length="20" name="salerName" type="java.lang.String"/>
+<property column="st_other_informtion" length="65535" name="stOtherInformtion" type="java.lang.String"/>
+<property column="st_costid" length="10" name="stCostid" type="java.lang.Integer"/>
+<property column="st_communicateId" length="10" name="stCommunicateid" type="java.lang.Integer"/>
+<property column="st_slotcardId" length="10" name="stSlotcardid" type="java.lang.Integer"/>
+<property column="create_time" name="createTime" type="java.util.Date"/>
+<property column="creator" length="10" name="creator" type="java.lang.Integer"/>
+<property column="update_time" name="updateTime" type="java.util.Date"/>
+<property column="updator" length="10" name="updator" type="java.lang.Integer"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.manage.course.persistent.CourseVO" table="ms_course">
+<id column="co_id" name="coId" type="java.lang.Integer">
+<generator class="native"/>
+</id>
+<property column="co_name" length="20" name="coName" type="java.lang.String"/>
+<property column="createtime" name="createtime" type="java.util.Date"/>
+<property column="creator" length="10" name="creator" type="java.lang.Integer"/>
+<property column="updatetime" name="updatetime" type="java.util.Date"/>
+<property column="updator" length="10" name="updator" type="java.lang.Integer"/>
+<property column="co_classify" length="10" name="coClassify" type="java.lang.Integer"/>
+</class>
+</hibernate-mapping>

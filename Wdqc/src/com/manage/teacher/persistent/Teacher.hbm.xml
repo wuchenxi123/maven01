@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.manage.teacher.persistent.TeacherVO" table="ms_teacher">
+<id column="te_id" name="teId" type="java.lang.Integer">
+<generator class="native"/>
+</id>
+<property column="te_name" length="20" name="teName" type="java.lang.String"/>
+<property column="te_sex" name="teSex" type="java.lang.Byte"/>
+<property column="te_age" length="3" name="teAge" type="java.lang.String"/>
+<property column="te_mobile" length="20" name="teMobile" type="java.lang.String"/>
+<property column="te_location" length="50" name="teLocation" type="java.lang.String"/>
+<property column="te_arriveGradlassRate" length="22" name="teArrivegradlassrate" type="java.lang.Double"/>
+<property column="te_gradlassCount" length="5" name="teGradlasscount" type="java.lang.Short"/>
+<property column="te_dateStart" name="teDatestart" type="java.util.Date"/>
+<property column="te_dataEnd" name="teDataend" type="java.util.Date"/>
+<property column="updateDate" name="updatedate" type="java.util.Date"/>
+<property column="gradlassTeacher" length="10" name="gradlassteacher" type="java.lang.Integer"/>
+</class>
+</hibernate-mapping>

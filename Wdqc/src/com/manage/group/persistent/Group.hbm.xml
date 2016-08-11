@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.manage.group.persistent.GroupVO" table="ms_group">
+<id column="group_id" name="groupId" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="group_name" length="100" name="groupName" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

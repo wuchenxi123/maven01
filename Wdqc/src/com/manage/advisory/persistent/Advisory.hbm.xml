@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.manage.advisory.persistent.AdvisoryVO" table="ms_advisory">
+<id column="ad_id" name="adId" type="java.lang.Integer">
+<generator class="native"/>
+</id>
+<property column="ad_name" length="20" name="adName" type="java.lang.String"/>
+<property column="ad_sex" length="10" name="adSex" type="java.lang.Integer"/>
+<property column="ad_phone" length="20" name="adPhone" type="java.lang.String"/>
+<property column="ad_emial" length="80" name="adEmial" type="java.lang.String"/>
+<property column="ad_hobbies" length="255" name="adHobbies" type="java.lang.String"/>
+<property column="ad_address" length="255" name="adAddress" type="java.lang.String"/>
+<property column="ad_remark" length="65535" name="adRemark" type="java.lang.String"/>
+<property column="ad_ways" length="10" name="adWays" type="java.lang.Integer"/>
+<property column="ad_course" length="10" name="adCourse" type="java.lang.Integer"/>
+<property column="ad_content" length="255" name="adContent" type="java.lang.String"/>
+<property column="ad_intention" length="10" name="adIntention" type="java.lang.Integer"/>
+<property column="ad_remarks" length="255" name="adRemarks" type="java.lang.String"/>
+<property column="create_time" name="createTime" type="java.util.Date"/>
+<property column="creator" length="10" name="creator" type="java.lang.Integer"/>
+<property column="update_time" name="updateTime" type="java.util.Date"/>
+<property column="updator" length="10" name="updator" type="java.lang.Integer"/>
+</class>
+</hibernate-mapping>
