@@ -33,6 +33,24 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+		$("li").click(function() {
+			$(this).addClass("rig_seleli");
+			$(this).siblings().removeClass("rig_seleli");
+		});
+		$(document).ready(function(e) {	
+			var counter = 0;
+			if (window.history && window.history.pushState) {
+				$(window).on('popstate', function () {
+					window.history.pushState('forward', null, '#');
+					window.history.forward(1);
+					$("#label").html("第" + (++counter) + "次单击后退按钮。");
+				});
+			}
+			window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+			window.history.forward(1);
+		});
+	</script>
 </html>
 
 

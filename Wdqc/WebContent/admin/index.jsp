@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 <title>Insert title here</title>
 </head>
+<%@ include file="pages/base/base.jsp"%>
+
 <%@ include file="pages/base/styles.jsp"%>
 
 <!-- JS -->
@@ -23,7 +27,7 @@
 				<li><a href="#fin" data-toggle="tab">财务管理</a></li>
 				<li><a href="#mar" data-toggle="tab">市场分析</a></li>
 				<li><a href="#che" data-toggle="tab">磁卡考勤</a></li>
-				<li><a href="#che" data-toggle="tab">系统设置</a></li>
+				<li><a href="#set" data-toggle="tab">系统设置</a></li>
 			</ul>
 		</div>
 	</div>
@@ -32,7 +36,7 @@
 			<div class="lm01">
 				<img class="peptx" src="dist/images/tximg.jpg" />
 				<div class="pepdet">
-					<p class="pepname">李小雅</p>
+					<p class="pepname"><%=user.getMbPetName()%></p>
 					<p>李小雅</p>
 					<p>超级管理员</p>
 				</div>
@@ -137,6 +141,13 @@
 					<li><a href="#">线形图</a></li>
 				</ul>
 			</div>
+			<div class="currmenu tab-pane fade" id="set">
+				<ul class="rig_nav">
+					<li><a
+						href="javascript:$.page.loginout('exit');">注销</a></li>
+					<li><a href="#">修改密码</a></li>
+				</ul>
+			</div>
 			<div class="rig_lm02">
 				<div class="title">
 					<img src="dist/images/listicon.jpg" class="icon"
@@ -162,6 +173,18 @@
 		$("li").click(function() {
 			$(this).addClass("rig_seleli");
 			$(this).siblings().removeClass("rig_seleli");
+		});
+		$(document).ready(function(e) {	
+			var counter = 0;
+			if (window.history && window.history.pushState) {
+				$(window).on('popstate', function () {
+					window.history.pushState('forward', null, '#');
+					window.history.forward(1);
+					$("#label").html("第" + (++counter) + "次单击后退按钮。");
+				});
+			}
+			window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+			window.history.forward(1);
 		});
 	</script>
 	<%@ include file="pages/base/footer.jsp"%>
