@@ -143,8 +143,13 @@
 			</div>
 			<div class="currmenu tab-pane fade" id="set">
 				<ul class="rig_nav">
-					<li><a
-						href="javascript:$.page.loginout('exit');">注销</a></li>
+					<li class="rig_seleli">
+						<a href="javascript:loadPage('<%=ctx%>/admin/pages/member/register.jsp');">添加用户</a>
+					</li>
+					<li>
+						<a href="javascript:loadPage('<%=ctx%>/admin/pages/member/list.jsp');">用户列表</a>
+					</li>
+					<li><a href="javascript:$.page.loginout('exit');">注销</a></li>
 					<li><a href="#">修改密码</a></li>
 				</ul>
 			</div>

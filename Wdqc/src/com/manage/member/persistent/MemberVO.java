@@ -12,13 +12,16 @@ public class MemberVO extends BaseVO implements Serializable {
     /** identifier field */
     private Integer mbId;
 
-    /** persistent field */
+    /** nullable persistent field */
+    private Integer roleId;
+    private String roleName;
+    /** nullable persistent field */
     private String mbName;
 
     /** nullable persistent field */
     private String mbPetName;
 
-    /** persistent field */
+    /** nullable persistent field */
     private String mbPassword;
 
     /** nullable persistent field */
@@ -45,15 +48,15 @@ public class MemberVO extends BaseVO implements Serializable {
     /** nullable persistent field */
     private String mbAnswer;
 
-    /** persistent field */
+    /** nullable persistent field */
     private java.util.Date mbRegisterDate;
 
     /** nullable persistent field */
     private java.util.Date mbLastloginDate;
 
     /** full constructor */
-    public MemberVO(java.lang.Integer mbId, java.lang.String mbName, java.lang.String mbPetName, java.lang.String mbPassword, java.lang.String mbEmail, java.lang.String mbAvatar, java.lang.String mbAvatarTmp, java.lang.String mbPhone, java.lang.String mbSex, java.lang.Integer mbType, java.lang.String mbQuestion, java.lang.String mbAnswer, java.util.Date mbRegisterDate, java.util.Date mbLastloginDate) {
-        this.mbId = mbId;
+    public MemberVO(java.lang.Integer roleId, java.lang.String mbName, java.lang.String mbPetName, java.lang.String mbPassword, java.lang.String mbEmail, java.lang.String mbAvatar, java.lang.String mbAvatarTmp, java.lang.String mbPhone, java.lang.String mbSex, java.lang.Integer mbType, java.lang.String mbQuestion, java.lang.String mbAnswer, java.util.Date mbRegisterDate, java.util.Date mbLastloginDate) {
+        this.roleId = roleId;
         this.mbName = mbName;
         this.mbPetName = mbPetName;
         this.mbPassword = mbPassword;
@@ -73,21 +76,21 @@ public class MemberVO extends BaseVO implements Serializable {
     public MemberVO() {
     }
 
-    /** minimal constructor */
-    public MemberVO(java.lang.Integer mbId, java.lang.String mbName, java.lang.String mbPassword, java.util.Date mbRegisterDate) {
-        this.mbId = mbId;
-        this.mbName = mbName;
-        this.mbPassword = mbPassword;
-        this.mbRegisterDate = mbRegisterDate;
-    }
-
     public java.lang.Integer getMbId() {
         return this.mbId;
     }
 
-	public void setMbId(Integer mbId) {
-		this.mbId = mbId;
-	}
+    public void setMbId(java.lang.Integer mbId) {
+        this.mbId = mbId;
+    }
+
+    public java.lang.Integer getRoleId() {
+        return this.roleId;
+    }
+
+    public void setRoleId(java.lang.Integer roleId) {
+        this.roleId = roleId;
+    }
 
     public java.lang.String getMbName() {
         return this.mbName;
@@ -213,5 +216,12 @@ public class MemberVO extends BaseVO implements Serializable {
             .toHashCode();
     }
 
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
 
 }

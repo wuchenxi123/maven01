@@ -43,7 +43,7 @@ public class PermissionFilter implements Filter {
 			Free_Resource.put("/ct_Show.ac", "");
 			Free_Resource.put("/assets/html5/index.html", "手机首页");
 			Free_Resource.put("/admin/login.jsp", "登录页面");
-			Free_Resource.put("/index.jsp", "网站首页");
+			Free_Resource.put("/admin/pages/member/register.jsp", "注册页面");
 			Free_Resource.put(No_Login_Page, "管理员登录页面");
 			Free_Resource.put(No_Permission_Page, "没有权限页面");
 			Free_Resource.put(No_Login_Page_mobile, "手机登入页面");
