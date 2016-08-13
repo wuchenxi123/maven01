@@ -3,7 +3,20 @@ $.page.set({
 	Edit : ctx + "/cou_Edit.ac",
 	Return : ctx + "/admin/pages/education/course/list.jsp",
 	Grid : grid,
-	
+	// 完成保存页面跳转
+	infosave : function(url) {
+		if (!url)
+			url = $.page.config.Save;
+		var formData = $("form").serializeArray();
+		$.post(url, formData, function(data, textStatus, jqXHR) {
+			if (data.success) {
+				$("[id='form.coId']").val(data.datas.coId);
+			} else {
+				alert('保存失败！' + data.msg);
+			}
+		});
+
+	},
 	fnLoadMember : function() {
 		url = ctx + '/mb_Show.ac';
 

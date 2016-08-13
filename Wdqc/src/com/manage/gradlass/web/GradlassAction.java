@@ -19,9 +19,12 @@ import com.core.jop.infrastructure.db.DataPackage;
 import com.core.jop.ui.struts2.BaseAction;
 import com.core.sys.util.PageUtils;
 import com.core.sys.util.object.DataTablePage;
+import com.manage.course.persistent.CourseVO;
 import com.manage.gradlass.control.Gradlass;
 import com.manage.gradlass.control.GradlassBO;
 import com.manage.gradlass.persistent.GradlassVO;
+import com.manage.student.control.Student;
+import com.manage.student.control.StudentBO;
 import com.util.Constants;
 
 /**
@@ -30,10 +33,6 @@ import com.util.Constants;
  * @version 1.0
  */
 public class GradlassAction extends BaseAction{
-	/**
-	 * 班级管理模块---
-	 */
-	private static final long serialVersionUID = -186254440537726608L;
 	private final Log log = LogFactory.getLog(GradlassAction.class);
 	public GradlassAction() {
 		super();
@@ -82,10 +81,12 @@ public class GradlassAction extends BaseAction{
 			BeanUtils.copyProperties(vo, form);
 			Gradlass bo = (Gradlass) BOFactory.build(GradlassBO.class, this.getDBAccessUser());
 			if (null == vo.getCsId()) {
+				vo.setCsStatus(0);
 				vo.setCsPeopleremain(vo.getCsPeoplecount());
 				vo.setCreateTime(new Date());
 				vo=bo.doCreate(vo);
 			}else{
+				vo.setCsStatus(0);
 				vo.setUpdateTime(new Date());
 				vo=bo.doUpdate(vo,2);
 			}
@@ -114,7 +115,7 @@ public class GradlassAction extends BaseAction{
 		if(al!=null&&al.size()>0){
 			form.setTeaList(al.get(0).getTeaList());
 		}
-		PageUtils.writePage(form, response, "yyyy-MM-dd");
+		PageUtils.writePage(form, response, "yyyy-MM-dd HH:mm:ss");
 		return null;
 	}
 	
@@ -158,6 +159,28 @@ public class GradlassAction extends BaseAction{
 			}else{
 				System.out.println("人数已满");
 			}	
+		vo=((GradlassBO) bo).doUpdateNew(vo);
+		dp.put(Constants.AC, Constants.AC_success);
+		dp.put(Constants.AC_msg, "");
+		dp.put("datas", vo);
+		return null;
+	}
+	
+	/**
+	 * 下线
+	 */
+	public String doGetOffLine() throws Exception {
+		Map<String, Object> dp = new HashMap<String, Object>();
+		GradlassWebParam params = (GradlassWebParam) this.getParam();
+		Gradlass bo = (Gradlass) BOFactory.build(GradlassBO.class, this.getDBAccessUser());
+		GradlassVO vo = bo.doFindByPk(Long.valueOf(params.get_pk()));
+		int flag=params.get_flag();
+		if(flag==0){
+			vo.setCsStatus(-1);
+		}else{
+			vo.setCsStatus(0);
+		}
+		
 		vo=((GradlassBO) bo).doUpdateNew(vo);
 		dp.put(Constants.AC, Constants.AC_success);
 		dp.put(Constants.AC_msg, "");

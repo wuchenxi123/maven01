@@ -45,7 +45,18 @@
 											<input name="param._sk_csName" id="param._sk_csName" type="text" class="form-control" placeholder="按班级名称模糊查询">
 										</div>
 									</div>
+									<div class="form-group">
+										<label class="col-sm-4 control-label">状态：</label>
+										<div class="col-sm-3">
+											<select  name="param._ne_csStatus" id="param._ne_csStatus"  class="form-control" style="width:120px;">
+												<option value=""></option>
+												<option value="0">开班</option>
+												<option value="-1">下线</option>
+											</select>					
+										</div>
+									</div> 
 								</div>
+								
 								<div class="col-sm-3">
 									<a class="btn btn-default" href="javascript:reload();"> <i class="fa fa-search"></i> 查询
 									</a> <a class="btn btn-default" onclick="$.page.resetForm('.Datatable_Param_Form form');"> <i class="fa fa-reply-all"></i> 复位
@@ -66,6 +77,7 @@
 									<th>校区</th>
 									<th>教室</th>
 									<th>学费</th>
+									<th>状态</th>
 									<th>创建时间</th>
 									<th>操作</th>
 								</tr>
@@ -83,6 +95,7 @@
 									<th>校区</th>
 									<th>教室</th>
 									<th>学费</th>
+									<th>状态</th>
 									<th>创建时间</th>
 									<th>操作</th>
 								</tr>

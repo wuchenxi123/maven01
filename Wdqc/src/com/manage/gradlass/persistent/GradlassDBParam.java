@@ -8,12 +8,17 @@ import com.core.jop.infrastructure.db.DBQueryParam;
  * @version 1.0
  */
 public class GradlassDBParam extends DBQueryParam {
-    private String _ne_csId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String _ne_csId;
     private String _ne_coId;
     private String _ne_crId;
     private String _se_csName;
     private String _sk_csName;
     private String _ne_cpId;
+    private String _ne_csStatus;
     private String _nnm_csCharge;
     private String _ne_csCharge;
     private String _nnl_csCharge;
@@ -512,5 +517,11 @@ public class GradlassDBParam extends DBQueryParam {
     public void set_ne_csArriveinform(String _ne_csArriveinform) {
         this._ne_csArriveinform = _ne_csArriveinform;
     }
+	public String get_ne_csStatus() {
+		return _ne_csStatus;
+	}
+	public void set_ne_csStatus(String _ne_csStatus) {
+		this._ne_csStatus = _ne_csStatus;
+	}
 
 }

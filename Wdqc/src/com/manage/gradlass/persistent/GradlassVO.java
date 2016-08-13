@@ -43,6 +43,8 @@ public class GradlassVO extends BaseVO implements Serializable {
     private Double csCharge;
     
     private Integer csTuition;
+    
+    private Integer csStatus;
 
     /** nullable persistent field */
     private Integer csClasshour;
@@ -476,6 +478,14 @@ public class GradlassVO extends BaseVO implements Serializable {
 
 	public void setCsPeopleremain(Short csPeopleremain) {
 		this.csPeopleremain = csPeopleremain;
+	}
+
+	public Integer getCsStatus() {
+		return csStatus;
+	}
+
+	public void setCsStatus(Integer csStatus) {
+		this.csStatus = csStatus;
 	}
 
 

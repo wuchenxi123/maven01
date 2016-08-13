@@ -376,10 +376,11 @@ var config = {
 				if ("success" == textStatus) {
 					var w = window;
 					if ('exit' == flag) {
-						w.close();
+						$.page.clearCookie();
+						w.location.href = ctx + "/admin/login.jsp";
 					} else {
 						$.page.clearCookie();
-						w.location.href = ctx + "/login.jsp";
+						w.location.href = ctx + "/admin/login.jsp";
 					}
 				} else {
 					alert("退出失败，请直接关闭浏览器！");

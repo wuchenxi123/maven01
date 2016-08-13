@@ -63,7 +63,7 @@ var config = {
 			pagingType : "full_numbers",// full_numbers
 			aLengthMenu : [ 10, 5, 20, 50, 100, 500 ],
 			ajax : {
-				url : ctx + "/cs_List.ac",
+				url : ctx + "/cs_List.ac?param._ne_csStatus=0",
 				type : "POST",
 				data : function(d) {
 					// add query param to data

@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
 <title>舞动全城信息 | 登录</title>
-<link rel="stylesheet" href="../admin/dist/css/login.css" type="text/css"/>
+<link rel="stylesheet" href="../admin/dist/css/login.css" />
 </head>
 <body class="hold-transition">
 	<div id="header">
@@ -23,7 +23,7 @@
 			 <img style="width: 450px; height: 350px" src="../admin/dist/images/login.jpg">
 		</div>
 		<div id="login-module">
-		<jsp:include page="../admin/pages/base/login.jsp"/>
+		<%@ include file="../admin/pages/base/login.jsp"%>
 			<!-- <iframe id="login-iframe" src="../admin/pages/base/login.jsp" width="100%" height="350px" frameborder="none" scrolling="no" style="border: none; visibility: visible;" ></iframe> -->
 		</div>
 	</div>
@@ -33,6 +33,24 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+		$("li").click(function() {
+			$(this).addClass("rig_seleli");
+			$(this).siblings().removeClass("rig_seleli");
+		});
+		$(document).ready(function(e) {	
+			var counter = 0;
+			if (window.history && window.history.pushState) {
+				$(window).on('popstate', function () {
+					window.history.pushState('forward', null, '#');
+					window.history.forward(1);
+					$("#label").html("第" + (++counter) + "次单击后退按钮。");
+				});
+			}
+			window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+			window.history.forward(1);
+		});
+	</script>
 </html>
 
 

@@ -1,11 +1,4 @@
 <%@page contentType="text/html; charset=utf-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ taglib prefix="j" uri="/jop-tags"%>
-<%@ taglib prefix="n" uri="/wagon-tags"%>
-<jsp:directive.page import="com.util.Constants" />
-<%
-	String ctx = request.getContextPath();
-%>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">

@@ -28,7 +28,7 @@
 <!-- Bootstrap 3.3.5 -->
 <script src="<%=ctx%>/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- Pace v1.0.2 -->
-<script src="<%=ctx%>/admin/plugins/pace/pace.min.js"></script>
+<%-- <script src="<%=ctx%>/admin/plugins/pace/pace.min.js"></script> --%>
 <!-- 页面通用JS End -->
 
 <!-- Common -->
@@ -42,13 +42,4 @@
 		mbId : '${TiosUser.mbId }',
 		mbPassword : '${TiosUser.mbPassword }'
 	});
-	paceOptions = {
-		ajax : false, // disabled
-		document : false, // disabled
-		eventLag : false, // disabled
-		elements : false
-	};
-	$(document).ajaxStart(function() {
-		Pace.restart();
-	});
-</script>
+</script>	

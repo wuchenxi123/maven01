@@ -39,7 +39,7 @@ $(document).ready(function() {
 	          orderable: false,
 	          targets: 7
 	      } ], */
-	      order: [[ 2, 'asc' ]],
+	      order: [[ 11, 'desc' ]],
 	      /* aoColumnDefs: [{
 			 sDefaultContent: '',
 			 aTargets: [ '_all' ]
@@ -55,19 +55,24 @@ $(document).ready(function() {
 	          { data : "cpName" ,orderable : false ,},
 	          { data : "crName" ,orderable : false ,} ,
 	          { data : "csCharge" } ,
+	          { data : "csStatus" } ,
 	          { data : "createTime" } ,
 	          {orderable : false ,searchable : false,defaultContent : '' , width : 130}
 	      ], 
 	      fnRowCallback : function(nRow,aData,iDataIndex){			    	  
-	    		var gradlassPage = ctx + '/admin/pages/education/gradlass/view.jsp';
+	    		var studentPage = ctx + '/admin/pages/education/gradlass/view.jsp';
 			   	var editPage = ctx + '/admin/pages/education/gradlass/edit.jsp';
 			   	var Delete = ctx + '/cs_Del.ac';
+			   	var ChangeStatus=ctx + '/cs_GetOffLine.ac';
 				var html = '<div class="btn-group btn-group-xs" role="group" aria-label="...">';
-				html = html + '<a class="btn" href="javascript:loadPage(\'' + gradlassPage + '\',\'' + aData.csId + '\');"> <i class="fa fa-edit"></i> 查看</a>';
-				html = html + '<a class="btn" href="javascript:loadPage(\'' + editPage + '\',\'' + aData.csId + '\');"><i class="fa fa-eye"></i>修改</a>';
-				html = html + '<a class="btn" onclick="$.page.del(\'' +Delete+ '?ids=' + aData.csId + '\');"> <i class="fa fa-times"></i> 删除</a>';
+				html = html + '<a class="btn btn-link" href="javascript:loadPage(\'' + studentPage + '\',\'' + aData.csId + '\');"> <i class="fa fa-eye"></i> 查看</a>';
+				html = html + '<a class="btn btn-link" href="javascript:loadPage(\'' + editPage + '\',\'' + aData.csId + '\');"><i class="fa fa-edit"></i>修改</a>';
+				html = html + '<a class="btn btn-link" onclick="$.page.del(\'' +Delete+ '?ids=' + aData.csId + '\');"> <i class="fa fa-times"></i> 删除</a>';
+				html = html + '<a class="btn btn-link btn-getoff" onclick="GetOffLine(\'' +ChangeStatus+ '?param._pk=' + aData.csId + '\',\'' + 0 + '\');"> <i class="glyphicon glyphicon-circle-arrow-down"></i>下线</a>';
+				html = html + '<a class="btn btn-link btn-getoff" onclick="GetOffLine(\'' +ChangeStatus+ '?param._pk=' + aData.csId + '\',\'' + -1 + '\');"> <i class="glyphicon glyphicon-circle-arrow-up"></i>重新上线</a>';
 				html = html + '</div>';
 				$('td:eq(-1)', nRow).html(html);
+				$('td:eq(10)', nRow).html(aData.csStatus=='0'?'开班':'下线');
 				var teacher;
 				var names="";
 				teacher=aData.teaList;
@@ -111,6 +116,20 @@ $(document).ready(function() {
 			}
 		});
 	}
+	function GetOffLine(url,flag){
+		$.post(url, {
+			"param._flag":flag
+		},
+				function(data, textStatus, jqXHR) {
+					if ("success" == textStatus) {					
+						grid.ajax.reload();
+					} else {
+						alert(data.msg);
+					}
+				});
+	
+	}
 	function reload(){
 		grid.ajax.reload();
 	}
+	
