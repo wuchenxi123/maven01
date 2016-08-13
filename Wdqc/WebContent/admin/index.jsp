@@ -168,7 +168,6 @@
 
 	<%-- 		<!-- Botton footer -->
 		<%@ include file="pages/footer.jsp"%>
-
 		<!-- Right Settings Sidebar -->
 		<%@ include file="pages/settings.jsp"%> --%>
 
