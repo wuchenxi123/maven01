@@ -24,7 +24,6 @@
 <!-- Bootstrap 3.3.5 -->
 <script src="<%=ctx%>/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- Pace v1.0.2 -->
-<script src="<%=ctx%>/admin/plugins/pace/pace.min.js"></script>
 <!-- 页面通用JS End -->
 	
 <!-- Common -->
@@ -43,7 +42,7 @@
 <script src="<%=ctx%>/admin/dist/js/login.js"></script>
 </head>
 <body class="hold-transition">
-	<div class="login-b">
+	<div class="login-b" style="width:80%;margin:17% auto;">
 		<div class="login-box-body">
 			<form id="loginform">
 				<div class="form-group has-feedback">
@@ -72,10 +71,7 @@
 				<a href="javascript:$.page.config.fnRegister();"><i class="fa fa-envelope-o"></i> 手机注册</a>
 			</div>
 			<br> <br>
-			<div>
-				<input type="checkbox" checked="checked">
-				<!-- <label>我同意并已阅读<a href="#" target="_blank">《提奥网站服务协议》</a></label> -->
-			</div>
+			
 		</div>
 	</div>
 </body>

@@ -1,6 +1,7 @@
 package com.manage.gradlassTeacher.control;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.manage.gradlassTeacher.persistent.GradlassTeacherDBParam;
 import com.manage.gradlassTeacher.persistent.GradlassTeacherVO;
@@ -30,5 +31,11 @@ public interface GradlassTeacher extends AbstractControl {
 
     public DataPackage doQuery(GradlassTeacherDBParam params)
         throws Exception;
-
+	/**
+	 * 批量删除
+	 * 
+	 * @param ids
+	 * @throws Exception
+	 */
+	public void doDel(List<String> ids) throws Exception;
 }

@@ -17,6 +17,8 @@ public class GradlassTeacherVO extends BaseVO implements Serializable {
 
     /** persistent field */
     private Integer gradlassid;
+    
+    private String teachername;
 
     /** full constructor */
     public GradlassTeacherVO(java.lang.Long ctId, java.lang.Integer teacherid, java.lang.Integer gradlassid) {
@@ -72,5 +74,13 @@ public class GradlassTeacherVO extends BaseVO implements Serializable {
             .append(getCtId())
             .toHashCode();
     }
+
+	public String getTeachername() {
+		return teachername;
+	}
+
+	public void setTeachername(String teachername) {
+		this.teachername = teachername;
+	}
 
 }

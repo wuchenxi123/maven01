@@ -52,7 +52,7 @@
 <!-- Common -->
 <script src="<%=ctx%>/admin/pages/base/pages.js"></script>
 <!-- Common End -->
-
+	
 
 
 <script type="text/javascript">
@@ -62,7 +62,7 @@
 		mbId : '${TiosUser.mbId }',
 		mbPassword : '${TiosUser.mbPassword }'
 	});
-	paceOptions = {
+/* 	paceOptions = {
 		ajax : false, // disabled
 		document : false, // disabled
 		eventLag : false, // disabled
@@ -70,5 +70,5 @@
 	};
 	$(document).ajaxStart(function() {
 		Pace.restart();
-	});
+	}); */
 </script>

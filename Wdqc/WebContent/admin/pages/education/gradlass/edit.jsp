@@ -76,7 +76,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-sm-4">
+									<!-- <div class="col-sm-4">
 										<div class="form-group">
 											<div class="col-sm-8">
 												<select name="form.coClassify"
@@ -84,10 +84,44 @@
 												</select>
 											</div>
 										</div>
-									</div>
+									</div> -->
 								</div>
 
-								
+								<div class="col-sm-12">
+									<div class="col-sm-7">
+										<div class="form-group">
+											<label class="col-sm-2 control-label">收费模式：</label>
+											<div class="col-sm-5">
+												<label class="checkbox-inline"> 
+												<select name="form.csTuition" id="form.csTuition"
+													class="form-control">
+												</select>
+												<!-- 
+												<input type="checkbox"
+													name="form.csTuition" id="form.csTuition" value="0">
+													按期
+												</label> <label class="checkbox-inline"> 
+												<input type="checkbox"
+													name="form.csTuition" id="form.csTuition" value="1">
+													按课时
+												</label> <label class="checkbox-inline"> 
+												<input type="checkbox"
+													name="form.csTuition" id="form.csTuition" value="2">
+													按时间 &nbsp; &nbsp; &nbsp;
+												 -->
+												
+												</label>
+
+											</div>
+										</div>
+
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group">
+											<label class="col-sm-9 control-label">（保存后不能修改，谨慎选择）</label>
+										</div>
+									</div>
+								</div>
 
 								<div class="col-sm-12">
 									<div class="col-sm-4">
@@ -144,43 +178,24 @@
 								<div class="col-sm-12">
 									<div class="col-sm-4">
 										<div class="form-group">
-											<div class="col-sm-8">
-												<input name="form.csOpendatestart" id="form.csOpendatestart"
-													type="hidden" class="form-control">
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="form-group">
-											<div class="col-sm-8">
-												<input name="form.csOpendateend" id="form.csOpendateend"
-													type="hidden" class="form-control">
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-12">
-									<div class="col-sm-4">
-										<div class="form-group">
 											<label class="col-sm-4 control-label">开班日期区间：</label>
 											<div class="col-sm-8">
 								                 <fieldset>
 								                  <div class="control-group">
 								                    <div class="controls">
 								                     <div class="input-prepend input-group">
-								                       <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span><input type="text"  style="width: 200px" name="reservation" id="reservation" class="form-control" /> 
+								                       <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span><input type="text" readonly="readonly" style="width: 200px" name="reservation" id="reservation" class="form-control" /> 
 								                     </div>
 								                    </div>
 								                  </div>
 								                 </fieldset>
-								                 <!-- 
 								                 <input name="form.csOpendatestart"
 													id="form.csOpendatestart" type="hidden"
 													class="form-control">
 												<input name="form.csOpendateend"
 												id="form.csOpendateend" type="hidden"
 												class="form-control">
-											
+											<!-- 
 												<input name="form.csOpenDateStart"
 													id="form.course.csOpenDateStart" type="text"
 													class="form-control">
@@ -209,34 +224,26 @@
 												<select name="form.teaList[0].teId" id="form.teacher.teId"
 													class="form-control">
 												</select>
-												
-												<!-- 
-													<input type="button"
-													value="教师时段"
-													style="width: 60px; height: 23px; margin-top: 10px">
-													 -->
+																							
 											</div>
 										</div>
 									</div>
-									<div class="col-sm-4">
-										<div class="form-group">
-											<label class="col-sm-4 control-label">原有教师：</label>
-											<div class="col-sm-8">
-											<!-- 
-													<input name="form.teaList"
-													id="form.teaList" type="text"
-													class="form-control">
-													-->
-											</div>
-										</div>
-									</div>
-									
-									<div class="col-sm-4">
+									<div class="col-sm-2">
 										<div class="form-group">
 											<input type="button" value="添加"
 												style="width: 40px; height: 30px;" onclick="$.page.config.addTeacher();" id="form.teaAdd">
 										</div>
 									</div>
+									<div class="col-sm-4">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">原有教师：</label>
+											<div class="col-sm-8" id="teacherarea">
+											
+											</div>
+										</div>
+									</div>
+									
+									
 								</div>
 
 								<div class="col-sm-12">

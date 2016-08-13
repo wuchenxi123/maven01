@@ -17,9 +17,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.core.jop.infrastructure.db.DBAccessUser;
+import com.manage.member.persistent.MemberVO;
 
 /**
- * @author ChenZhiPing
+ * @author hujianjun
  * 
  */
 public class PermissionFilter implements Filter {
@@ -29,7 +30,7 @@ public class PermissionFilter implements Filter {
 	// 以下后台资源开放给网站客户端用户访问
 	private static HashMap<String, String> Guest_Resource;
 	// 默认的登入跳转
-	private static final String No_Login_Page = "/login.jsp";
+	private static final String No_Login_Page = "/admin/login.jsp";
 	private static final String No_Login_Page_mobile = "/assets/html5/user/login.html";
 	// 没有权限页面
 	private static final String No_Permission_Page = "/admin/nopermission.jsp";
@@ -41,7 +42,7 @@ public class PermissionFilter implements Filter {
 		if (true) {
 			Free_Resource.put("/ct_Show.ac", "");
 			Free_Resource.put("/assets/html5/index.html", "手机首页");
-			Free_Resource.put("/admin/index.jsp", "登录页面");
+			Free_Resource.put("/admin/login.jsp", "登录页面");
 			Free_Resource.put("/index.jsp", "网站首页");
 			Free_Resource.put(No_Login_Page, "管理员登录页面");
 			Free_Resource.put(No_Permission_Page, "没有权限页面");
@@ -71,7 +72,7 @@ public class PermissionFilter implements Filter {
 				// set inner user
 				req.getSession().setAttribute(Constants.SESSION_DBUSER, DBAccessUser.getInnerUser());
 			}
-		} /*else {
+		}else {
 			MemberVO user = (MemberVO) req.getSession().getAttribute(Constants.SESSION_TIOSUSER);
 			if (user == null) {
 				Cookie cookie = new Cookie("JSESSIONID","-1");
@@ -82,7 +83,7 @@ public class PermissionFilter implements Filter {
 				// Permission check
 
 			}
-		}*/
+		}
 		filterChain.doFilter(request, response);
 		}
 	}

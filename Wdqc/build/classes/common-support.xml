@@ -45,6 +45,10 @@
 			class="com.manage.gradlass.web.GradlassAction">
 		</action>
 
+		<action name="gt_*" class="com.manage.gradlassTeacher.web.GradlassTeacherAction"
+			method="{1}">
+		</action>
+
 		<!-- 课程管理 -->
 
 

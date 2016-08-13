@@ -62,53 +62,82 @@ $.page.set({
 						$.page.formLoad();
 					});
 			},
-			fnLoadGroup : function() {
+/*			fnLoadGroup : function() {
+				
 				url = ctx + '/grp_Show.ac';
+
 				$.post(url, {
+
 				},
-					function(data, textStatus, jqXHR) {
-						if ("success" == textStatus) {
-//							alert(data.datas.length);
-							for ( var i = 0; i < data.datas.length; i++) {
-								var html = '<option value="'
-										+ data.datas[i].groupId + '">'
-										+ data.datas[i].groupName
-										+ '</option>';
-								$("[id='form.coClassify']").append(html);
+						function(data, textStatus, jqXHR) {
+							if ("success" == textStatus) {
+								for ( var i = 0; i < data.datas.length; i++) {
+									var html = '<option value="'
+											+ data.datas[i].groupId + '">'
+											+ data.datas[i].groupName
+											+ '</option>';
+									$("[id='form.coClassify']").append(html);
+								}
+								
 							}
-							
-						}
-					});
-			},
-			
-			getGradlassinfo:function(){
+						});
+//				alert($("[id='form.campus.cpId']").val());
+//				alert($("[id='form.csName']").val());
+			},*/
+			fnLoadClassify : function(coid) {
+				url = ctx + '/cou_ShowClassify.ac';
 				$.post(url, {
-				},
-				function(data, textStatus, jqXHR) {
+					"param._ne_coId" : coid
+				}, function(data, textStatus, jqXHR) {
+					$("[id='form.coClassify']").empty();
 					if ("success" == textStatus) {
-						alert("请编辑信息");
-						$("[id='reservation']").val($("[id='form.csOpendatestart']").val()+"--"+$("[id='form.csOpendateend']").val());
-//						$("#reservation").val(start+"--"+end);
-						$("[id='form.csOpendatestart']").val($("[id='form.csOpendatestart']").val());
-				        $("[id='form.csOpendateend']").val($("[id='form.csOpendateend']").val());
-				        
-						$.page.config.fnLoadTime($("[id='form.csOpendatestart']").val(),$("[id='form.csOpendateend']").val());
-						
-						$("[id='form.csOpendatestart']").val()==""||null?
-								$("[id='form.csOpendatestatus']").prop("checked", true):$("[id='form.csOpendatestatus']").prop("checked", false);
-								
-						$("[id='form.csWeekend']").val()==null?
-								$("[id='form.classtime']").prop("checked", true):$("[id='form.classtime']").prop("checked", false);
-								
-						$("[id='form.csArriveinform']").val()==1?
-								$("[id='form.csArriveinform']").prop("checked", true):$("[id='form.csArriveinform']").prop("checked", false);
+						for ( var i = 0; i < data.datas[0].gs.length; i++) {
+							var html = '<option value="'
+									+ data.datas[0].gs[i].groupId + '">'
+									+ data.datas[0].gs[i].groupName
+									+ '</option>';
+							$("[id='form.coClassify']").append(html);
+						}
 					}
 				});
-				
+			},
+			fnLoadTuition : function() {
+				var tuition=$("[id='form.csTuition']").val();
+				var html="";
+				switch (tuition) {
+				case 0:
+					html = '<option value=0>按期</option>';
+					break;
+				case 1:
+					html = '<option value=1>课时</option>';
+					break;
+				case 2:
+					html = '<option value=2>按时间</option>';
+					break;
+				default:
+					break;
+				}
+				$("[id='form.csTuition']").append(html);
+			},
+			getGradlassinfo:function(){
+						$("[id='reservation']").val($("[id='form.csOpendatestart']").val()+"--"+$("[id='form.csOpendateend']").val());
+						$("[id='form.csOpendatestart']").val($("[id='form.csOpendatestart']").val());
+						
+				        $("[id='form.csOpendateend']").val($("[id='form.csOpendateend']").val());
+						$.page.config.fnLoadTime($("[id='form.csOpendatestart']").val(),$("[id='form.csOpendateend']").val());
+						$("[id='form.csOpendatestart']").val()==""||null?
+								$("[id='form.csOpendatestatus']").prop("checked", true):$("[id='form.csOpendatestatus']").prop("checked", false);
+						$("[id='form.csWeekend']").val()==null?
+								$("[id='form.classtime']").prop("checked", true):$("[id='form.classtime']").prop("checked", false);
+						$("[id='form.csArriveinform']").val()==1?
+								$("[id='form.csArriveinform']").prop("checked", true):$("[id='form.csArriveinform']").prop("checked", false);
+									
+//					} 
+//				}
+
 			},
 			
 			fnLoadTime : function(ostartDate,oendDate) {
-//				alert(ostartDate);
 				$('#reservation').daterangepicker(
 					       {
 					    	  startDate: ostartDate,
@@ -165,7 +194,6 @@ $.page.set({
 							if ("success" == textStatus) {
 								var htmlInit = '<option value=""></option>';
 								$("[id='form.teacher.teId']").append(htmlInit);
-//								alert("---");
 								for ( var i = 0; i < data.datas.length; i++) {
 									html = '<option value="'
 											+ data.datas[i].teId + '">'
@@ -174,9 +202,43 @@ $.page.set({
 									htmltea+=html;
 									$("[id='form.teacher.teId']").append(html);
 								}
-								/*$.page.formLoad();*/
 							}
 						});
+			},
+			fnLoadClassTeacher : function(pk) {				
+				var Delete=ctx+'/gt_Del.ac';
+				if (!pk)
+					pk = $.page.config.Pk;
+				if (!pk)
+					pk = $.page.config.Data.Pk;
+				if(pk){
+					url = ctx + '/gt_Show.ac?param._ne_gradlassid='+pk;
+				}
+				
+				$.post(url, {
+
+				},
+						function(data, textStatus, jqXHR) {
+							if ("success" == textStatus) {
+								
+								for ( var i = 0; i < data.datas.length; i++) {
+									var html='<div id="pan_'+data.datas[i].ctId+'" style="float:left">'+data.datas[i].teachername+'<a class="btn btn-default btn-sm" onclick="$.page.config.del(\'' +Delete+ '?ids=' + data.datas[i].ctId + '\',\''+ data.datas[i].ctId+'\');"> <i class="fa fa-times"></i> 删除</a></div>';
+									$("#teacherarea").append(html);
+								};
+							};
+						});
+			},
+			del : function(url,id) {
+			alert(url);
+				$.post(url, {
+
+				}, function(data, textStatus, jqXHR) {
+					if ("success" == textStatus) {						
+						$("div").remove("#pan_" + id);
+					} else {
+						alert(data.msg);
+					}
+				});
 			},
 			fnLoadClassroom : function() {
 				url = ctx + '/cr_Show.ac';
@@ -210,9 +272,20 @@ $.page.set({
 //				alert(html1);
 				k++;
 			},
-
+//			getTeaList:function(){
+//				alert($("[id='form.teaList']").val());		
+//			}
 });
-
+//$("[id='form.coId']").change(function() {
+////	alert($("[id='form.course.coId']").val().length);
+//	if($("[id='form.coId']").val()==0){
+//		$("[id='form.coClassify']").empty();
+//		return;
+//	}
+//	var selected = $(this).find("option:selected").val();
+////	alert(selected);
+//	$.page.config.fnLoadClassify(selected);
+//});
 
 $("[id='form.csOpendatestatus']").on('click',function(e){
 	if($("[id='form.csOpendatestatus']").is(':checked')) {
@@ -224,7 +297,8 @@ $("[id='form.csOpendatestatus']").on('click',function(e){
 		$("[id='reservation']").attr("disabled",false);
 		$("[id='form.csOpendatestatus']").val('0');
 	}
-
+//	alert($("[id='reservation']").val());
+//	alert($("[id='form.csOpenSateStatus']").val());
 });
 $("[id='form.csArriveinform']").on('click',function(e){
 	if($("[id='form.csArriveinform']").is(':checked')) {
@@ -265,15 +339,18 @@ $("[id='form.cpId'] option").each(function(){
 });
 
 $(document).ready(function() {
-	$.page.formLoad();
 	
 	$.page.config.fnLoadCampus();
 	$.page.config.fnLoadCourse();
-	$.page.config.fnLoadGroup();
+/*	$.page.config.fnLoadGroup();*/
+	
 	$.page.config.fnLoadTeacher();
+	$.page.config.fnLoadClassTeacher();
 	$.page.config.fnLoadClassroom();
+	$.page.config.fnLoadTuition();
 	$.page.config.getGradlassinfo();
 	
+	$.page.formLoad();
 //	$.page.config.getTeaList();
 //	$.page.config.fnLoadClassifys();
 //	$.page.config.fnLoadTime();
