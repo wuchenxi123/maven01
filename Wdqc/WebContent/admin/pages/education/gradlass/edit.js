@@ -62,45 +62,43 @@ $.page.set({
 						$.page.formLoad();
 					});
 			},
-/*			fnLoadGroup : function() {
+			fnLoadGroup : function() {
 				
 				url = ctx + '/grp_Show.ac';
 
 				$.post(url, {
 
 				},
-						function(data, textStatus, jqXHR) {
-							if ("success" == textStatus) {
-								for ( var i = 0; i < data.datas.length; i++) {
-									var html = '<option value="'
-											+ data.datas[i].groupId + '">'
-											+ data.datas[i].groupName
-											+ '</option>';
-									$("[id='form.coClassify']").append(html);
-								}
-								
+					function(data, textStatus, jqXHR) {
+						if ("success" == textStatus) {
+							for ( var i = 0; i < data.datas.length; i++) {
+								var html = '<option value="'
+										+ data.datas[i].groupId + '">'
+										+ data.datas[i].groupName
+										+ '</option>';
+								$("[id='form.coClassify']").append(html);
 							}
-						});
-//				alert($("[id='form.campus.cpId']").val());
-//				alert($("[id='form.csName']").val());
-			},*/
-			fnLoadClassify : function(coid) {
-				url = ctx + '/cou_ShowClassify.ac';
-				$.post(url, {
-					"param._ne_coId" : coid
-				}, function(data, textStatus, jqXHR) {
-					$("[id='form.coClassify']").empty();
-					if ("success" == textStatus) {
-						for ( var i = 0; i < data.datas[0].gs.length; i++) {
-							var html = '<option value="'
-									+ data.datas[0].gs[i].groupId + '">'
-									+ data.datas[0].gs[i].groupName
-									+ '</option>';
-							$("[id='form.coClassify']").append(html);
+							
 						}
-					}
-				});
+					});
 			},
+//			fnLoadClassify : function(coid) {
+//				url = ctx + '/cou_ShowClassify.ac';
+//				$.post(url, {
+//					"param._ne_coId" : coid
+//				}, function(data, textStatus, jqXHR) {
+//					$("[id='form.coClassify']").empty();
+//					if ("success" == textStatus) {
+//						for ( var i = 0; i < data.datas[0].gs.length; i++) {
+//							var html = '<option value="'
+//									+ data.datas[0].gs[i].groupId + '">'
+//									+ data.datas[0].gs[i].groupName
+//									+ '</option>';
+//							$("[id='form.coClassify']").append(html);
+//						}
+//					}
+//				});
+//			},
 			fnLoadTuition : function() {
 				var tuition=$("[id='form.csTuition']").val();
 				var html="";
@@ -120,6 +118,7 @@ $.page.set({
 				$("[id='form.csTuition']").append(html);
 			},
 			getGradlassinfo:function(){
+				alert("请编辑信息");
 						$("[id='reservation']").val($("[id='form.csOpendatestart']").val()+"--"+$("[id='form.csOpendateend']").val());
 						$("[id='form.csOpendatestart']").val($("[id='form.csOpendatestart']").val());
 						
@@ -342,7 +341,7 @@ $(document).ready(function() {
 	
 	$.page.config.fnLoadCampus();
 	$.page.config.fnLoadCourse();
-/*	$.page.config.fnLoadGroup();*/
+	$.page.config.fnLoadGroup();
 	
 	$.page.config.fnLoadTeacher();
 	$.page.config.fnLoadClassTeacher();

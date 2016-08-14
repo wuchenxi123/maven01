@@ -38,6 +38,7 @@
 					<div class="col-xs-12">
 
 						<input type="hidden" name="form.teId" id="form.teId" />
+						<input type="hidden" name="form.gradlassteacher" id="form.gradlassteacher" />
 						<input type="hidden" name="form.teArrivegradlassrate" id="form.teArrivegradlassrate" />
 						<input type="hidden" name="form.teGradlasscount" id="form.teGradlasscount" />
 						<div class="box box-primary">

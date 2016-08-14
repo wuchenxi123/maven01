@@ -95,6 +95,7 @@ public class TeacherBO extends AbstractControlBean implements
 			GradlassTeacherWebParam gtparams = new GradlassTeacherWebParam();
 			gtparams.set_ne_teacherid(String.valueOf(vo.getGradlassteacher()));
 			DataPackage grads = dao.query(gtparams);
+			@SuppressWarnings("unchecked")
 			List<GradlassTeacherVO> list = grads.getDatas();
 			GradlassDAO graddao = (GradlassDAO) DAOFactory.build(GradlassDAO.class,user);
 			GradlassWebParam params = new GradlassWebParam();

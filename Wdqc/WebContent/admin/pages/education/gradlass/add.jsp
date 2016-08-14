@@ -87,7 +87,6 @@
 								</div>
 
 								<div class="col-sm-12">
-<<<<<<< HEAD
 									<div class="col-sm-4">
 										<div class="form-group">
 											<label class="col-sm-4 control-label">学费标准：</label>
@@ -149,95 +148,6 @@
 								                    <div class="controls">
 								                     <div class="input-prepend input-group">
 								                       <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span><input type="text" readonly="readonly" style="width: 200px" name="reservation" id="reservation" class="form-control" /> 
-=======
-									<div class="col-sm-7">
-										<div class="form-group">
-											<label class="col-sm-2 control-label">收费模式：</label>
-											<div class="col-sm-5">
-												<label class="checkbox-inline"> <input type="radio"
-													name="form.csTuition" id="form.csTuition" value="0" checked>按期
-												</label> <label class="checkbox-inline"> <input type="radio"
-													name="form.csTuition" id="form.csTuition" value="1">
-													按课时
-												</label> <label class="checkbox-inline"> <input type="radio"
-													name="form.csTuition" id="form.csTuition" value="2">
-													按时间 &nbsp; &nbsp; &nbsp;
-												</label>
-
-											</div>
-										</div>
-
-									</div>
-									<div class="col-sm-3">
-										<div class="form-group">
-											<label class="col-sm-9 control-label">（保存后不能修改，谨慎选择）</label>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-sm-12">
-									<div class="col-sm-4">
-										<div class="form-group">
-											<label class="col-sm-4 control-label">学费标准：</label>
-											<div class="col-sm-8">
-												<input name="form.csCharge" id="form.csCharge" type="text"
-													class="form-control">
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-2">
-										<div class="form-group">
-											<label class="col-sm-4 control-label">元 / 期</label>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-sm-12">
-									<div class="col-sm-4">
-										<div class="form-group">
-											<label class="col-sm-4 control-label">课时总计：</label>
-											<div class="col-sm-8">
-												<input name="form.csClasshour" id="form.csClassHour"
-													type="text" class="form-control">
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<div class="form-group">
-											<label class="col-sm-20 control-label">
-												课时 (如果每节课包含1课时，则课时总计等于上课次数)</label>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-sm-12">
-									<div class="col-sm-4">
-										<div class="form-group">
-											<label class="col-sm-4 control-label">每次上课 ： </label>
-											<div class="col-sm-8">
-												<input name="form.csEveryclass" id="form.csEveryClass"
-													type="text" class="form-control">
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<div class="form-group">
-											<label class="col-sm-20 control-label">课时(教师记上课和学员刷卡默认消耗的课时)</label>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-sm-12">
-									<div class="col-sm-4">
-										<div class="form-group">
-											<label class="col-sm-4 control-label">开班日期区间：</label>
-											<div class="col-sm-8">
-								                 <fieldset>
-								                  <div class="control-group">
-								                    <div class="controls">
-								                     <div class="input-prepend input-group">
-								                       <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span><input type="text" readonly="readonly" style="width: 200px" name="reservation" id="reservation" class="form-control" value="2014-5-21 - 2014-6-21" /> 
->>>>>>> branch 'master' of git@github.com:wuchenxi123/wdqc.git
 								                     </div>
 								                    </div>
 								                  </div>

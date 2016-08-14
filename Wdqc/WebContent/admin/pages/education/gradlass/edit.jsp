@@ -76,7 +76,7 @@
 											</div>
 										</div>
 									</div>
-									<!-- <div class="col-sm-4">
+									<div class="col-sm-4">
 										<div class="form-group">
 											<div class="col-sm-8">
 												<select name="form.coClassify"
@@ -84,44 +84,9 @@
 												</select>
 											</div>
 										</div>
-									</div> -->
-								</div>
-
-								<div class="col-sm-12">
-									<div class="col-sm-7">
-										<div class="form-group">
-											<label class="col-sm-2 control-label">收费模式：</label>
-											<div class="col-sm-5">
-												<label class="checkbox-inline"> 
-												<select name="form.csTuition" id="form.csTuition"
-													class="form-control">
-												</select>
-												<!-- 
-												<input type="checkbox"
-													name="form.csTuition" id="form.csTuition" value="0">
-													按期
-												</label> <label class="checkbox-inline"> 
-												<input type="checkbox"
-													name="form.csTuition" id="form.csTuition" value="1">
-													按课时
-												</label> <label class="checkbox-inline"> 
-												<input type="checkbox"
-													name="form.csTuition" id="form.csTuition" value="2">
-													按时间 &nbsp; &nbsp; &nbsp;
-												 -->
-												
-												</label>
-
-											</div>
-										</div>
-
-									</div>
-									<div class="col-sm-3">
-										<div class="form-group">
-											<label class="col-sm-9 control-label">（保存后不能修改，谨慎选择）</label>
-										</div>
 									</div>
 								</div>
+
 
 								<div class="col-sm-12">
 									<div class="col-sm-4">
