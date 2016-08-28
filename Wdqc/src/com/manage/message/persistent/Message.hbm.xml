@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.manage.message.persistent.MessageVO" table="ms_message">
+<id column="mg_id" name="mgId" type="java.lang.Integer">
+<generator class="native"/>
+</id>
+<property column="mg_title" length="60" name="mgTitle" type="java.lang.String"/>
+<property column="mg_content" length="65535" name="mgContent" type="java.lang.String"/>
+<property column="mg_type" length="30" name="mgType" type="java.lang.String"/>
+<property column="mg_creator" length="10" name="mgCreator" type="java.lang.Integer"/>
+<property column="mg_creattime" name="mgCreattime" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.manage.teachercourse.persistent.TeacherCourseVO" table="ms_teacher_course">
+<id column="tc_id" name="tcId" type="java.lang.Integer">
+<generator class="native"/>
+</id>
+<property column="te_id" length="10" name="teid" not-null="true" type="java.lang.Integer"/>
+<property column="co_id" length="10" name="coid" not-null="true" type="java.lang.Integer"/>
+</class>
+</hibernate-mapping>
