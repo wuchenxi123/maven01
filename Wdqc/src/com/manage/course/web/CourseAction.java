@@ -107,7 +107,7 @@ public class CourseAction extends BaseAction{
 			BeanUtils.copyProperties(vo, form);
 			Course bo = (Course) BOFactory.build(CourseBO.class, this.getDBAccessUser());
 			if (null == vo.getCoId()) {
-				vo.setCreator(1/*this.getDBAccessUser().getOperid()*/);
+				vo.setCreator(this.getDBAccessUser().getOperid());
 				vo.setCreatetime(new Date());
 				vo = bo.doCreate(vo);
 			} else {

@@ -37,8 +37,7 @@ $.page.set({
 $finish=function(url, rtnUrl) {
 	var pwd = $("[id='form.mbPassword']").val();
 	pwd = hex_md5(pwd);
-	$("[id='form.mbPassword']").val(pwd)
-	alert("加密成功");
+	alert(pwd);
 	if (!url)
 		url = $.page.config.Save;
 	if (!rtnUrl)

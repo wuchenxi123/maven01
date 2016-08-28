@@ -84,7 +84,7 @@ $.page.set({
 
 		url = ctx + '/cs_UpdateRemain.ac';
 			pk = $("[id='form.csId']").val();;
-				alert(pk);
+			
 		if (pk) {
 			$.post(url, {
 				"param._pk" : pk
@@ -147,7 +147,13 @@ $.page.set({
 		$("[id='form.cltSaleboolname']").val("0");
 		$("div").remove("#pan1_" + id);
 	},
-
+	
+	getsum: function() {
+		var sum = $("#chargeadd").text();
+		var b =$("[id='cltReduce']").val();
+		var costsum = parseInt(sum) - parseInt(b);
+		$("#charge").text(costsum);
+	},
 });
 $(document).ready(function() {
 	$.page.formLoad();

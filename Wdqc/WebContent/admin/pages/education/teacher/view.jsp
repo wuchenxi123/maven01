@@ -153,6 +153,60 @@
 								</div>
 							</div>
 						</div>
+						
+						
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">带班列表信息</h3>
+							</div>
+							<div class="panel-body">
+								<div class="col-sm-8"></div>
+								<div class="col-sm-12">
+									<table id="user_datatable1"
+										class="table table-bordered table-striped table-hover">
+										<thead>
+											<tr>
+												<th></th>
+												<th>班级名称</th>
+												<th>人数</th>
+												<th>课程</th>
+												<th>开班</th>
+												<th>星期</th>
+												<th>时段</th>
+												<th>校区</th>
+												<th>教室</th>
+												<th>学费</th>
+												<th>状态</th>
+												<th>创建时间</th>
+												<th>操作</th>
+											</tr>
+										</thead>
+
+										<tfoot>
+											<tr>
+												<th></th>
+												<th>班级名称</th>
+												<th>人数</th>
+												<th>课程</th>
+												<th>开班</th>
+												<th>星期</th>
+												<th>时段</th>
+												<th>校区</th>
+												<th>教室</th>
+												<th>学费</th>
+												<th>状态</th>
+												<th>创建时间</th>
+												<th>操作</th>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+							</div>
+						</div>
+						<a class="btn btn-primary" onclick="$.page.config.fnFinish();">
+							<i class="fa fa-save"></i>返回列表
+						</a>
+						
 					</form>
 
 				</div>

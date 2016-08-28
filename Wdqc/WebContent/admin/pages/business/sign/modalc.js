@@ -128,7 +128,7 @@ var config = {
 						html=html+'<i class="fa fa-times"></i> 删除</a></div><div class="panel-body">';
 						html=html+'<label class="col-sm-1 control-label">班名：</label> <div class="col-sm-2"><span>'+data.csName+'</span></div>  <label class="col-sm-1 control-label">费用：</label>';
 						html=html+'<div class="col-sm-2 text-danger">￥<span id="apply">'+data.csCharge+'</span></div><label class="col-sm-1 control-label">班级容量：</label><div class="col-sm-2"><span>'+data.csPeoplecount+'</span></div>';	
-						html=html+'<label class="col-sm-1 control-label">优惠：</label><div class="col-sm-2"><input id="cltReduce" type="text" class="form-control" value="0"></div></div></div>';
+						html=html+'<label class="col-sm-1 control-label">优惠：</label><div class="col-sm-2"><input id="cltReduce" type="text" class="form-control" value="0"></div></div><a class="btn" style="margin-left:920px;" onclick="$.page.config.getsum()">确定</a></div>';
 						$("#charge").text(data.csCharge);
 						$("#showgradss").append(html);
 						$("#material").show();
@@ -142,7 +142,6 @@ var config = {
 		
 	},
 	fnLoadmaterial : function(pk) {
-		alert(pk);
 		url = ctx + '/mtl_Show.ac?param._ne_coId='+pk;
 
 		$.post(url, {
@@ -251,6 +250,7 @@ function cltSaleid(pk) {
 				html=html+'</div></div>';
 				var sum=parseInt($("#charge").text())+parseInt(data.mtlPrice);
 				$("#charge").text(sum);
+				$("#chargeadd").text(sum);
 				$("#showmtl").append(html);				
 			}
 			

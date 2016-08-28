@@ -5,6 +5,7 @@ import com.core.jop.infrastructure.db.DataPackage;
 import com.manage.campus.persistent.CampusVO;
 import com.manage.classroom.persistent.ClassroomVO;
 import com.manage.course.persistent.CourseVO;
+import com.manage.student.persistent.StudentVO;
 import com.manage.teacher.persistent.TeacherVO;
 
 import java.io.Serializable;
@@ -109,12 +110,13 @@ public class GradlassVO extends BaseVO implements Serializable {
     private String crName;
     
     private String coName;
-    
+    private Double sumIncome;
 /*    private CourseVO course;
     private ClassroomVO classroom;
     private CampusVO campus;*/
     private TeacherVO teacher;
-    private List<TeacherVO> teaList=null;
+    private List<TeacherVO> teaList;
+    private List<StudentVO> studentList;
     public String getTeacherName() {
 		return teacherName;
 	}
@@ -124,7 +126,6 @@ public class GradlassVO extends BaseVO implements Serializable {
 	}
 
 	private Integer gradlassTeacher; 
-    private DataPackage d;
     private String teacherName;
 	
 	public GradlassVO(Long csId, Integer coId, Integer coClassify,
@@ -137,7 +138,7 @@ public class GradlassVO extends BaseVO implements Serializable {
 			String csArriveinform, String csRemark, String timeFrame,
 			CourseVO course, ClassroomVO classroom, CampusVO campus,
 			TeacherVO teacher, List<TeacherVO> teaList,
-			Integer gradlassTeacher, DataPackage d, String teacherName) {
+			Integer gradlassTeacher, String teacherName) {
 		super();
 		this.csId = csId;
 		this.coId = coId;
@@ -165,7 +166,6 @@ public class GradlassVO extends BaseVO implements Serializable {
 		this.teacher = teacher;
 		this.teaList = teaList;
 		this.gradlassTeacher = gradlassTeacher;
-		this.d = d;
 		this.teacherName = teacherName;
 	}
 
@@ -374,14 +374,6 @@ public class GradlassVO extends BaseVO implements Serializable {
 		this.teacher = teacher;
 	}
 
-	public DataPackage getD() {
-		return d;
-	}
-
-	public void setD(DataPackage d) {
-		this.d = d;
-	}
-
 	public Integer getGradlassTeacher() {
 		return gradlassTeacher;
 	}
@@ -487,6 +479,24 @@ public class GradlassVO extends BaseVO implements Serializable {
 	public void setCsStatus(Integer csStatus) {
 		this.csStatus = csStatus;
 	}
+
+	public Double getSumIncome() {
+		return sumIncome;
+	}
+
+	public void setSumIncome(Double sumIncome) {
+		this.sumIncome = sumIncome;
+	}
+
+	public List<StudentVO> getStudentList() {
+		return studentList;
+	}
+
+	public void setStudentList(List<StudentVO> studentList) {
+		this.studentList = studentList;
+	}
+
+	
 
 
 }

@@ -312,7 +312,7 @@
 								<div class="col-sm-12" style="margin-top:25px;">
 									<div class="col-xs-2 col-xs-offset-10 text-danger">
 										<div>
-											<span>消费总账:</span>￥<span id="costsum">0</span>
+											<span>消费总账:￥</span><span id="stcostsum">0</span>
 										</div>
 									</div>
 								</div>

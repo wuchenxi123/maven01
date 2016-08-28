@@ -12,20 +12,19 @@
 <script type="text/javascript">
 	var ctx="${pageContext.request.contextPath}";
 </script>
-
+<!-- 
+<script src="<%=ctx %>/admin/plugins/bootstrap-table/bootstrap-table-export.js" type="text/javascript" ></script>
+<script src="<%=ctx %>/admin/plugins/bootstrap-table/tableExport.js" type="text/javascript" ></script>
+ -->
 <script src="<%=ctx %>/admin/pages/education/gradlass/list.js" type="text/javascript" ></script>
-
-
 
 <body>
 <!-- Content Header (Page header) -->
 	<section class="content-header">
-<!-- 		<h1>
-			资询管理 <small>查询资询信息</small>
-		</h1> -->
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>班级管理</a></li>    
 			<li class="active">查询班级信息</li>
+			<a class="btn btn-info pull-right" onclick="exportGradlass()">导出数据</a>
 		</ol>
 	</section>
 
@@ -37,6 +36,7 @@
 					<!-- /.box-header -->
 					<div class="box-body">
 					<div id="Datatable_Param_Form" style="display: none;">
+					<!--<p><button id="btn-export">Export</button></p> -->
 							<form class="form-horizontal">
 								<div class="col-sm-9">
 									<div class="form-group">
@@ -73,6 +73,7 @@
 									<th>教师</th>
 									<th>课程</th>
 									<th>开班</th>
+									<th>星期</th>
 									<th>时段</th>
 									<th>校区</th>
 									<th>教室</th>
@@ -91,6 +92,7 @@
 									<th>教师</th>
 									<th>课程</th>
 									<th>开班</th>
+									<th>星期</th>
 									<th>时段</th>
 									<th>校区</th>
 									<th>教室</th>

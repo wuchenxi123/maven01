@@ -12,17 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.ServletActionContext;
-import org.apache.xmlbeans.impl.jam.internal.parser.ParamStructPool;
 
-import com.manage.student.persistent.StudentVO;
 import com.core.jop.common.utils.bean.BeanUtils;
 import com.core.jop.infrastructure.control.BOFactory;
+import com.core.jop.infrastructure.db.DAOFactory;
 import com.core.jop.infrastructure.db.DataPackage;
 import com.core.jop.ui.struts2.BaseAction;
 import com.core.sys.util.PageUtils;
 import com.core.sys.util.object.DataTablePage;
 import com.manage.student.control.Student;
 import com.manage.student.control.StudentBO;
+import com.manage.student.persistent.StudentDAO;
+import com.manage.student.persistent.StudentVO;
 import com.util.Constants;
 
 /**
@@ -176,5 +177,31 @@ public class StudentAction extends BaseAction {
 		}
 		PageUtils.writePage(dp, response);
 		return null;
+	}
+	
+	public String doSignNumber() throws Exception {
+		HttpServletResponse response = ServletActionContext.getResponse();
+		StudentWebParam params = (StudentWebParam) this.getParam();
+		params.setQueryAll(true);
+		Student bo = (Student) BOFactory.build(StudentBO.class,
+				this.getDBAccessUser());
+		DataPackage dp = bo.doQuery(params);
+		String signcount=String.valueOf(dp.getRowCount());
+		Map<String, Object> dt = new HashMap<String, Object>();
+		dt.put("count", signcount);
+		PageUtils.writePage(dt, response);
+		return null;
+		
+	}
+	
+	public String doGetExport() throws Exception {
+		HttpServletResponse response = ServletActionContext.getResponse();
+		StudentWebParam params = (StudentWebParam) this.getParam();
+		Student bo = (Student) BOFactory.build(StudentBO.class,
+				this.getDBAccessUser());
+		DataPackage dp = bo.doQuery(params);
+		StudentDAO dao = (StudentDAO) DAOFactory.build(StudentDAO.class, this.getDBAccessUser());
+		dao.extport(dp);
+		return null;		
 	}
 }

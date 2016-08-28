@@ -6,7 +6,6 @@ $.page.set({
 
 	fnLoadCampus : function() {
 		url = ctx + '/cp_Show.ac';
-
 		$.post(url, {
 
 		}, function(data, textStatus, jqXHR) {

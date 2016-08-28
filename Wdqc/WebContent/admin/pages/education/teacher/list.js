@@ -51,6 +51,7 @@ $(document).ready(function() {
 	          { data : "teName" },
 	          { data : "teSex" },
 	          { data : "teAge" },
+	          { data : "courseName"},
 	          { data : "teLocation" },
 	          { data : "teMobile" },
 	          { data : "teArrivegradlassrate" },
@@ -60,7 +61,7 @@ $(document).ready(function() {
 	      ], 
 	      fnRowCallback : function(nRow,aData,iDataIndex){			    	  
 	    		var viewPage = ctx + '/admin/pages/education/teacher/view.jsp';
-			   	var editPage = ctx + '/admin/pages/education/teacher/add.jsp';
+			   	var editPage = ctx + '/admin/pages/education/teacher/edit.jsp';
 			   	var Delete = ctx + '/te_Del.ac';
 				var html = '<div class="btn-group btn-group-xs" role="group" aria-label="...">';
 				html = html + '<a class="btn" href="javascript:loadPage(\'' + viewPage + '\',\'' + aData.teId + '\');"> <i class="fa fa-edit"></i> 查看</a>';
@@ -68,17 +69,17 @@ $(document).ready(function() {
 				html = html + '<a class="btn" onclick="$.page.del(\'' +Delete+ '?ids=' + aData.teId + '\');"> <i class="fa fa-times"></i> 删除</a>';
 				html = html + '</div>';
 				$('td:eq(-1)', nRow).html(html);
-//				var teacher;
-//				var names="";
-//				teacher=aData.teaList;
-//				if(teacher!=null){
-//					for ( var i = 0; i < teacher.length; i++) {
-//						names=teacher[i].teName;
-//						$('td:eq(3)', nRow).append(names+ " | ");
-//					
-//					}
-//				}
 				$('td:eq(2)', nRow).html(aData.teSex=='1'?'女':'男');
+				var course;
+				var names="";
+				course=aData.courseList;
+				if(course!=null){
+					for ( var i = 0; i < course.length; i++) {
+						names=course[i].coName;
+						$('td:eq(4)', nRow).append(names+ " | ");
+					
+					}
+				}
 /*				var appIcon = '<div class="pull-left image"><img src="' + ctx + "/" + aData.appIcon + '" class="img-circle" width="45" height="45" /></div>';
 				
 				$('td:eq(5)', nRow).html(aData.appRecommend=='1'?'是':'否');
@@ -116,7 +117,16 @@ $(document).ready(function() {
 			}
 		});
 	}
-	
+	function exportTeacher(url) {
+		url =ctx+'/te_GetExport.ac';
+			$.post(url, {
+			}, function(data, textStatus, jqXHR) {
+				if ("success" == textStatus) {
+					alert("数据导出成功");		
+					}							
+			
+		}); 
+	};
 	function reload(){
 		grid.ajax.reload();
 	}

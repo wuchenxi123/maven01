@@ -5,20 +5,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.core.jop.infrastructure.control.AbstractControlBean;
+import com.core.jop.infrastructure.control.BOFactory;
 import com.core.jop.infrastructure.db.DAOFactory;
 import com.core.jop.infrastructure.db.DataPackage;
 import com.manage.campus.persistent.CampusDAO;
 import com.manage.campus.persistent.CampusVO;
 import com.manage.classroom.persistent.ClassroomDAO;
 import com.manage.classroom.persistent.ClassroomVO;
+import com.manage.costlist.control.Costlist;
+import com.manage.costlist.control.CostlistBO;
+import com.manage.costlist.persistent.CostlistVO;
+import com.manage.costlist.web.CostlistWebParam;
 import com.manage.course.persistent.CourseDAO;
 import com.manage.course.persistent.CourseVO;
 import com.manage.gradlass.persistent.GradlassDAO;
 import com.manage.gradlass.persistent.GradlassDBParam;
 import com.manage.gradlass.persistent.GradlassVO;
+import com.manage.gradlass.web.GradlassWebParam;
 import com.manage.gradlassTeacher.persistent.GradlassTeacherDAO;
 import com.manage.gradlassTeacher.persistent.GradlassTeacherVO;
 import com.manage.gradlassTeacher.web.GradlassTeacherWebParam;
+import com.manage.student.persistent.StudentDAO;
+import com.manage.student.persistent.StudentVO;
+import com.manage.student.web.StudentWebParam;
+import com.manage.studentclass.control.Studentclass;
+import com.manage.studentclass.control.StudentclassBO;
+import com.manage.studentclass.persistent.StudentclassDAO;
+import com.manage.studentclass.persistent.StudentclassVO;
+import com.manage.studentclass.web.StudentclassWebParam;
 import com.manage.teacher.persistent.TeacherDAO;
 import com.manage.teacher.persistent.TeacherVO;
 import com.manage.teacher.web.TeacherWebParam;
@@ -30,6 +44,10 @@ import com.manage.teacher.web.TeacherWebParam;
  * @version 1.0
  */
 public class GradlassBO extends AbstractControlBean implements Gradlass {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6541298178894978947L;
 	public GradlassVO doCreate(GradlassVO vo) throws Exception {
 		try {
 			GradlassDAO dao = (GradlassDAO) DAOFactory.build(GradlassDAO.class,
@@ -48,7 +66,7 @@ public class GradlassBO extends AbstractControlBean implements Gradlass {
 				}
 			}
 			vo.setGradlassTeacher(go.getCsId().intValue());
-//			vo=this.doUpdate(go,1);
+			vo=this.doUpdate(go,1);
 			return go;
 			
 		} catch (Exception ex) {
@@ -90,7 +108,7 @@ public class GradlassBO extends AbstractControlBean implements Gradlass {
 			if(flag!=1){
 				List<TeacherVO> teaAll=go.getTeaList();
 				List<GradlassTeacherVO> list=new ArrayList<GradlassTeacherVO>();
-				if(teaAll.size()>0&&teaAll!=null){
+				if(teaAll.size()>0&&teaAll.get(0).getTeId()!=null){
 					for (TeacherVO teacherVO : teaAll) {
 						GradlassTeacherVO gto=new GradlassTeacherVO();
 						gto.setGradlassid(go.getCsId().intValue());
@@ -139,14 +157,12 @@ public class GradlassBO extends AbstractControlBean implements Gradlass {
 				}
 				if(o.getGradlassTeacher()!=null){
 					this.fillTeacher(o);
+					this.fillStudent(o);
 				}
-				if(("1").equals(o.getCsOpendatestatus())){
 				if(o.getCsWeekend()!=null){
-					o.setTimeFrame(o.getCsWeekend() + "-"
-							+ o.getCsDateStartHour() + ":"
+					o.setTimeFrame(o.getCsDateStartHour() + ":"
 							+ o.getCsDateStartMinute() + "--"
 							+ o.getCsDateEndHour() + ":" + o.getCsDateEndMinute());
-					}
 				}
 			}
 		}
@@ -183,7 +199,6 @@ public class GradlassBO extends AbstractControlBean implements Gradlass {
 	}
 
 	private GradlassVO fillTeacher(GradlassVO vo) throws Exception {
-		String teacherName = "";
 		DataPackage teachers = null;
 		List<TeacherVO> teaList=new ArrayList<TeacherVO>();
 		if (vo.getGradlassTeacher() > 0) {
@@ -195,22 +210,39 @@ public class GradlassBO extends AbstractControlBean implements Gradlass {
 			List<GradlassTeacherVO> list = teas.getDatas();
 			TeacherDAO teadao = (TeacherDAO) DAOFactory.build(TeacherDAO.class,user);
 			TeacherWebParam params = new TeacherWebParam();
-
+			System.out.println(vo.getCsId());
 			for (int i = 0; i < list.size(); i++) {
 				System.out.println(String.valueOf(list.get(i).getTeacherid()));
 				params.set_ne_teId(String.valueOf(list.get(i).getTeacherid()));
 				teachers = teadao.query(params);
-				System.out.println(teachers.getDatas().get(0));
 				teaList.add((TeacherVO) teachers.getDatas().get(0));
 				
 			}
 			vo.setTeaList(teaList);
-//			vo.getD().setDatas(teaList);
 		}
 
 		return vo;
 	}
-
+	private GradlassVO fillStudent(GradlassVO vo) throws Exception {
+		DataPackage students = null;
+		List<StudentVO> stuList=new ArrayList<StudentVO>();
+		StudentclassDAO dao = (StudentclassDAO) DAOFactory.build(
+				StudentclassDAO.class, user);
+		StudentclassWebParam scparams = new StudentclassWebParam();
+		scparams.set_ne_csId(String.valueOf(vo.getGradlassTeacher()));
+		DataPackage stus = dao.query(scparams);
+		List<StudentclassVO> list = stus.getDatas();
+		StudentDAO studao = (StudentDAO) DAOFactory.build(StudentDAO.class,user);
+		StudentWebParam params = new StudentWebParam();
+		System.out.println(vo.getCsId());
+		for (int i = 0; i < list.size(); i++) {
+			params.set_ne_stId(String.valueOf(list.get(i).getStId()));
+			students = studao.query(params);
+			stuList.add((StudentVO) students.getDatas().get(0));
+		}
+			vo.setStudentList(stuList);
+		return vo;
+	}
 	/**
 	 * 删除
 	 */
@@ -218,5 +250,42 @@ public class GradlassBO extends AbstractControlBean implements Gradlass {
 		GradlassDAO dao = (GradlassDAO) DAOFactory.build(
 				GradlassDAO.class, user);
 		dao.doDel(ids);
+	}
+	public DataPackage doQuerySumIncome(GradlassWebParam params)throws Exception {
+		GradlassDAO dao = (GradlassDAO) DAOFactory.build(GradlassDAO.class,
+				user);
+		DataPackage dp = dao.query(params);
+		
+		StudentclassWebParam stparams = new StudentclassWebParam();
+		Studentclass scbo = (Studentclass) BOFactory.build(StudentclassBO.class, user);
+		
+		CostlistWebParam clparams = new CostlistWebParam();
+		Costlist clbo = (Costlist) BOFactory.build(CostlistBO.class, user);
+		
+		double sum;
+		if (dp.getRowCount() > 0) {
+			for (Object vo : dp.getDatas()) {
+				sum=0;
+				GradlassVO o = (GradlassVO) vo;
+				stparams.set_ne_csId(o.getCsId().toString());
+				DataPackage stdp = scbo.doQuery(stparams);
+				List<StudentclassVO> scAll=stdp.getDatas();
+				if(scAll!=null&&scAll.size()>0){
+					for (StudentclassVO studentclassVO : scAll) {
+						clparams.set_ne_csId(o.getCsId().toString());
+						clparams.set_ne_stId(studentclassVO.getStId().toString());
+						DataPackage cldp = clbo.doQuery(clparams);
+						if(cldp.getDatas().size()>0){
+							CostlistVO clvo=(CostlistVO)cldp.getDatas().get(0);
+							sum=sum+clvo.getCltSum();
+						}
+						
+					}
+					o.setSumIncome(sum);
+				}
+				o.setSumIncome(sum);
+			}
+		}
+		return dao.query(params);
 	}
 }

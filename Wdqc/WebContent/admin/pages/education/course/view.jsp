@@ -104,6 +104,9 @@
 								</div>
 							</div>
 						</div>
+						<a class="btn btn-primary" onclick="$.page.config.fnFinish();">
+							<i class="fa fa-save"></i>返回列表
+						</a>
 						</form>
 						
 					</div>

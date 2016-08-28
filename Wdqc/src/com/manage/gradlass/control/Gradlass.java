@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.manage.gradlass.persistent.GradlassDBParam;
 import com.manage.gradlass.persistent.GradlassVO;
+import com.manage.gradlass.web.GradlassWebParam;
 import com.core.jop.infrastructure.control.AbstractControl;
 import com.core.jop.infrastructure.db.DBAccessUser;
 import com.core.jop.infrastructure.db.DataPackage;
@@ -38,4 +39,6 @@ public interface Gradlass extends AbstractControl {
 	 * @throws Exception
 	 */
 	public void doDel(List<String> ids) throws Exception;
+
+	public DataPackage doQuerySumIncome(GradlassWebParam params)throws Exception;
 }

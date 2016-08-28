@@ -35,13 +35,13 @@
  	
  	<mapping resource="com/manage/group/persistent/Group.hbm.xml" />
  	<mapping resource="com/manage/coursegroup/persistent/CourseGroup.hbm.xml" />
- 	
+ 	<mapping resource="com/manage/teachercourse/persistent/TeacherCourse.hbm.xml" />
  	<mapping resource="com/manage/studentclass/persistent/Studentclass.hbm.xml" />
  	
  	<mapping resource="com/manage/costlist/persistent/Costlist.hbm.xml" />
  	<mapping resource="com/manage/material/persistent/Material.hbm.xml" />
  	<mapping resource="com/manage/saler/persistent/Saler.hbm.xml" />
  	<mapping resource="com/manage/role/persistent/Role.hbm.xml" />
-
+	<mapping resource="com/manage/message/persistent/Message.hbm.xml" />
 </session-factory>
 </hibernate-configuration>

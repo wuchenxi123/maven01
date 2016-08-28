@@ -19,9 +19,6 @@
 <body>
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
-	<h1>
-		前台业务<small>学生报名</small>
-	</h1>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
 		<li><a href="#">前台业务</a></li>
@@ -281,6 +278,7 @@
 									<div class="col-xs-2 col-xs-offset-10">
 										<div>
 											<span>报名总费用:</span>￥<span id="charge" class="text-danger">0</span>
+											<span id="chargeadd" class="text-danger hidden">0</span>
 										</div>
 									</div>
 								</div>

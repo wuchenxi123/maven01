@@ -19,7 +19,7 @@ $.page.set({
 											+ data.datas[i].cpId + '">'
 											+ data.datas[i].cpName
 											+ '</option>';
-									$("[id='form.campus.cpId']").append(html);
+									$("[id='form.cpId']").append(html);
 								}
 								
 							}
@@ -33,14 +33,14 @@ $.page.set({
 				},
 						function(data, textStatus, jqXHR) {
 							if ("success" == textStatus) {
-								var htmlInit = '<option value=""></option>';
-								$("[id='form.course.coId']").append(htmlInit);
+//								var htmlInit = '<option value=""></option>';
+//								$("[id='form.coId']").append(htmlInit);
 								for ( var i = 0; i < data.datas.length; i++) {
 									var html = '<option value="'
 											+ data.datas[i].coId + '">'
 											+ data.datas[i].coName
 											+ '</option>';
-									$("[id='form.course.coId']").append(html);
+									$("[id='form.coId']").append(html);
 								}
 								/**/
 							}
@@ -52,15 +52,15 @@ $.page.set({
 				url = ctx + '/grp_Show.ac';
 				$.post(url, {
 				}, function(data, textStatus, jqXHR) {
-					var htmlInit = '<option value=""></option>';
-					$("[id='form.course.coClassify']").append(htmlInit);
+//					var htmlInit = '<option value=""></option>';
+//					$("[id='form.coClassify']").append(htmlInit);
 					if ("success" == textStatus) {
 						for ( var i = 0; i < data.datas.length; i++) {
 							var html = '<option value="'
 									+ data.datas[i].groupId + '">'
 									+ data.datas[i].groupName
 									+ '</option>';
-							$("[id='form.course.coClassify']").append(html);
+							$("[id='form.coClassify']").append(html);
 						}
 						
 					}
@@ -106,8 +106,8 @@ $.page.set({
 					        $('#reservation span').html(start.format('D MMMM YYYY') + ' - ' + end.format('D MMMM YYYY'));
 					        startDate = start;
 					        endDate = end; 
-					        $("[id='form.csOpendatestart']").val(start.format('YYYY-MM-DD'));
-					        $("[id='form.csOpendateend']").val(end.format('YYYY-MM-DD'));
+					        $("[id='form.csOpendatestart']").val(startDate.format('YYYY-MM-DD'));
+					        $("[id='form.csOpendateend']").val(endDate.format('YYYY-MM-DD'));
 					       }
 					    );
 			},
@@ -156,27 +156,94 @@ $.page.set({
 			},
 		
 			addTeacher :function() {
-//				alert(k);
-				
-//				alert(htmltea);
 				var html1 = '<select name="form.teaList['+k+'].teId "'
-					+ 'id="form.teacher.teId'+k+' "'+'class="form-control">'
+					+ 'id="form.teacher.teId'+k+' "'+'class="form-control" style="margin-top: 16px"><option value=""></option>'
 					+htmltea+ '</select>';
 				$("[id='form.teaSelect']").append(html1);
 //				$.page.config.fnLoadTeacher();
 //				alert(html1);
 				k++;
 			},
+			fnPrevent : function() {
+				e.preventDefault();
+			},
+			fnPreventTab : function(b) {
+				if (b) {
+					// 阻止跳转
+					$("[id='form.gradlassSave']").on('show.bs.tab', function(e) {
+						e.preventDefault();
+					});
+				} else {
+					$("[id='form.gradlassSave']").unbind();
+				}
+			},
+			fnInitValidator : function() {
+				$.page.config.fnPreventTab(true);
+				$('#info form').bootstrapValidator({
+					trigger : 'blur',
+					feedbackIcons : {
+						valid : 'glyphicon glyphicon-ok',
+						invalid : 'glyphicon glyphicon-remove',
+						validating : 'glyphicon glyphicon-refresh'
+					},
+					fields : {
+						'form.csName' : {
+							validators : {
+								notEmpty : {
+									message : '请输入班级名称'
+								}
+							}
+						},
+						'form.csCharge' : {
+							validators : {
+								notEmpty : {
+									message : '学费标准不能为空'
+								}
+							}
+						},
+						'form.csClasshour' : {
+							validators : {
+								notEmpty : {
+									message : '课时总计不能为空'
+								}
+							}
+						},
+						'form.csEveryclass' : {
+							validators : {
+								notEmpty : {
+									message : '每次上课课时不能为空 '
+								}
+							}
+						},
+					}
+				}).on('success.form.bv', function(e) {
+					e.preventDefault();
+					// 解绑事件
+					$.page.config.fnPreventTab(false);
+					$.page.config.fnFinish();
+				});
+			},
+			fnSave : function() {
+
+				$("#info form").submit();
+			},
+			fnFinish : function(url, rtnUrl) {
+				if (!url)
+					url = $.page.config.Save;
+				if (!rtnUrl)
+					rtnUrl = $.page.config.Return;
+				var formData = $("form").serializeArray();
+				$.post(url, formData, function(data, textStatus, jqXHR) {
+					if (data.success) {
+						alert('保存成功!');
+						$.page.load(rtnUrl);
+					} else {
+						alert('保存失败！请再次查看已填信息' + data.msg);
+					}
+				});
+
+			},
 });
-//$("[id='form.course.coId']").change(function() {
-////	alert($("[id='form.course.coId']").val().length);
-//	if($("[id='form.course.coId']").val()==0){
-//		$("[id='form.course.coClassify']").empty();
-//		return;
-//	}
-//	var selected = $(this).find("option:selected").val();
-//	$.page.config.fnLoadClassify(selected);
-//});
 
 $("[id='form.csOpenSateStatus']").on('click',function(e){
 	if($("[id='form.csOpenSateStatus']").is(':checked')) {
@@ -188,8 +255,6 @@ $("[id='form.csOpenSateStatus']").on('click',function(e){
 		$("[id='reservation']").attr("disabled",false);
 		$("[id='form.csOpenSateStatus']").val('0');
 	}
-//	alert($("[id='reservation']").val());
-//	alert($("[id='form.csOpenSateStatus']").val());
 });
 $("[id='form.csArriveInform']").on('click',function(e){
 	if($("[id='form.csArriveInform']").is(':checked')) {
@@ -198,25 +263,42 @@ $("[id='form.csArriveInform']").on('click',function(e){
 	else{
 		$("[id='form.csArriveInform']").val('0');
 	}
-//	alert($("[id='form.csArriveInform']").val());
 });
-
+$('input[type=checkbox]').change(function(){
+	var chk_value =[];
+	$('input[name="csWeekend"]:checked').each(function(){
+	chk_value.push($(this).val());
+	});
+	$("[id='form.csWeekend']").val(chk_value);
+})
 $("[id='form.classtime']").on('click',function(e){
 	if($("[id='form.classtime']").is(':checked')) {
+		
+		$("[id='csWeekend']").each(function(){
+			if($(this).prop("checked")){
+			$(this).prop("checked",false);
+			}
+			}); 
+		
 		$("[id='form.csWeekend']").val('');
 		$("[id='form.csDatestarthour']").val('');
 		$("[id='form.csDatestartminute']").val('');
 		$("[id='form.csDateendhour']").val('');
 		$("[id='form.csDateendminute']").val('');
 		
-		$("[id='form.csWeekend']").attr("disabled",true);
+		$("[id='csWeekend']").each(function(){
+			$(this).attr("disabled",true);
+			}); 
 		$("[id='form.csDatestarthour']").attr("disabled",true);
 		$("[id='form.csDatestartminute']").attr("disabled",true);
 		$("[id='form.csDateendhour']").attr("disabled",true);
 		$("[id='form.csDateendminute']").attr("disabled",true);
 	}
 	else{
-		$("[id='form.csWeekend']").attr("disabled",false);
+		$("[id='csWeekend']").each(function(){
+			$(this).attr("disabled",false);
+			}); 
+		
 		$("[id='form.csDatestarthour']").attr("disabled",false);
 		$("[id='form.csDatestartminute']").attr("disabled",false);
 		$("[id='form.csDateendhour']").attr("disabled",false);
@@ -224,24 +306,7 @@ $("[id='form.classtime']").on('click',function(e){
 	}
 });
 
-$finish=function(url, rtnUrl) {
-//	alert(Return);
-	if (!url)
-		url = $.page.config.Save;
-	if (!rtnUrl)
-		rtnUrl = $.page.config.Return;
-//	alert(url);
-	var formData = $("form").serializeArray();
-	$.post(url, formData, function(data, textStatus, jqXHR) {
-		if (data.success) {
-			alert('保存成功!');
-			$.page.load(rtnUrl);
-		} else {
-			alert('保存失败！' + data.msg);
-		}
-	});
 
-},
 $(document).ready(function() {
 	$.page.config.fnLoadCampus();
 	$.page.config.fnLoadCourse();
@@ -250,5 +315,7 @@ $(document).ready(function() {
 	$.page.config.fnLoadClassroom();
 	$.page.config.fnLoadTime();
 	$.page.formLoad();
+	$.page.config.fnInitValidator();
+	
 
 });

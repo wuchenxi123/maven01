@@ -1,19 +1,13 @@
 package com.manage.extra;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.ServletActionContext;
@@ -22,9 +16,16 @@ import com.core.jop.infrastructure.control.BOFactory;
 import com.core.jop.infrastructure.db.DataPackage;
 import com.core.jop.ui.struts2.BaseAction;
 import com.core.sys.util.PageUtils;
+import com.manage.costlist.control.Costlist;
+import com.manage.costlist.control.CostlistBO;
+import com.manage.costlist.persistent.CostlistDBParam;
+import com.manage.costlist.web.CostlistForm;
 import com.manage.member.control.Member;
 import com.manage.member.control.MemberBO;
 import com.manage.member.persistent.MemberVO;
+import com.manage.student.control.Student;
+import com.manage.student.control.StudentBO;
+import com.manage.student.web.StudentWebParam;
 import com.opensymphony.xwork2.ActionContext;
 import com.util.Constants;
 import com.util.MD5;
@@ -46,7 +47,7 @@ public class ExtraAction extends BaseAction {
 	private String Mobile_PageSize = "10";
 
 	/**
-	 * 注销
+	 * ע��
 	 * 
 	 * @return
 	 * @throws Exception
@@ -72,7 +73,7 @@ public class ExtraAction extends BaseAction {
 	}
 
 	/**
-	 * 判断用户是否已经登录
+	 * �ж��û��Ƿ��Ѿ���¼
 	 * 
 	 * @throws Exception
 	 */
@@ -81,12 +82,12 @@ public class ExtraAction extends BaseAction {
 		Integer uid = this.getDBAccessUser().getOperid();
 		Map<String, Object> dp = new HashMap<String, Object>();
 		dp.put(Constants.AC, uid > 0);
-		dp.put(Constants.AC_msg, uid > 0 ? "" : "当前会话尚未有用户登录！");
+		dp.put(Constants.AC_msg, uid > 0 ? "" : "��ǰ�Ự��δ���û���¼��");
 		PageUtils.writePage(dp, res);
 	}
 
 	/**
-	 * 修改当前用户的密码
+	 * �޸ĵ�ǰ�û�������
 	 * 
 	 * @return
 	 * @throws Exception
@@ -96,7 +97,7 @@ public class ExtraAction extends BaseAction {
 		HttpServletRequest req = ServletActionContext.getRequest();
 		String password = req.getParameter("password");
 		if (StringUtil.isEmpty(password)) {
-			throw new Exception("密码不能为空！");
+			throw new Exception("���벻��Ϊ�գ�");
 		}
 		Map<String, Object> dp = new HashMap<String, Object>();
 		try {
@@ -112,7 +113,7 @@ public class ExtraAction extends BaseAction {
 				dp.put(Constants.AC_msg, "");
 			} else {
 				dp.put(Constants.AC, Constants.AC_fail);
-				dp.put(Constants.AC_msg, "当前用户尚未登录！");
+				dp.put(Constants.AC_msg, "��ǰ�û���δ��¼��");
 			}
 		} catch (Exception e) {
 			dp.put(Constants.AC, Constants.AC_fail);
@@ -124,7 +125,7 @@ public class ExtraAction extends BaseAction {
 	}
 
 	/**
-	 * 重置密码
+	 * ��������
 	 * 
 	 * @return
 	 * @throws Exception
@@ -135,11 +136,11 @@ public class ExtraAction extends BaseAction {
 		String mobile = req.getParameter("mobile");
 		String password = req.getParameter("password");
 		if (StringUtil.isEmpty(mobile)) {
-			throw new Exception("手机号码不能为空！");
+			throw new Exception("�ֻ���벻��Ϊ�գ�");
 		}
 
 		if (StringUtil.isEmpty(password)) {
-			throw new Exception("密码不能为空！");
+			throw new Exception("���벻��Ϊ�գ�");
 		}
 		Map<String, Object> dp = new HashMap<String, Object>();
 		try {
@@ -154,7 +155,7 @@ public class ExtraAction extends BaseAction {
 				dp.put(Constants.AC_msg, "");
 			} else {
 				dp.put(Constants.AC, Constants.AC_fail);
-				dp.put(Constants.AC_msg, "用户不存在，无法重置密码！");
+				dp.put(Constants.AC_msg, "�û������ڣ��޷��������룡");
 			}
 		} catch (Exception e) {
 			dp.put(Constants.AC, Constants.AC_fail);
@@ -166,7 +167,7 @@ public class ExtraAction extends BaseAction {
 	}
 */
 	/**
-	 * 注册
+	 * ע��
 	 * 
 	 * @throws Exception
 	 */
@@ -176,11 +177,11 @@ public class ExtraAction extends BaseAction {
 		String mobile = req.getParameter("mobile");
 		String password = req.getParameter("password");
 		if (StringUtil.isEmpty(mobile)) {
-			throw new Exception("手机号码不能为空！");
+			throw new Exception("�ֻ���벻��Ϊ�գ�");
 		}
 
 		if (StringUtil.isEmpty(password)) {
-			throw new Exception("密码不能为空！");
+			throw new Exception("���벻��Ϊ�գ�");
 		}
 		Map<String, Object> dp = new HashMap<String, Object>();
 		try {
@@ -191,7 +192,7 @@ public class ExtraAction extends BaseAction {
 			vo.setMbPassword(password);
 			vo.setMbRegisterDate(new Date());
 
-			vo.setMbType(1); // 默认普通用户。 用户类型：1普通用户；2开发者；0管理员
+			vo.setMbType(1); // Ĭ����ͨ�û��� �û����ͣ�1��ͨ�û���2�����ߣ�0����Ա
 			vo.setMbPetName(req.getParameter("form.mbPetName"));
 			vo.setMbQuestion(req.getParameter("form.mbQuestion"));
 			vo.setMbAnswer(req.getParameter("form.mbAnswer"));
@@ -216,7 +217,7 @@ public class ExtraAction extends BaseAction {
 	}
 
 	/**
-	 * 查询当前用户信息
+	 * ��ѯ��ǰ�û���Ϣ
 	 * 
 	 * @throws Exception
 	 */
@@ -225,14 +226,14 @@ public class ExtraAction extends BaseAction {
 		Member bo = (Member) BOFactory.build(MemberBO.class, this.getDBAccessUser());
 		Integer pk = this.getDBAccessUser().getOperid();
 		if (pk <= 0) {
-			throw new Exception("请先登录！");
+			throw new Exception("���ȵ�¼��");
 		}
 		MemberVO vo = bo.doFindByPk(Integer.valueOf(pk));
 		PageUtils.writePage(vo, res, "yyyy-MM-dd HH:mm:ss");
 	}
 
 /*	*//**
-	 * 获取图形验证码
+	 * ��ȡͼ����֤��
 	 *//*
 	public void doGetPicCode() {
 		HttpServletResponse res = ServletActionContext.getResponse();
@@ -246,7 +247,7 @@ public class ExtraAction extends BaseAction {
 	}
 
 	*//**
-	 * 校验验图形证码
+	 * У����ͼ��֤��
 	 * 
 	 * @throws Exception
 	 *//*
@@ -257,7 +258,7 @@ public class ExtraAction extends BaseAction {
 		String msg = "";
 		boolean r = String.valueOf(req.getSession().getAttribute(Constants.SESSION_SN)).equals(c);
 		if (!r) {
-			msg = "验证码不正确！";
+			msg = "��֤�벻��ȷ��";
 		}
 		Map<String, Object> dp = new HashMap<String, Object>();
 		dp.put(Constants.AC, Constants.AC_success);
@@ -268,7 +269,7 @@ public class ExtraAction extends BaseAction {
 
 /*
 	*//**
-	 * 判断账号是否存在，账号包括账号/邮箱/手机
+	 * �ж��˺��Ƿ���ڣ��˺Ű����˺�/����/�ֻ�
 	 * 
 	 * @throws Exception
 	 *//*
@@ -277,7 +278,7 @@ public class ExtraAction extends BaseAction {
 		HttpServletRequest req = ServletActionContext.getRequest();
 		String mobile = req.getParameter("mobile");
 		if (StringUtil.isEmpty(mobile)) {
-			throw new Exception("账号不能为空！");
+			throw new Exception("�˺Ų���Ϊ�գ�");
 		}
 		Member bo = (Member) BOFactory.build(MemberBO.class, this.getDBAccessUser());
 		MemberVO user = bo.getUserByAccount(mobile);
@@ -286,12 +287,12 @@ public class ExtraAction extends BaseAction {
 		Map<String, Object> dp = new HashMap<String, Object>();
 		dp.put(Constants.AC, Constants.AC_success);
 		dp.put("valid", exist);
-		dp.put("message", exist ? "" : "账号" + mobile + "不存在，请核对！");
+		dp.put("message", exist ? "" : "�˺�" + mobile + "�����ڣ���˶ԣ�");
 		PageUtils.writePage(dp, res);
 	}*/
 
 	/**
-	 * 获取分页大小，为防止恶意大批量数据查询，系统默认一次只查询10条记录。
+	 * ��ȡ��ҳ��С��Ϊ��ֹ�����������ݲ�ѯ��ϵͳĬ��һ��ֻ��ѯ10����¼��
 	 * 
 	 * @return
 	 */
@@ -300,7 +301,7 @@ public class ExtraAction extends BaseAction {
 	}
 
 	/**
-	 * 获取查询页号
+	 * ��ȡ��ѯҳ��
 	 * 
 	 * @return
 	 */
@@ -311,5 +312,32 @@ public class ExtraAction extends BaseAction {
 			pageno = "1";
 		}
 		return pageno;
+	}
+	public String getSignInfo() throws Exception {
+		HttpServletResponse response = ServletActionContext.getResponse();
+		StudentWebParam params = new StudentWebParam();
+		params.setQueryAll(true);
+		Student bo = (Student) BOFactory.build(StudentBO.class,
+				this.getDBAccessUser());
+		DataPackage dp = bo.doQuery(params);
+		String signcount=String.valueOf(dp.getRowCount());
+		String costsum = getSignCostSum();
+		Map<String, Object> dt = new HashMap<String, Object>();
+		dt.put("count", signcount);
+		dt.put("costsum", costsum);
+		PageUtils.writePage(dt, response);
+		return null;
+		
+	}
+	
+	public String getSignCostSum() throws Exception {
+		CostlistDBParam params = new CostlistDBParam();
+		params.setQueryAll(true);
+		Costlist bo = (Costlist) BOFactory.build(CostlistBO.class,
+				this.getDBAccessUser());
+		CostlistForm dt = ((CostlistBO) bo).doQueryCost(params);
+		int costsum=dt.getCostcum();
+		return String.valueOf(costsum);
+		
 	}
 }

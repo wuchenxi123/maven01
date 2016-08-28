@@ -15,20 +15,15 @@ import org.apache.struts2.ServletActionContext;
 
 import com.core.jop.common.utils.bean.BeanUtils;
 import com.core.jop.infrastructure.control.BOFactory;
+import com.core.jop.infrastructure.db.DAOFactory;
 import com.core.jop.infrastructure.db.DataPackage;
 import com.core.jop.ui.struts2.BaseAction;
 import com.core.sys.util.PageUtils;
 import com.core.sys.util.object.DataTablePage;
-import com.manage.gradlass.control.Gradlass;
-import com.manage.gradlass.control.GradlassBO;
 import com.manage.gradlass.persistent.GradlassVO;
-import com.manage.gradlass.web.GradlassWebParam;
-import com.manage.gradlassTeacher.control.GradlassTeacher;
-import com.manage.gradlassTeacher.control.GradlassTeacherBO;
-import com.manage.gradlassTeacher.persistent.GradlassTeacherVO;
-import com.manage.gradlassTeacher.web.GradlassTeacherWebParam;
 import com.manage.teacher.control.Teacher;
 import com.manage.teacher.control.TeacherBO;
+import com.manage.teacher.persistent.TeacherDAO;
 import com.manage.teacher.persistent.TeacherVO;
 import com.util.Constants;
 
@@ -38,6 +33,10 @@ import com.util.Constants;
  * @version 1.0
  */
 public class TeacherAction extends BaseAction{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1754502796994465568L;
 	private final Log log = LogFactory.getLog(TeacherAction.class);
 	public TeacherAction() {
 		super();
@@ -106,6 +105,7 @@ public class TeacherAction extends BaseAction{
 		map.put("datas",al);
 		return null;
 	}
+
 	/**
 	 * 保存
 	 */
@@ -171,5 +171,15 @@ public class TeacherAction extends BaseAction{
 		}
 		PageUtils.writePage(dp, response);
 		return null;
+	}
+	public String doGetExport() throws Exception {
+		HttpServletResponse response = ServletActionContext.getResponse();
+		TeacherWebParam params = (TeacherWebParam) this.getParam();
+		Teacher bo = (Teacher) BOFactory.build(TeacherBO.class,
+				this.getDBAccessUser());
+		DataPackage dp = bo.doQuery(params);
+		TeacherDAO dao = (TeacherDAO) DAOFactory.build(TeacherDAO.class, this.getDBAccessUser());
+		dao.extport(dp);
+		return null;		
 	}
 }

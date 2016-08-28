@@ -4,23 +4,7 @@ $.page.set({
 			Save : ctx + "/cs_Save.ac",
 			Edit : ctx + "/cs_Edit.ac",
 			Return : ctx + "/admin/pages/education/gradlass/list.jsp",
-			// 完成保存页面跳转
-			finish:function(url, rtnUrl) {
-				if (!url)
-					url = $.page.config.Save;
-				if (!rtnUrl)
-					rtnUrl = $.page.config.Return;
-				var formData = $("form").serializeArray();
-				$.post(url, formData, function(data, textStatus, jqXHR) {
-					if (data.success) {
-						alert('编辑成功!');
-						$.page.load(rtnUrl);
-					} else {
-						alert('编辑失败！' + data.msg);
-					}
-				});
-
-			},
+			
 			fnLoadCampus : function() {
 				
 				url = ctx + '/cp_Show.ac';
@@ -126,14 +110,15 @@ $.page.set({
 						$.page.config.fnLoadTime($("[id='form.csOpendatestart']").val(),$("[id='form.csOpendateend']").val());
 						$("[id='form.csOpendatestart']").val()==""||null?
 								$("[id='form.csOpendatestatus']").prop("checked", true):$("[id='form.csOpendatestatus']").prop("checked", false);
-						$("[id='form.csWeekend']").val()==null?
+						var str=$("[id='form.csWeekend']").val();
+						
+						var arr=str.split(',');
+						$.each(arr,function(i,item){
+							$("input[name='csWeekend'][value="+item+"]").attr("checked","checked");
+						});
+						$("[id='form.csWeekend']").val(str);
+						$("[id='form.csDateStartHour']").val()==null?
 								$("[id='form.classtime']").prop("checked", true):$("[id='form.classtime']").prop("checked", false);
-						$("[id='form.csArriveinform']").val()==1?
-								$("[id='form.csArriveinform']").prop("checked", true):$("[id='form.csArriveinform']").prop("checked", false);
-									
-//					} 
-//				}
-
 			},
 			
 			fnLoadTime : function(ostartDate,oendDate) {
@@ -176,13 +161,11 @@ $.page.set({
 					        $('#reservation span').html(start.format('D MMMM YYYY') + ' - ' + end.format('D MMMM YYYY'));
 					        startDate = start;
 					        endDate = end; 
-//					        alert(start.format('YYYY-MM-DD')+end.format('YYYY-MM-DD'));
 					        $("[id='form.csOpendatestart']").val(start.format('YYYY-MM-DD'));
 					        $("[id='form.csOpendateend']").val(end.format('YYYY-MM-DD'));
 					       }
 					    );
 			},
-			
 			fnLoadTeacher : function() {
 				url = ctx + '/te_Show.ac';
 
@@ -191,8 +174,7 @@ $.page.set({
 				},
 						function(data, textStatus, jqXHR) {
 							if ("success" == textStatus) {
-								var htmlInit = '<option value=""></option>';
-								$("[id='form.teacher.teId']").append(htmlInit);
+								$("[id='form.teacher.teId']").append('<option value=""></option>');
 								for ( var i = 0; i < data.datas.length; i++) {
 									html = '<option value="'
 											+ data.datas[i].teId + '">'
@@ -204,6 +186,14 @@ $.page.set({
 							}
 						});
 			},
+			addTeacher :function() {
+				var html1 = '<select name="form.teaList['+k+'].teId "'
+					+ 'id="form.teacher.teId'+k+' "'+'class="form-control" style="margin-top: 16px"><option value=""></option>'
+					+htmltea+ '</select>';
+				$("[id='form.teaSelect']").append(html1);
+				k++;
+			},
+			
 			fnLoadClassTeacher : function(pk) {				
 				var Delete=ctx+'/gt_Del.ac';
 				if (!pk)
@@ -219,16 +209,17 @@ $.page.set({
 				},
 						function(data, textStatus, jqXHR) {
 							if ("success" == textStatus) {
-								
+								var html="";
+								var html2="";
 								for ( var i = 0; i < data.datas.length; i++) {
-									var html='<div id="pan_'+data.datas[i].ctId+'" style="float:left">'+data.datas[i].teachername+'<a class="btn btn-default btn-sm" onclick="$.page.config.del(\'' +Delete+ '?ids=' + data.datas[i].ctId + '\',\''+ data.datas[i].ctId+'\');"> <i class="fa fa-times"></i> 删除</a></div>';
+									html='<div id="pan_'+data.datas[i].ctId+'"  style="float:left">'+data.datas[i].teachername+'<a class="btn btn-default btn-sm" onclick="$.page.config.del(\'' +Delete+ '?ids=' + data.datas[i].ctId + '\',\''+ data.datas[i].ctId+'\');"> <i class="fa fa-times"></i> 删除</a></div>';
 									$("#teacherarea").append(html);
 								};
 							};
 						});
 			},
+			
 			del : function(url,id) {
-			alert(url);
 				$.post(url, {
 
 				}, function(data, textStatus, jqXHR) {
@@ -254,37 +245,92 @@ $.page.set({
 											+ '</option>';
 									$("[id='form.classroom.crName']").append(html);
 								}
-								/*$.page.formLoad();*/
 							}
 						});
 			},
 		
-			addTeacher :function() {
-//				alert(k);
-				
-//				alert(htmltea);
-				var html1 = '<select name="form.teaList['+k+'].teId "'
-					+ 'id="form.teacher.teId'+k+' "'+'class="form-control">'
-					+htmltea+ '<option value=""></option></select>';
-				$("[id='form.teaSelect']").append(html1);
-//				$.page.config.fnLoadTeacher();
-//				alert(html1);
-				k++;
+			
+			fnPrevent : function() {
+				e.preventDefault();
 			},
-//			getTeaList:function(){
-//				alert($("[id='form.teaList']").val());		
-//			}
+			fnPreventTab : function(b) {
+				if (b) {
+					// 阻止跳转
+					$("[id='form.gradlassEdit']").on('show.bs.tab', function(e) {
+						e.preventDefault();
+					});
+				} else {
+					$("[id='form.gradlassEdit']").unbind();
+				}
+			},
+			fnInitValidator : function() {
+				$.page.config.fnPreventTab(true);
+				$('#info form').bootstrapValidator({
+					trigger : 'blur',
+					feedbackIcons : {
+						valid : 'glyphicon glyphicon-ok',
+						invalid : 'glyphicon glyphicon-remove',
+						validating : 'glyphicon glyphicon-refresh'
+					},
+					fields : {
+						'form.csName' : {
+							validators : {
+								notEmpty : {
+									message : '请输入班级名称'
+								}
+							}
+						},
+						'form.csCharge' : {
+							validators : {
+								notEmpty : {
+									message : '学费标准不能为空'
+								}
+							}
+						},
+						'form.csClasshour' : {
+							validators : {
+								notEmpty : {
+									message : '课时总计不能为空'
+								}
+							}
+						},
+						'form.csEveryclass' : {
+							validators : {
+								notEmpty : {
+									message : '每次上课课时不能为空 '
+								}
+							}
+						},
+					}
+				}).on('success.form.bv', function(e) {
+					e.preventDefault();
+					// 解绑事件
+					$.page.config.fnPreventTab(false);
+					$.page.config.fnFinish();
+				});
+			},
+			fnSave : function() {
+				$("#info form").submit();
+			},
+			// 完成保存页面跳转
+			fnFinish:function(url, rtnUrl) {
+				if (!url)
+					url = $.page.config.Save;
+				if (!rtnUrl)
+					rtnUrl = $.page.config.Return;
+				var formData = $("form").serializeArray();
+				$.post(url, formData, function(data, textStatus, jqXHR) {
+					if (data.success) {
+						alert('编辑成功!');
+						$.page.load(rtnUrl);
+					} else {
+						alert('编辑失败！' + data.msg);
+					}
+				});
+
+			},
 });
-//$("[id='form.coId']").change(function() {
-////	alert($("[id='form.course.coId']").val().length);
-//	if($("[id='form.coId']").val()==0){
-//		$("[id='form.coClassify']").empty();
-//		return;
-//	}
-//	var selected = $(this).find("option:selected").val();
-////	alert(selected);
-//	$.page.config.fnLoadClassify(selected);
-//});
+
 
 $("[id='form.csOpendatestatus']").on('click',function(e){
 	if($("[id='form.csOpendatestatus']").is(':checked')) {
@@ -299,32 +345,46 @@ $("[id='form.csOpendatestatus']").on('click',function(e){
 //	alert($("[id='reservation']").val());
 //	alert($("[id='form.csOpenSateStatus']").val());
 });
-$("[id='form.csArriveinform']").on('click',function(e){
-	if($("[id='form.csArriveinform']").is(':checked')) {
-		$("[id='form.csArriveinform']").val('1');
-	}
-	else{
-		$("[id='form.csArriveinform']").val('0');
-	}
-//	alert($("[id='form.csArriveInform']").val());
-});
+var str=""; 
+$('input[type=checkbox]').change(function(){
+	var chk_value =[];
+	$('input[name="csWeekend"]:checked').each(function(){
+	chk_value.push($(this).val());
+//		str+=$(this).val()+","; 
+	});
+//	alert(chk_value);
+	$("[id='form.csWeekend']").val(chk_value);
+//	alert($("[id='form.csWeekend']").val());
+})
 
 $("[id='form.classtime']").on('click',function(e){
 	if($("[id='form.classtime']").is(':checked')) {
+		
+		$("[id='csWeekend']").each(function(){
+			if($(this).prop("checked")){
+			$(this).prop("checked",false);
+			}
+			}); 
+		
 		$("[id='form.csWeekend']").val('');
 		$("[id='form.csDateStartHour']").val('');
 		$("[id='form.csDateStartMinute']").val('');
 		$("[id='form.csDateEndHour']").val('');
 		$("[id='form.csDateEndMinute']").val('');
 		
-		$("[id='form.csWeekend']").attr("disabled",true);
+		$("[id='csWeekend']").each(function(){
+			$(this).attr("disabled",true);
+			}); 
 		$("[id='form.csDateStartHour']").attr("disabled",true);
 		$("[id='form.csDateStartMinute']").attr("disabled",true);
 		$("[id='form.csDateEndHour']").attr("disabled",true);
 		$("[id='form.csDateEndMinute']").attr("disabled",true);
 	}
 	else{
-		$("[id='form.csWeekend']").attr("disabled",false);
+		$("[id='csWeekend']").each(function(){
+			$(this).attr("disabled",false);
+			}); 
+		
 		$("[id='form.csDateStartHour']").attr("disabled",false);
 		$("[id='form.csDateStartMinute']").attr("disabled",false);
 		$("[id='form.csDateEndHour']").attr("disabled",false);
@@ -338,18 +398,17 @@ $("[id='form.cpId'] option").each(function(){
 });
 
 $(document).ready(function() {
-	
+	$.page.formLoad();
 	$.page.config.fnLoadCampus();
 	$.page.config.fnLoadCourse();
 	$.page.config.fnLoadGroup();
-	
+	$.page.config.fnInitValidator();
 	$.page.config.fnLoadTeacher();
 	$.page.config.fnLoadClassTeacher();
 	$.page.config.fnLoadClassroom();
 	$.page.config.fnLoadTuition();
 	$.page.config.getGradlassinfo();
 	
-	$.page.formLoad();
 //	$.page.config.getTeaList();
 //	$.page.config.fnLoadClassifys();
 //	$.page.config.fnLoadTime();

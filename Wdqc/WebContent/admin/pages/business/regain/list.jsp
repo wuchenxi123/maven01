@@ -25,7 +25,7 @@
 		</h1> -->
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>报名信息管理</a></li>    
-			<li class="active">查询报名信息</li>
+			<li class="active">查看停课学员信息</li>
 		</ol>
 	</section>
 

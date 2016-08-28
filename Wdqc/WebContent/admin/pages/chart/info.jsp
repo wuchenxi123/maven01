@@ -17,8 +17,33 @@
    <div id="bar" style="height:400px;width:800px;float:left"></div>
    <div id="line" style="height:400px;width:800px;float:left"></div>
    <div id="pie" style="height:400px;width:800px;float:left"></div>
-   <div id="lie" style="height:400px;width:800px;float:right"></div>
+   <div id="lie" style="height:400px;width:800px;float:left"></div>
 <script type="text/javascript">
+var arr1=[];
+var arr=[];
+var arr2=[];
+function csName(){
+    var arr=[];
+    $.ajax({
+    type : "POST",
+    async : false, //同步执行
+    url : ctx + '/cs_StatisticsIncome.ac',
+    data : {},
+    
+    success : function(data, textStatus, jqXHR) {
+		if ("success" == textStatus) {
+			for ( var i = 0; i < data.datas.length; i++) { 				
+				
+				arr.push(data.datas[i].csName);   
+			}	
+			
+		}       
+    
+},
+
+})
+return arr
+};
 require.config({
     paths: {
     	echarts: '<%=ctx %>/admin/plugins/echart'
@@ -49,12 +74,12 @@ require(
                 show: true
             },
             legend: {
-                data:['报名人数']
+                data:['班级收入']
             },
             xAxis : [
                 {
                     type : 'category',
-                    data : ["恰恰","爵士","探戈","自由舞","拉丁","桑巴"]
+                    data :csName()
                 }
             ],
             yAxis : [
@@ -64,9 +89,29 @@ require(
             ],
             series : [
                 {
-                    "name":"报名人数",
+                    "name":"班级收入",
                     "type":"bar",
-                    "data":[55, 40, 40, 70, 30, 20]
+                    "data":function(){
+                        $.ajax({
+                        type : "POST",
+                        async : false, //同步执行
+                        url : ctx + '/cs_StatisticsIncome.ac',
+                        data : {},
+                        
+                        success : function(data, textStatus, jqXHR) {
+                   		if ("success" == textStatus) {
+                   			for ( var i = 0; i < data.datas.length; i++) { 				
+                   				
+                   				arr2.push(parseInt(data.datas[i].sumIncome));   
+                   			}	
+                   			
+                   		}       
+                        
+                    },
+                    
+                   })
+                   return arr2
+                   }()
                 }
             ]
         };
@@ -88,7 +133,7 @@ require(
             xAxis : [
                 {
                     type : 'category',
-                    data : ["恰恰","爵士","探戈","自由舞","拉丁","桑巴"]
+                    data : csName()
                 }
             ],
             yAxis : [
@@ -100,7 +145,28 @@ require(
                 {
                     "name":"报名人数",
                     "type":"line",
-                    "data":[55, 40, 40, 70, 30, 20]
+                    "data":function(){
+                        var arr=[];
+                        $.ajax({
+                        type : "POST",
+                        async : false, //同步执行
+                        url : ctx + '/cs_StatisticsIncome.ac',
+                        data : {},
+                        
+                        success : function(data, textStatus, jqXHR) {
+                   		if ("success" == textStatus) {
+                   			for ( var i = 0; i < data.datas.length; i++) { 				
+                   				
+                   				arr1.push(parseInt(data.datas[i].csPeoplecount));   
+                   			}	
+                   			
+                   		}       
+                        
+                    },
+                    
+                   })
+                   return arr1
+                   }()
                 }
             ]
         };
@@ -114,7 +180,7 @@ require(
         
         option = {
         	    title : {
-        	        text: '某舞蹈学校学员来源分布',
+        	        text: '学校学员来源分布',
         	        subtext: '测试数据',
         	        x:'center'
         	    },

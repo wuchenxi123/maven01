@@ -81,7 +81,6 @@ public class CourseBO extends AbstractControlBean implements
 		if (dp.getRowCount() > 0) {
 			for (Object vo : dp.getDatas()) {
 				CourseVO o = (CourseVO) vo;
-//				this.fillClassify(o);
 				this.fillUser(o);
 			}
 		}

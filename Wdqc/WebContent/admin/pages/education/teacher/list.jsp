@@ -23,6 +23,7 @@
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>教师管理</a></li>    
 			<li class="active">全部教室信息</li>
+			<a class="btn btn-info pull-right" onclick="exportTeacher()">导出数据</a>
 		</ol>
 	</section>
 
@@ -34,16 +35,17 @@
 					<!-- /.box-header -->
 					<div class="box-body">
 					<div id="Datatable_Param_Form" style="display: none;">
+						
 							<form class="form-horizontal">
 								<div class="col-sm-9">
 									<div class="form-group">
 										<label class="col-sm-2 control-label">姓名：</label>
 										<div class="col-sm-3">
-											<input name="param._se_teName" id="param._se_teName" type="text" class="form-control" placeholder="按姓名查询">
+											<input name="param._sk_teName" id="param._sk_teName" type="text" class="form-control" placeholder="按姓名查询">
 										</div>
 										<label class="col-sm-4 control-label">手机号码：</label>
 										<div class="col-sm-3">
-											<input name="param._ne_teMobile" id="param._ne_teMobile" type="text" class="form-control" placeholder="按手机号码查询">
+											<input name="param._sk_teMobile" id="param._sk_teMobile" type="text" class="form-control" placeholder="按手机号码查询">
 										</div>
 									</div>
 								</div>
@@ -61,6 +63,7 @@
 									<th>姓名</th>
 									<th>性别</th>
 									<th>年龄</th>
+									<th>课程</th>
 									<th>居住区</th>
 									<th>手机号</th>
 									<th>出勤率</th>
@@ -76,6 +79,7 @@
 									<th>姓名</th>
 									<th>性别</th>
 									<th>年龄</th>
+									<th>课程</th>
 									<th>居住区</th>
 									<th>手机号</th>
 									<th>出勤率</th>

@@ -49,6 +49,9 @@
 			method="{1}">
 		</action>
 
+		<action name="tc_*" class="com.manage.teachercourse.web.TeacherCourseAction"
+			method="{1}">
+		</action>
 		<!-- 课程管理 -->
 
 
@@ -99,91 +102,16 @@
 		<!--学员班级表管理 -->
 
 
-		<action name="sc_*" 
-		class="com.manage.studentclass.web.StudentclassAction">
-		</action>
-		
-			<!-- 角色 -->
-
-
-		<action name="role_*" method="{1}"
-			class="com.manage.role.web.RoleAction">
-		</action>
-
-		<!-- 刷卡业务 -->
-
-
-		<action name="cd_*" method="{1}" class="com.manage.card.web.CardAction">
-		</action>
-
-		<!-- 教室业务 -->
-
-
-		<action name="cr_*" method="{1}"
-			class="com.manage.classroom.web.ClassroomAction">
-		</action>
-
-		<!--班级管理 -->
-
-
-		<action name="cs_*" method="{1}"
-			class="com.manage.gradlass.web.GradlassAction">
-		</action>
-
-		<!-- 课程管理 -->
-
-
-		<action name="cou_*" method="{1}"
-			class="com.manage.course.web.CourseAction">
-		</action>
-
-		<!-- 教材管理 -->
-
-
-		<action name="mtl_*" method="{1}"
-			class="com.manage.material.web.MaterialAction">
-		</action>
-
-		<!-- 费用管理 -->
-
-
-		<action name="ct_*" method="{1}"
-			class="com.manage.costlist.web.CostlistAction">
-		</action>
-
-		<!--用户管理 -->
-
-
-		<action name="mb_*" method="{1}" class="com.manage.member.web.MemberAction">
-		</action>
-
-		<!--销售员管理 -->
-
-
-		<action name="sl_*" method="{1}" class="com.manage.saler.web.SalerAction">
-		</action>
-
-		<!--教师管理 -->
-
-
-		<action name="te_*" method="{1}"
-			class="com.manage.teacher.web.TeacherAction">
-		</action>
-		<!--校区管理 -->
-
-
-		<action name="cp_*" class="com.manage.campus.web.CampusAction"
-			method="{1}">
-		</action>
-		<!--学员班级表管理 -->
-
-
 		<action name="sc_*" class="com.manage.studentclass.web.StudentclassAction"
 			method="{1}">
 		</action>
 		
-		<action name="gt_*" class="com.manage.gradlassTeacher.web.GradlassTeacherAction"
-			method="{1}">
+		<action name="mg_*" method="{1}"
+			class="com.manage.message.web.MessageAction">
+		</action>
+	</package>
+	<package name="ext" namespace="/extra" extends="struts-default">
+	     <action name="*" class="com.manage.extra.ExtraAction" method="{1}">
 		</action>
 	</package>
 	<package name="java" namespace="/" extends="wagon-default">

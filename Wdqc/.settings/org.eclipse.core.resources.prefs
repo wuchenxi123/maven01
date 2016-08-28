@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebContent/admin/index.jsp=UTF-8
 encoding//WebContent/admin/pages/base/menu.jsp=UTF-8
+encoding//WebContent/admin/plugins/ueditor/themes/default/dialogbase.css=UTF-8
 encoding//src/com/manage/member/web/MemberAction.java=UTF-8
 encoding/<project>=UTF-8

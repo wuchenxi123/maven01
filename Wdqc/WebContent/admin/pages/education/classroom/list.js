@@ -77,7 +77,7 @@ $(document).ready(function() {
 				var html = '<div class="btn-group btn-group-xs" role="group" aria-label="...">';
 /*				html = html + '<a class="btn" href="javascript:loadPage(\'' + viewPage + '\',\'' + aData.mtlId + '\');"> <i class="fa fa-edit"></i> 查看</a>';*/
 				html = html + '<a class="btn btn-link" href="javascript:loadPage(\'' + editPage + '\',\'' + aData.crId + '\');"><i class="fa fa-edit"></i>修改</a>';
-/*				html = html + '<a class="btn btn-link" onclick="$.page.del(\'' +Delete+ '?ids=' + aData.crId + '\');"> <i class="fa fa-times"></i> 删除</a>';*/
+				html = html + '<a class="btn btn-link" onclick="$.page.del(\'' +Delete+ '?ids=' + aData.crId + '\');"> <i class="fa fa-times"></i> 删除</a>';
 				html = html + '</div>';
 				$('td:eq(-1)', nRow).html(html);
 //				var Price="";

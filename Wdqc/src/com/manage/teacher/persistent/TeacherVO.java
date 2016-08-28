@@ -1,8 +1,5 @@
 package com.manage.teacher.persistent;
 
-import com.core.jop.infrastructure.db.BaseVO;
-import com.manage.gradlass.persistent.GradlassVO;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -11,10 +8,19 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
+import com.core.jop.infrastructure.db.BaseVO;
+import com.manage.course.persistent.CourseVO;
+import com.manage.gradlass.persistent.GradlassVO;
+
 /** @author Hibernate CodeGenerator */
 public class TeacherVO extends BaseVO implements Serializable {
 
-    /** identifier field */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4103237377829285768L;
+
+	/** identifier field */
     private Integer teId;
 
     /** nullable persistent field */
@@ -25,6 +31,7 @@ public class TeacherVO extends BaseVO implements Serializable {
 
     /** nullable persistent field */
     private String teAge;
+    private String courseName;
 
     /** nullable persistent field */
     private String teMobile;
@@ -49,18 +56,22 @@ public class TeacherVO extends BaseVO implements Serializable {
 
     /** nullable persistent field */
     private Integer gradlassteacher;
-
+    
+    private List<CourseVO> courseList;
     private List<GradlassVO> gradlassList;
-    public TeacherVO(Integer teId, String teName, Byte teSex, String teAge,
-			String teMobile, String teLocation, Double teArrivegradlassrate,
-			Short teGradlasscount, Date teDatestart, Date teDataend,
-			Date updatedate, Integer gradlassteacher,
+
+	public TeacherVO(Integer teId, String teName, Byte teSex, String teAge,
+			String courseName, String teMobile, String teLocation,
+			Double teArrivegradlassrate, Short teGradlasscount,
+			Date teDatestart, Date teDataend, Date updatedate,
+			Integer gradlassteacher, List<CourseVO> courseList,
 			List<GradlassVO> gradlassList) {
 		super();
 		this.teId = teId;
 		this.teName = teName;
 		this.teSex = teSex;
 		this.teAge = teAge;
+		this.courseName = courseName;
 		this.teMobile = teMobile;
 		this.teLocation = teLocation;
 		this.teArrivegradlassrate = teArrivegradlassrate;
@@ -69,6 +80,7 @@ public class TeacherVO extends BaseVO implements Serializable {
 		this.teDataend = teDataend;
 		this.updatedate = updatedate;
 		this.gradlassteacher = gradlassteacher;
+		this.courseList = courseList;
 		this.gradlassList = gradlassList;
 	}
 
@@ -198,6 +210,22 @@ public class TeacherVO extends BaseVO implements Serializable {
 
 	public void setGradlassList(List<GradlassVO> gradlassList) {
 		this.gradlassList = gradlassList;
+	}
+
+	public List<CourseVO> getCourseList() {
+		return courseList;
+	}
+
+	public void setCourseList(List<CourseVO> courseList) {
+		this.courseList = courseList;
+	}
+
+	public String getCourseName() {
+		return courseName;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
 	}
 
 }

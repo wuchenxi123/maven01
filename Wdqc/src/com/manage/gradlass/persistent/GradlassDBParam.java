@@ -49,6 +49,7 @@ public class GradlassDBParam extends DBQueryParam {
     private String _dnl_csDateend;
     private String _ne_csPeoplecount;
     private String _ne_csArriveinform;
+    private String _flag;
 
 	/**
      * @return Returns the _ne_csId.
@@ -522,6 +523,12 @@ public class GradlassDBParam extends DBQueryParam {
 	}
 	public void set_ne_csStatus(String _ne_csStatus) {
 		this._ne_csStatus = _ne_csStatus;
+	}
+	public String get_flag() {
+		return _flag;
+	}
+	public void set_flag(String _flag) {
+		this._flag = _flag;
 	}
 
 }

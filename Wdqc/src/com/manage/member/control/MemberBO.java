@@ -6,6 +6,10 @@ import java.util.List;
 import com.core.jop.infrastructure.control.AbstractControlBean;
 import com.core.jop.infrastructure.db.DAOFactory;
 import com.core.jop.infrastructure.db.DataPackage;
+import com.manage.classroom.persistent.ClassroomDAO;
+import com.manage.course.persistent.CourseDAO;
+import com.manage.course.persistent.CourseVO;
+import com.manage.gradlass.persistent.GradlassVO;
 import com.manage.member.persistent.MemberDAO;
 import com.manage.member.persistent.MemberDBParam;
 import com.manage.member.persistent.MemberVO;
@@ -20,10 +24,6 @@ import com.manage.role.persistent.RoleVO;
 public class MemberBO extends AbstractControlBean implements
 		Member {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	public MemberVO doCreate(MemberVO vo) throws Exception {
 		try {
 			MemberDAO dao = (MemberDAO) DAOFactory.build(MemberDAO.class, user);

@@ -9,18 +9,17 @@
 <property column="co_classify" length="10" name="coClassify" type="java.lang.Integer"/>
 <property column="cr_id" length="10" name="crId" type="java.lang.Integer"/>
 <property column="gradlassTeacher" length="10" name="gradlassTeacher" type="java.lang.Integer"/>
-<property column="cs_name" length="50" name="csName" type="java.lang.String"/>
+<property column="cs_name" length="255" name="csName" type="java.lang.String"/>
 <property column="cp_id" length="10" name="cpId" type="java.lang.Integer"/>
 <property column="cs_charge" length="22" name="csCharge" type="java.lang.Double"/>
 <property column="cs_tuition" length="10" name="csTuition" type="java.lang.Integer"/>
-<property column="cs_status" length="10" name="csStatus" type="java.lang.Integer"/>
 <property column="cs_classHour" length="10" name="csClasshour" type="java.lang.Integer"/>
 <property column="cs_everyClass" length="5" name="csEveryclass" type="java.lang.Short"/>
 <property column="cs_openDateStart" name="csOpendatestart" type="java.lang.String"/>
 <property column="cs_openDateEnd" name="csOpendateend" type="java.lang.String"/>
 <property column="cs_openDateStatus" length="3" name="csOpendatestatus" type="java.lang.String"/>
 <property column="cs_classroomId" length="10" name="csClassroomid" type="java.lang.Integer"/>
-<property column="cs_weekend" length="3" name="csWeekend" type="java.lang.String"/>
+<property column="cs_weekend" length="100" name="csWeekend" type="java.lang.String"/>
 <property column="cs_dateStartHour" length="4" name="csDateStartHour" type="java.lang.String"/>
 <property column="cs_dateStartMinute" length="4" name="csDateStartMinute" type="java.lang.String"/>
 <property column="cs_dateEndHour" length="4" name="csDateEndHour" type="java.lang.String"/>
@@ -28,6 +27,7 @@
 <property column="cs_peopleCount" length="5" name="csPeoplecount" type="java.lang.Short"/>
 <property column="cs_peopleRemain" length="5" name="csPeopleremain" type="java.lang.Short"/>
 <property column="cs_arriveInform" length="3" name="csArriveinform" type="java.lang.String"/>
+<property column="cs_status" length="10" name="csStatus" type="java.lang.Integer"/>
 <property column="cs_remark" length="65535" name="csRemark" type="java.lang.String"/>
 <property column="create_time" name="createTime" type="java.util.Date"/>
 <property column="creator" length="10" name="creator" type="java.lang.Integer"/>

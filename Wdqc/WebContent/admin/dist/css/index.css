@@ -1,4 +1,8 @@
 @CHARSET "UTF-8";
+body{
+	margin:0 auto;
+	min-width:1300px;
+}
 .page-panel-title{
 	height: 24px;
 	line-height: 24px;

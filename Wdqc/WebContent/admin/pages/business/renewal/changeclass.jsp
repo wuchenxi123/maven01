@@ -19,9 +19,6 @@
 <body>
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
-	<h1>
-		前台业务<small>学生报名</small>
-	</h1>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
 		<li><a href="#">前台业务</a></li>

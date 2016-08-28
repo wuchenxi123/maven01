@@ -28,17 +28,17 @@
 	<!-- Main content -->
 
 	<section class="content">
+	<div id="info" class="tab-pane fade in active">
 	<form role="form" class="form-horizontal">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">教师信息</h3>
 			</div>
-			<div class="panel-body" style="height: 200px">
+			<div class="panel-body" style="height: 400px">
 				<div class="row">
 					<div class="col-xs-12">
 
 						<input type="hidden" name="form.teId" id="form.teId" />
-						<input type="hidden" name="form.gradlassteacher" id="form.gradlassteacher" />
 						<input type="hidden" name="form.teArrivegradlassrate" id="form.teArrivegradlassrate" />
 						<input type="hidden" name="form.teGradlasscount" id="form.teGradlasscount" />
 						<div class="box box-primary">
@@ -50,7 +50,17 @@
 											<div class="col-sm-8">
 												<input name="form.teName" id="form.teName" type="text"
 													class="form-control">
+													
 											</div>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="form-group">
+											<label class="col-sm-3 control-label">
+											<font color="#EEC900">
+													(必填)
+												</font>
+											</label>
 										</div>
 									</div>
 									<div class="col-sm-4">
@@ -62,6 +72,15 @@
 											</div>
 										</div>
 									</div>
+									<div class="col-sm-2">
+										<div class="form-group">
+											<label class="col-sm-3 control-label">
+											<font color="#EEC900">
+													(必填)
+												</font>
+											</label>
+										</div>
+									</div>
 								</div>
 								
 								<div class="col-sm-12">
@@ -69,16 +88,6 @@
 										<div class="form-group">
 											<label class="col-sm-4 control-label">性别：</label>
 											<div class="col-sm-8">
-											<!-- 
-												<label class="checkbox-inline">
-													<input type="radio" name="form.teSex" id="form.teSex"
-														value="0">&nbsp; &nbsp;男
-												</label> 
-												<label class="checkbox-inline"> 
-													<input type="radio" name="form.teSex" id="form.teSex"
-														 value="1">&nbsp; &nbsp;女
-												</label>
-												 -->
 												 <select name="form.teSex" id="form.teSex"
 													class="form-control" >	
 													<option value="0">男</option>
@@ -98,7 +107,12 @@
 													class="form-control">
 											</div>
 										</div>
-
+									</div>
+									<div class="col-sm-2">
+										<div class="form-group">
+											<label class="col-sm-3 control-label">
+											</label>
+										</div>
 									</div>
 									<div class="col-sm-4">
 										<div class="form-group">
@@ -109,7 +123,47 @@
 											</div>
 										</div>
 									</div>
+									<div class="col-sm-2">
+										<div class="form-group">
+											<label class="col-sm-3 control-label">
+											<font color="#EEC900">
+													(必填)
+												</font>
+											</label>
+										</div>
+									</div>
 								</div>
+								
+								<div class="col-sm-12">
+									<div class="col-sm-4">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">所任课程 ：</label>
+											<div class="col-sm-8" id="form.courseSelect">
+												<select name="form.courseList[0].coId" id="form.course.coId"
+													class="form-control" >
+												</select>
+																							
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="form-group">
+											<input type="button" value="添加"
+												style="width: 40px; height: 30px;" onclick="$.page.config.addCourse();" id="form.courseAdd">
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="form-group">
+											<label class="col-sm-3 control-label">
+											<font color="#EEC900">
+													(必填)
+												</font>
+											</label>
+										</div>
+									</div>
+								</div>
+								
+								
 								
 							</div>
 						</div>
@@ -120,11 +174,12 @@
 
 		<div class="col-xs-12">
 			<div class="col-xs-4 col-xs-offset-4" style="height: 155px;">
-				<button type="button" onclick="$finish();"
+				<button type="button" id="teacherSave" onclick="$.page.config.fnSave();"
 					class="btn btn-primary  btn-lg btn-block">保存</button>
 			</div>
 		</div>
 	</form>
+	</div>
 	</section>
 
 </body>

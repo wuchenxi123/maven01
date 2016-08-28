@@ -32,10 +32,8 @@ public class GradlassTeacherDAO extends AbstractDAO {
     	Hibernate3SessionManager sm = (Hibernate3SessionManager) this
 				.getSessionManager();
 		Connection con = ((Session) sm.getCurrentSession()).connection();
-		PreparedStatement ds = null;
 		PreparedStatement dsi = null;
 		try {
-			ds = con.prepareStatement("delete from ms_class_teacher where gradlassId = ?");
 			dsi = con.prepareStatement("insert into ms_class_teacher(teacherId,gradlassId) values(?,?)");
 			
 			for (GradlassTeacherVO gradlassTeacherVO : list) {
@@ -47,10 +45,6 @@ public class GradlassTeacherDAO extends AbstractDAO {
 			if (ac) {
 				con.setAutoCommit(false);
 			}
-			if(i!=0){
-				ds.setInt(1, i);
-				ds.execute();
-			}
 			dsi.executeBatch();
 			con.commit();
 			con.setAutoCommit(ac);
@@ -58,8 +52,7 @@ public class GradlassTeacherDAO extends AbstractDAO {
 			e.printStackTrace();
 			con.rollback();
 		} finally {
-			if (null != ds||null!=dsi) {
-				ds.close();
+			if (null!=dsi) {
 				dsi.close();
 			}
 		}

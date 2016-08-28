@@ -10,6 +10,7 @@
 <script type="text/javascript">
 	var ctx = "${pageContext.request.contextPath}";
 </script>
+
 <script src="<%=ctx%>/admin/pages/education/gradlass/edit.js"
 	type="text/javascript"></script>
 	
@@ -28,6 +29,7 @@
 	<!-- Main content -->
 
 	<section class="content">
+	<div id="info" class="tab-pane fade in active">
 	<form role="form" class="form-horizontal">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -39,6 +41,7 @@
 						<input type="hidden" name="form.createTime" id="form.createTime" />
 						<input type="hidden" name="form.csId" id="form.csId" />
 						<input type="hidden" name="form.gradlassTeacher" id="form.gradlassTeacher" />
+						<input type="hidden" name="form.csStatus" id="form.csStatus" />
 						<div class="box box-primary">
 							<div class="box-body">
 								<div class="col-sm-12">
@@ -61,6 +64,19 @@
 												<input name="form.csName" id="form.csName" type="text"
 													class="form-control">
 											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-30 control-label">
+												<font color="#EEC900">
+													(必填)
+												</font>
+												<font color="#B5B5B5">
+													(提示：老师姓名_上课时间_教室_学习程度)
+													例子：王某_周六09:00-11:00_教室01_老生
+												</font>
+											</label>
 										</div>
 									</div>
 								</div>
@@ -98,9 +114,11 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-6">
 										<div class="form-group">
-											<label class="col-sm-4 control-label">元 / 期</label>
+											<label class="col-sm-30 control-label">
+											<font color="#EEC900">(必填)</font> &nbsp; 元   &nbsp; / &nbsp;&nbsp; 期
+											</label>
 										</div>
 									</div>
 								</div>
@@ -118,6 +136,9 @@
 									<div class="col-sm-3">
 										<div class="form-group">
 											<label class="col-sm-20 control-label">
+											<font color="#EEC900">
+													(必填)
+												</font>
 												课时 (如果每节课包含1课时，则课时总计等于上课次数)</label>
 										</div>
 									</div>
@@ -135,7 +156,11 @@
 									</div>
 									<div class="col-sm-3">
 										<div class="form-group">
-											<label class="col-sm-20 control-label">课时(教师记上课和学员刷卡默认消耗的课时)</label>
+											<label class="col-sm-20 control-label">
+											<font color="#EEC900">
+													(必填)
+												</font>
+											课时(教师记上课和学员刷卡默认消耗的课时)</label>
 										</div>
 									</div>
 								</div>
@@ -173,7 +198,7 @@
 											<div class="col-sm-1">
 												<input name="form.csOpendatestatus"
 													id="form.csOpendatestatus" type="checkbox" 
-													class="form-control" style="width: 16px; height: 16px;" >
+													class="form-control" style="width: 16px; height: 16px;" value="0">
 											</div>
 											<label class="col-sm-2 control-label">待定</label>
 
@@ -223,10 +248,19 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-sm-4">
+									<div class="col-sm-8">
 										<div class="form-group">
-											<input type="button" value="教室时段"
-												style="width: 60px; height: 30px;">
+											<label class="col-sm-4 control-label">上课时间：</label>
+											<div class="col-sm-20">
+													<input type="checkbox" value="周一" name="csWeekend" id="csWeekend"> &nbsp;周一  &nbsp; &nbsp;
+													<input type="checkbox" value="周二" name="csWeekend" id="csWeekend"> &nbsp;周二  &nbsp; &nbsp;
+													<input type="checkbox" value="周三" name="csWeekend" id="csWeekend"> &nbsp;周三  &nbsp; &nbsp;
+													<input type="checkbox" value="周四" name="csWeekend" id="csWeekend"> &nbsp;周四  &nbsp; &nbsp;
+													<input type="checkbox" value="周五" name="csWeekend" id="csWeekend"> &nbsp;周五  &nbsp; &nbsp;
+													<input type="checkbox" value="周六" name="csWeekend" id="csWeekend"> &nbsp;周六  &nbsp; &nbsp;
+													<input type="checkbox" value="周日" name="csWeekend" id="csWeekend"> &nbsp;周日  &nbsp; &nbsp;
+													<input type="hidden" name="form.csWeekend" id="form.csWeekend">
+											</div>
 										</div>
 									</div>
 								</div>
@@ -236,26 +270,15 @@
 										<div class="form-group">
 											<label class="col-sm-4 control-label">上课时间：</label>
 											<div class="col-sm-8">
-												<select name="form.csWeekend" id="form.csWeekend"
-													class="form-control">
-													<option value="周六">周六</option>
-													<option value="周日">周日</option>
-													<option value="周一">周一</option>
-													<option value="周二">周二</option>
-													<option value="周三">周三</option>
-													<option value="周四">周四</option>
-													<option value="周五">周五</option>
-												</select>
 											</div>
+											
 										</div>
 									</div>
 									<div class="col-sm-4">
 										<div class="form-group">
-											<div class="col-sm-3">
+											<div class="col-sm-4">
 												<select name="form.csDateStartHour"
 													id="form.csDateStartHour" class="form-control">
-													<option value="05">05</option>
-													<option value="06">06</option>
 													<option value="07">07</option>
 													<option value="08">08</option>
 													<option value="09">09</option>
@@ -275,7 +298,7 @@
 													<option value="23">23</option>
 												</select>
 											</div>
-											<div class="col-sm-3">
+											<div class="col-sm-4">
 												<select name="form.csDateStartMinute"
 													id="form.csDateStartMinute" class="form-control">
 													<option value="00">00</option>
@@ -294,11 +317,9 @@
 
 									<div class="col-sm-4">
 										<div class="form-group">
-											<div class="col-sm-3">
+											<div class="col-sm-4">
 												<select name="form.csDateEndHour" id="form.csDateEndHour"
 													class="form-control">
-													<option value="05">05</option>
-													<option value="06">06</option>
 													<option value="07">07</option>
 													<option value="08">08</option>
 													<option value="09">09</option>
@@ -318,7 +339,7 @@
 													<option value="23">23</option>
 												</select>
 											</div>
-											<div class="col-sm-3">
+											<div class="col-sm-4">
 												<select name="form.csDateEndMinute"
 													id="form.csDateEndMinute" class="form-control">
 													<option value="00">00</option>
@@ -368,26 +389,6 @@
 								</div>
 
 								<div class="col-sm-12">
-									<div class="col-sm-4">
-										<div class="form-group">
-											<label class="col-sm-4 control-label">到校通知 ：</label>
-											<div class="col-sm-6">
-												<input name="form.csArriveinform"
-													id="form.csArriveinform" type="checkbox"
-													class="form-control" style="width: 16px; height: 16px;">
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<div class="form-group">
-											<label class="col-sm-12 control-label">本班学员刷卡签到自动短信通知父母
-											</label>
-											<div class="col-sm-4"></div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-sm-12">
 									<div class="col-sm-20">
 										<div class="form-group">
 											<label class="col-sm-4 control-label">备注 ：</label>
@@ -409,11 +410,13 @@
 
 		<div class="col-xs-12">
 			<div class="col-xs-4 col-xs-offset-4" style="height: 155px;">
-				<button type="button" onclick="$.page.config.finish();"
-					class="btn btn-primary  btn-lg btn-block">保存</button>
+					
+				<a type="button" id="gradlassEdit" onclick="$.page.config.fnSave();"
+					class="btn btn-primary  btn-lg btn-block">保存</a>
 			</div>
 		</div>
 	</form>
+	</div>
 	</section>
 
 </body>

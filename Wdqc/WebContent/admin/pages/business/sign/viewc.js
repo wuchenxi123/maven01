@@ -160,9 +160,9 @@ $.page.set({
 						html = html + '<a class="btn btn-link" href="javascript:loadPage(\'' + viewPage + '\',\'' + aData.csId + '\');"> <i class="fa fa-eye"></i> 查看</a>';
 						html = html + '</div>';
 						$('td:eq(-1)', nRow).html(html);
-						var sum=$("#costsum").text();
+						var sum=$("#stcostsum").text();
 						sum=parseInt(sum)+parseInt(aData.cltSum);
-						$("#costsum").text(sum);
+						$("#stcostsum").text(sum);
 						return nRow;
 			      },
 			      oLanguage : $.dt.oLanguage,

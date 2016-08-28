@@ -149,6 +149,12 @@ $.page.set({
 			});
 		}
 	},
+	getsum: function() {
+		var sum = $("#apply").text();
+		var b =$("[id='cltReduce']").val();
+		var costsum = parseInt(sum) - parseInt(b);
+		$("#charge").text(costsum);
+	},
 });
 
 
