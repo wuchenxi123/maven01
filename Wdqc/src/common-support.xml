@@ -18,7 +18,8 @@
 		<action name="st_*" method="{1}"
 			class="com.manage.student.web.StudentAction">
 		</action>
-		<!-- 角色 -->
+		
+			<!-- 角色 -->
 
 
 		<action name="role_*" method="{1}"
@@ -45,13 +46,6 @@
 			class="com.manage.gradlass.web.GradlassAction">
 		</action>
 
-		<action name="gt_*" class="com.manage.gradlassTeacher.web.GradlassTeacherAction"
-			method="{1}">
-		</action>
-
-		<action name="tc_*" class="com.manage.teachercourse.web.TeacherCourseAction"
-			method="{1}">
-		</action>
 		<!-- 课程管理 -->
 
 
@@ -78,9 +72,7 @@
 
 		<action name="mb_*" method="{1}" class="com.manage.member.web.MemberAction">
 		</action>
-		<!-- 分类管理 -->
-		<action name="grp_*" method="{1}" class="com.manage.group.web.GroupAction">
-		</action>
+
 		<!--销售员管理 -->
 
 
@@ -106,9 +98,15 @@
 			method="{1}">
 		</action>
 		
+		<action name="gt_*" class="com.manage.gradlassTeacher.web.GradlassTeacherAction"
+			method="{1}">
+		</action>
+		<action name="grp_*" method="{1}" class="com.manage.group.web.GroupAction">
+		</action>
 		<action name="mg_*" method="{1}"
 			class="com.manage.message.web.MessageAction">
 		</action>
+		
 	</package>
 	<package name="ext" namespace="/extra" extends="struts-default">
 	     <action name="*" class="com.manage.extra.ExtraAction" method="{1}">

@@ -33,6 +33,7 @@
 
 <link rel="stylesheet" type="text/css" media="all" href="<%=ctx%>/admin/dist/css/daterangepicker-bs3.css"/>
 
+<link rel="stylesheet" type="text/css" media="all" href="<%=ctx%>/admin/plugins/sweetalert/sweet-alert.css"/>
 <!-- Pace -->
 <link rel="stylesheet" href="<%=ctx%>/admin/plugins/pace/pace-theme-center-simple.css" />
 

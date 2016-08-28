@@ -24,8 +24,11 @@
 }
 </style>
 <body>
+	<div class="header1" style="border: 2px soid #000">
+	
+		<h2 style="font-size: 25px;color: #fff;text-align: left;padding:15px;font-family:微软雅黑;">舞动全城教务信息管理系统</h2>
+	</div>
 	<div class="header">
-
 		<div class="top">
 			<img class="logo" src="dist/images/logo1.png"
 				style="margin-left: 25px;" />
@@ -42,53 +45,51 @@
 	</div>
 	<div class="mycontainer">
 		<div class="leftbar">
-			<div class="lm01">
-				<img class="peptx img-circle img-responsive" src="../admin/dist/images/advtar.jpg" width=70; height=70; />
+			<div class="lm00">
+			<div style="padding-left:20px;">
+			<img class="peptx img-circle img-responsive" src="../admin/dist/images/advtar.jpg" width=70; height=70; />
+			</div>
+				
 				<div class="pepdet">
 					<p class="pepname"><%=user.getMbName()%></p>
 					<p><%=user.getMbPetName()%></p>
 				</div>
-				<div class="clear"></div>
-			</div>
-			<div class="lm01">
+				<br><br><br><br><br>
 				<div class="form-group">
 					<label class="col-sm-7 control-label">報名总數：</label>
 					<div class="col-sm-5">
 						<span id="sgincount">1277</span>
 					</div>
 				</div>
-			</div>
-			<div class="lm01 lmadd">
+				<br>
 				<div class="form-group">
 					<label class="col-sm-7 control-label">收入总数：</label>
 					<div class="col-sm-5">
 						<span style="width: 145px;" id="fedsum" class="text-danger">￥12万</span>
 					</div>
-				</div>
+			</div>
+				<!-- <div class="form-group">
+					<label class="col-sm-5 control-label">校区：</label>
+					<div class="col-sm-7">
+						<select name="form.stSex" id="form.stSex">
+							 <option value="1">湖南衡阳校区</option>
+							 <option value="2">湖南省湘潭校区</option>
+						 </select>
+					</div>
+				</div> -->
 			</div>
 			<div class="lm01">
-				<div class="form-group">
-					<label class="col-sm-7 control-label">所在校区：</label>
-					<div class="col-sm-5">
-						<span style="width: 145px;" id="costsum">衡阳校区</span>
-					</div>
-				</div>
+				<a href="javascript:loadPage('<%=ctx%>/admin/pages/business/consult/list.jsp');"><i class="ion-ios-paper"></i>&nbsp;资询记录<i class="ion-chevron-right pull-right"></i></a>				
 			</div>
-			<!-- <div class="lm02">
-				<div class="title">
-					<h2>月收入:</h2>
-					<br> <span>120000￥</span>
-				</div>
-				<div class="detail"></div>
+			<div class="lm01">
+				<a href="javascript:loadPage('<%=ctx%>/admin/pages/business/sign/list.jsp');"><i class="ion-social-buffer"></i>&nbsp;报名查询<i class="ion-chevron-right pull-right"></i></a>
 			</div>
-			<br>
-			<br>
-			<div class="lm03">
-				<div class="title">
-					<h2>年收入:</h2>
-				</div>
-				<div class="detail">120万￥</div>
-			</div> -->
+			<div class="lm01">
+				<a href="javascript:loadPage('<%=ctx%>/admin/pages/education/gradlass/list.jsp');"><i class="ion-android-contacts"></i>&nbsp;班级查询<i class="ion-chevron-right pull-right"></i></a>	
+			</div>
+			<div class="lm01">
+				<a href="javascript:loadPage('<%=ctx%>/admin/pages/chart/info.jsp');"><i class="ion-arrow-graph-up-right"></i>&nbsp;市场分析<i class="ion-chevron-right pull-right"></i></a>
+			</div>
 		</div>
 
 		<div class="mainbody tab-content" id="myTabContent">
@@ -114,25 +115,25 @@
 			<div class="currmenu tab-pane fade" id="cou">
 				<ul class="rig_nav">
 					<li><a
-						href="javascript:loadPage('<%=ctx%>/admin/pages/education/gradlass/add.jsp');">新增班级</a></li>
+						href="javascript:loadPage('<%=ctx%>/admin/pages/education/gradlass/add.jsp');"><i class="ion-ios-plus text-danger"></i>&nbsp;新增班级</a></li>
 					<li><a
-						href="javascript:loadPage('<%=ctx%>/admin/pages/education/gradlass/list.jsp');">班级查询</a></li>
+						href="javascript:loadPage('<%=ctx%>/admin/pages/education/gradlass/list.jsp');"><i class="ion-ios-book text-danger"></i>&nbsp;班级查询</a></li>
 					<li><a
-						href="javascript:loadPage('<%=ctx%>/admin/pages/education/teacher/add.jsp');">新建教师</a></li>
+						href="javascript:loadPage('<%=ctx%>/admin/pages/education/teacher/add.jsp');"><i class="ion-ios-personadd text-danger"></i>&nbsp;新建教师</a></li>
 					<li><a
-						href="javascript:loadPage('<%=ctx%>/admin/pages/education/teacher/list.jsp');">教师查询</a></li>
+						href="javascript:loadPage('<%=ctx%>/admin/pages/education/teacher/list.jsp');"><i class="ion-ios-list text-danger"></i>&nbsp;教师查询</a></li>
 					<li><a
-						href="javascript:loadPage('<%=ctx%>/admin/pages/education/course/add.jsp');">新建课程</a></li>
+						href="javascript:loadPage('<%=ctx%>/admin/pages/education/course/add.jsp');"><i class="ion-flag text-danger"></i>&nbsp;新建课程</a></li>
 					<li><a
-						href="javascript:loadPage('<%=ctx%>/admin/pages/education/course/list.jsp');">课程查询</a></li>
+						href="javascript:loadPage('<%=ctx%>/admin/pages/education/course/list.jsp');"><i class="ion-ios-list-outline text-danger"></i>&nbsp;课程查询</a></li>
 					<li><a
-						href="javascript:loadPage('<%=ctx%>/admin/pages/education/classroom/add.jsp');">添加教室</a></li>
+						href="javascript:loadPage('<%=ctx%>/admin/pages/education/classroom/add.jsp');"><i class="ion-ios-plus-outline text-danger"></i>&nbsp;添加教室</a></li>
 					<li><a
-						href="javascript:loadPage('<%=ctx%>/admin/pages/education/classroom/list.jsp');">教室查询</a></li>
+						href="javascript:loadPage('<%=ctx%>/admin/pages/education/classroom/list.jsp');"><i class="ion-ios-photos text-danger"></i>&nbsp;教室查询</a></li>
 					<li><a
-						href="javascript:loadPage('<%=ctx%>/admin/pages/education/material/add.jsp');">新增教材</a></li>
+						href="javascript:loadPage('<%=ctx%>/admin/pages/education/material/add.jsp');"><i class="ion-ios-book text-danger"></i>&nbsp;新增教材</a></li>
 					<li><a
-						href="javascript:loadPage('<%=ctx%>/admin/pages/education/material/list.jsp');">教材查询</a></li>
+						href="javascript:loadPage('<%=ctx%>/admin/pages/education/material/list.jsp');"><i class="ion-ios-box-outline text-danger"></i>&nbsp;教材查询</a></li>
 
 				</ul>
 			</div>
@@ -165,14 +166,15 @@
 					<li>
 						<a href="javascript:loadPage('<%=ctx%>/admin/pages/member/list.jsp');"><i class="ion-clipboard text-danger"></i>&nbsp;用户列表</a>
 					</li>
-					
 					<li>
 						<a href="javascript:loadPage('<%=ctx%>/admin/pages/education/message/add.jsp');">添加公告</a>
 					</li>
 					<li>
 						<a href="javascript:loadPage('<%=ctx%>/admin/pages/education/message/list.jsp');">公告列表</a>
 					</li>
-					<li><a href="javascript:$.page.loginout('exit');"><i class="ion-log-out text-danger"></i>&nbsp;注销</a></li>
+					<li>
+						<a href="javascript:$.page.loginout('exit');"><i class="ion-log-out text-danger"></i>&nbsp;注销</a>
+					</li>
 					
 				</ul>
 			</div>

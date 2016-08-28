@@ -69,6 +69,11 @@ a:hover {
 	padding-top: 5px;
 	width: 197px;
 }
+.header1 {
+	height: 70px;
+	margin: 0 auto;
+	background:#11435E;
+}
 .nav {
 	float:left;
 }
@@ -100,17 +105,37 @@ a:hover {
 }
 /*----------------------------------left----------------------------------*/
 .leftbar {
-	background: none repeat scroll 0 0 #FFFFFF;
+	background: none repeat scroll 0 0 #11435E;
 	border-right: 1px solid #C8C7C7;
 	float: left;
 	height: auto !important;
 	height:800px;
 	min-height: 800px;
-	padding: 10px;
+	/* padding: 10px; */
 	width: 220px;
 }
-.lm01 {
+.lm00 {
+	padding-top:10px;
+	margin-top:-50px;
+	height:175px;
 	padding-bottom:15px;
+	background-color: #088FE0;
+}
+.lm01 {
+	display:block;
+	padding-top:15px;
+	padding-bottom:15px;
+	background-color: #11435E;
+}
+.lm01:HOVER {
+	background-color:#2D4E7E;
+}
+.lm01 a {
+	display:block;
+	width:96%;
+	padding-left:15px;
+	font-size: 14px;
+	color: #B8C7CE;
 }
 .peptx {
 	float:left;

@@ -65,7 +65,7 @@ $(document).ready(function() {
 				var renewallass = ctx + '/admin/pages/business/renewal/renewalclass.jsp';
 				var html = '<div class="btn-group btn-group-xs" role="group" aria-label="...">';
 				html = html + '<a class="btn btn-link" href="javascript:loadPage(\'' + renewallass + '\',\'' + aData.stId + '\');"><i class="fa fa-edit"></i>续报</a>';
-				/*html = html + '<a class="btn btn-link" href="javascript:loadPage(\'' + changeclass + '\',\'' + aData.stId + '\');"><i class="fa fa-edit"></i>转班</a>';*/
+				html = html + '<a class="btn btn-link" href="javascript:loadPage(\'' + changeclass + '\',\'' + aData.stId + '\');"><i class="fa fa-edit"></i>转班</a>';
 				html = html + '</div>';
 				$('td:eq(-1)', nRow).html(html);
 				$('td:eq(2)', nRow).html(aData.stSex=='0'?'男':'女');

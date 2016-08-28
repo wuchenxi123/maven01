@@ -13,93 +13,107 @@ $.page.set({
 					var html = '<option value="' + data.datas[i].cpId + '">'
 							+ data.datas[i].cpName + '</option>';
 					$("[id='form.stLocationSchool']").append(html);
-				}
-				/**/
-				// laod form datas
-				$.page.formLoad();
-
+				}		
 			}
 		});
 	},
-	fnLoadClass : function(url, pk) {
+	fnDel: function(url,g) {
+		if (!g)
+			g = $.page.config.Grid;
+		swal({   
+			title: "退班",   
+			text: "转班前需退当前班级，是否退班",   
+			type: "info",   
+			showCancelButton: true,   
+			closeOnConfirm: false,   
+			showLoaderOnConfirm: true, 
+			}, 
+			function(){
+				// 退班
+				$.post(url, {
 
-		url = ctx + '/sc_Show.ac';
-		if (!pk)
-			pk = $.page.config.Pk;
-		if (!pk)
-			pk = $.page.config.Data.Pk;
-	
-		if (!pk) pk = $.query.get('param._pk');
-
-		if (pk) {
-			$.post(url, {
-				"param._ne_stId" : pk
-			}, function(data, textStatus, jqXHR) {
-				if ("success" == textStatus) {
-					$("#showgrad").empty();
-					$("#charge1").text("0");
-					for ( var i = 0; i < data.datas.length; i++) {
-						sum=$("#charge1").text();
-						c=parseInt(sum)+parseInt(data.datas[i].gradlass.csCharge);
-						$("#charge1").text(c);
-						var Delete = ctx + '/sc_Del.ac';	
-						var html='<div class="panel panel-warning" id="pan_' +data.datas[i].scId + '"><div class="panel-heading"><a class="panel-title">班级详情</a> <a class="pull-right btn " onclick="$.page.config.fnDel(\'' +Delete+  '?ids=' +data.datas[i].scId+ '\',\''+ data.datas[i].scId + '\',\''+ data.datas[i].gradlass.csCharge + '\');"> ';
-						html=html+'<i class="fa fa-times"></i>退班</a></div><div class="panel-body"><label class="col-sm-1 control-label">班名：</label>';
-						html=html+' <div class="col-sm-2"><span>'+data.datas[i].gradlass.csName+'</span></div> <label class="col-sm-1 control-label">班级容量：</label>';
-						html=html+'<div class="col-sm-2 text-danger"><span>'+data.datas[i].gradlass.csPeoplecount+'</span></div><label class="col-sm-1 control-label">报名日期：</label><div class="col-sm-2"><span>'+data.datas[i].createTime+'</span></div></div></div> ';							
-						$("#showgrad").append(html);
+				}, function(data, textStatus, jqXHR) {
+					if ("success" == textStatus) {
+							g.draw();
+							swal({   title: "退班提示!", 
+								text: "退班成功", 
+								timer: 500,   
+								showConfirmButton: false });							
+							$('#myModal').modal();
+					} else {
+						alert(data.msg);
 					}
-					$("[id='form.cltId']").val("");
-				}
-			});
-		}
+				});
+		
+				});
+
 	},
-
-
-	fnDel: function(url, id , cr) {
-		// 删除宣传图路径
-		$.post(url, {
-
-		}, function(data, textStatus, jqXHR) {
-			if ("success" == textStatus) {
-				$("div").remove("#pan_" + id);
-				var sum=$("#charge").text();
-				c=parseInt(sum)-parseInt(cr);
-				$("#charge").text(c);
-			} else {
-				alert(data.msg);
-			}
-		});
-	},
-	fnFinish : function(url, rtnUrl) {
+	fnFinish : function() {
 		$.page.config.saveGradlassInfo();
-		var sum=$("#charge").text();
-		var b=$("[id='form.cltReduce']").val();
-		alert(b);
-		c=parseInt(sum)-parseInt(b);
-		alert(c);
-		$("[id='form.cltSum']").val(c);
-		// 完成保存页面跳转
-		if (!url)
-			url =ctx + "/ct_Save.ac";
-		if (!rtnUrl)
-			rtnUrl = $.page.config.Return;
-		var formData = $("form").serializeArray();
-		$.post(url, formData, function(data, textStatus, jqXHR) {
-			if (data.success) {
-				alert("信息保存成功");
-				$.page.load(rtnUrl);
-			} else {
-				alert('保存失败！' + data.msg);
-			}
-		});
+		
+			$('#myModal').on('hidden.bs.modal',
+						    function() {								
+					 			$.page.load($.page.config.Return);
+			}) 
+				
 	},
 	
 
 });
+function reload(){
+	grid.ajax.reload();
+} 
+var grid = null;
+$(document).ready(function() { 
+	grid=$('#user_datatable').DataTable({
+	      processing: true,
+	      searching : false,
+	      serverSide: true,
+	      autoWidth : true,
+	      pagingType: "simple_numbers",
+	      aLengthMenu:[10,5,20,50,100,500],
+	      ajax: {
+	          "url": ctx + '/sc_List.ac',
+	           data:{
+	        	   'param._ne_stId': $.page.config.Pk
+	        	   },
+	          "type": "POST",
+	        
+	      },
+	      order: [[6, 'asc' ]],
+	  
+	      columns: [
+	  			  { orderable : false ,searchable : false ,defaultContent : ''},			  
+		          { data : "gradlass.csName",orderable : false },
+		          { data : "gradlass.csPeoplecount",orderable : false },
+		          { data : "gradlass.csOpendatestart",orderable : false },
+		          { data : "gradlass.csOpendateend" ,orderable : false},
+		          { data : "gradlass.csCharge",orderable : false } ,
+		          { data : "createTime" } ,
+		          {orderable : false ,searchable : false,defaultContent : '' , width : 130}
+	      ], 
+	      fnRowCallback : function(nRow,aData,iDataIndex){			    	  
+	    	  	var Delete = ctx + '/sc_Del.ac';
+				var html = '<div class="btn-group btn-group-xs" role="group" aria-label="...">';
+				html = html + '<a class="btn btn-link" onclick="$.page.config.fnDel(\'' +Delete+  '?ids=' +aData.scId+ '\');"> <i class="fa fa-eye"></i>转班</a>';
+				html = html + '</div>';
+				$('td:eq(-1)', nRow).html(html);
+				
 
-$(document).ready(function() {
+				return nRow;
+	      },
+	      oLanguage : $.dt.oLanguage,
+	      dom : "<'row'<'col-sm-2'l><'col-sm-9 Datatable_Param_Form'><'col-sm-3'f>><'row'<'col-sm-12't>><'row'<'col-sm-5'i><'col-sm-7'p>>",
+	      initComplete : addQueryParam
+	    });		
+	 grid.on( 'order.dt search.dt page.dt length.dt draw.dt', function () {
+	    	grid.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+	            cell.innerHTML = i+1;
+	        } );
+	    } );
+	 $.page.set({
+	    	Grid : grid
+	    });
 	$.page.formLoad();
 	$.page.config.fnLoadCampus();
-	$.page.config.fnLoadClass();
 });

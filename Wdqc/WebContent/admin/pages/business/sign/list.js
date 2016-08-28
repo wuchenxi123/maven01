@@ -1,15 +1,15 @@
-/*var ctx = "${pageContext.request.contextPath}";
-$formLoad = function(url, pk) {
-	url ='http://localhost:8080/weiyanggucheng/cou_Show.ac';
+
+function exportStudent(url) {
+	url =ctx+'/st_GetExport.ac';
 		$.post(url, {
 		}, function(data, textStatus, jqXHR) {
 			if ("success" == textStatus) {
-				for(var i=0;i<data.datas.length;i++){						
-					alert(data.datas[i].coId);				
-				}								
-		}
+				
+				alert("数据导出成功，导出地址为"+data.filepath);		
+				}							
+		
 	}); 
-};*/
+};
 var grid = null;
 $(document).ready(function() {
 	 	  grid = $('#user_datatable').DataTable({

@@ -19,9 +19,6 @@
 <body>
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
-	<h1>
-		前台业务<small>学生报名</small>
-	</h1>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
 		<li><a href="#">前台业务</a></li>
@@ -312,7 +309,7 @@
 								<div class="col-sm-12" style="margin-top:25px;">
 									<div class="col-xs-2 col-xs-offset-10 text-danger">
 										<div>
-											<span>消费总账:￥</span><span id="stcostsum">0</span>
+											<span>消费总账:</span>￥<span id="costsum">0</span>
 										</div>
 									</div>
 								</div>

@@ -42,6 +42,7 @@
  	<mapping resource="com/manage/material/persistent/Material.hbm.xml" />
  	<mapping resource="com/manage/saler/persistent/Saler.hbm.xml" />
  	<mapping resource="com/manage/role/persistent/Role.hbm.xml" />
-	<mapping resource="com/manage/message/persistent/Message.hbm.xml" />
+ 	<mapping resource="com/manage/message/persistent/Message.hbm.xml" />
+
 </session-factory>
 </hibernate-configuration>

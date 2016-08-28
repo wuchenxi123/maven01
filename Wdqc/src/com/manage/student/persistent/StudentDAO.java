@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFHeader;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -27,40 +28,44 @@ import com.core.jop.infrastructure.db.hibernate3.Hibernate3SessionManager;
 
 /**
  * Title: StudentDAO
+ * 
  * @author Hujj
  * @version 1.0
  */
 public class StudentDAO extends AbstractDAO {
 
-    /**
-     * default constructor
-     */
-    public StudentDAO(){
-        super(StudentVO.class);
-    }
-    /**
-     * 批量删除多个应用
-     * @param list
-     * @throws SQLException
-     */
-    public void doDel(List<String> list) throws SQLException {
-    	Hibernate3SessionManager sm = (Hibernate3SessionManager) this
+	/**
+	 * default constructor
+	 */
+	public StudentDAO() {
+		super(StudentVO.class);
+	}
+
+	/**
+	 * 批量删除多个应用
+	 * 
+	 * @param list
+	 * @throws SQLException
+	 */
+	public void doDel(List<String> list) throws SQLException {
+		Hibernate3SessionManager sm = (Hibernate3SessionManager) this
 				.getSessionManager();
 		Connection con = ((Session) sm.getCurrentSession()).connection();
 		PreparedStatement ds = null;
 		PreparedStatement dsi = null;
 		try {
 			ds = con.prepareStatement("delete from ms_student where st_id = ?");
-			dsi = con.prepareStatement("delete from ms_studentclass where st_id = ?");
+			dsi = con
+					.prepareStatement("delete from ms_studentclass where st_id = ?");
 			for (int i = 0; i < list.size(); i++) {
 				Integer sbId = Integer.valueOf(list.get(i).trim());
 				ds.setInt(1, sbId);
 				ds.addBatch();
-				
+
 				dsi.setInt(1, sbId);
 				dsi.addBatch();
 			}
-			
+
 			boolean ac = con.getAutoCommit();
 			if (ac) {
 				con.setAutoCommit(false);
@@ -77,9 +82,9 @@ public class StudentDAO extends AbstractDAO {
 				ds.close();
 			}
 		}
-    }
-    
-    public String extport(DataPackage dp) throws Exception {
+	}
+
+	public String extport(DataPackage dp) throws Exception {
 		List<StudentVO> studentList = new ArrayList<StudentVO>();// 学生LIst
 		if (dp.getRowCount() > 0) {
 			for (Object vo : dp.getDatas()) {
@@ -87,15 +92,18 @@ public class StudentDAO extends AbstractDAO {
 				studentList.add(student);
 			}
 		}
+		@SuppressWarnings("resource")
 		HSSFWorkbook workbook = new HSSFWorkbook(); // 创建一个excel
 		HSSFCell cell = null; // Excel的列
 		HSSFRow row = null; // Excel的行
 		HSSFFont font = workbook.createFont(); // 设置字体
 		HSSFSheet sheet = workbook.createSheet("sheet1"); // 创建一个sheet
 		HSSFHeader header = sheet.getHeader();// 设置sheet的头
-		String[] tableHeader = { "学号", "姓名", "性别","电话", "家长电话","email","居住地","销售人","经办人"};
+		String[] tableHeader = { "学号", "姓名", "性别", "电话", "家长电话", "email",
+				"居住地", "销售人", "经办人" };
 		short cellNumber = (short) tableHeader.length;// 表的列数
-		
+		HSSFCellStyle style = workbook.createCellStyle();
+		style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
 		for (int i = 0; i < studentList.size(); i++) {
 			StudentVO student1 = (StudentVO) studentList.get(i);// 获取student对象
 			row = sheet.createRow((short) (i + 1));// 创建第i+1行
@@ -103,7 +111,7 @@ public class StudentDAO extends AbstractDAO {
 
 			if (student1.getStId() != null) {
 				cell = row.createCell(0);// 创建第i+1行第0列
-				cell.setCellValue(student1.getStId());// 设置第i+1行第0列的值	
+				cell.setCellValue(student1.getStId());// 设置第i+1行第0列的值
 			}
 			if (student1.getStName() != null) {
 				cell = row.createCell(1); // 创建第i+1行第1列
@@ -155,8 +163,6 @@ public class StudentDAO extends AbstractDAO {
 					font.setFontHeight((short) 350); // 设置单元字体高度
 				}
 
-	
-
 			}
 
 		} catch (Exception e) {
@@ -165,15 +171,14 @@ public class StudentDAO extends AbstractDAO {
 
 		// HttpServletResponse response = null;//创建一个HttpServletResponse对象
 		OutputStream out = null;
-		Date date=new Date();
-		SimpleDateFormat d=new SimpleDateFormat("yyyyMMddHHmmss");
-		String datestring=d.format(date);
-		String filename="学生报名表"+datestring;
-		System.out.println(filename);
-		String path="C:/Users/Administrator/Desktop/Chart"+filename+".xls";
+		Date date = new Date();
+		SimpleDateFormat d = new SimpleDateFormat("yyyyMMddHHmmss");
+		String datestring = d.format(date);
+		String filename = "学生报名表" + datestring;
+		String filePath = "C:/Users/USER/Desktop/" + filename + ".xls";
+		System.out.println(filePath);
 		try {
-			out = new FileOutputStream(
-					new File(path));
+			out = new FileOutputStream(new File(filePath));
 			// response =
 			// ServletActionContext.getResponse();//初始化HttpServletResponse对象
 			// out = response.getOutputStream();//
@@ -196,6 +201,6 @@ public class StudentDAO extends AbstractDAO {
 				e.printStackTrace();
 			}
 		}
-		return null;
+		return filePath;
 	}
 }

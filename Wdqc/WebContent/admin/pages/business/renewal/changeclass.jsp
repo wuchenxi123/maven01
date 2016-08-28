@@ -199,73 +199,93 @@
 								</div>
 								<div class="col-sm-7">
 									<div class="pull-right">
-										<span>历史报名总费用:</span>￥<span id="charge1" class="text-danger">0</span>
+										<%-- <span>历史报名总费用:</span>￥<span id="charge1" class="text-danger">0</span> --%>
 									</div>
 								</div>
-								<div class="col-sm-12" style="margin-top: 25px;">
-
-									<div id="showgrad"></div>
-								</div>
-								<div class="col-sm-4">
-									<div class="form-group">
-										<label class="col-sm-4 control-label">选择班级：</label>
-										<div class="col-sm-8">
-											<j:selector name="param._ne_csId" definition="#Gradlass"
-												cssClass="form-control"
-												condition="_sk_csName:;_orderby:csId;_desc:1;queryAll:true;" />
-										</div>
-
-									</div>
-								</div>
-								<div class="col-sm-8">
-									<!-- <div class="form-group">
-												<label class="col-sm-3 control-label">静态常量的方式：</label>
-												<div class="col-sm-3">
-													<a class="btn btn-default reload"
-														onclick="$.page.getFormData('#test_form');"> <i
-														class="fa fa-search"></i> 查看内容
-													</a> <a class="btn btn-default reset"
-														onclick="$.page.resetForm('#test_form');"> <i
-														class="fa fa-reply-all"></i> 复位
-													</a>
-												</div>
-											</div> -->
-
-								</div>
-								<!-- 								<div class="col-sm-12" style="margin-top: 25px;">
-
-									<button type="button" class="btn btn-default">新报班级</button>
-								</div> -->
-								<div class="col-sm-12" style="margin-top: 25px;">
-
-									<div id="showgradss"></div>
-								</div>
-
-								<%-- 					<div class="col-sm-12" style="margin-top: 25px;">
-									<div class="col-xs-4 ">
-										<div>
-											<span>优惠:</span>￥<input name="form.cltReduce"
-												id="form.cltReduce" type="text" class="form-control"
-												>
-										</div>
-									</div>
-								</div> --%>
 								<div class="col-sm-12">
-									<div class="col-xs-2 col-xs-offset-10">
-										<div>
-											<span>报名总费用:</span>￥<span id="charge" class="text-danger">0</span>
-										</div>
-									</div>
+									<table id="user_datatable"
+										class="table table-bordered table-striped table-hover">
+										<thead>
+											<tr>
+												<th></th>
+												<th>班级名称</th>
+												<th>班级容量</th>
+												<th>开课日期</th>
+												<th>结课日期</th>
+												<th>报班学费</th>
+												<th>报名时间</th>
+												<th>操作</th>
+											</tr>
+										</thead>
+
+										<tfoot>
+											<tr>
+												<th></th>
+												<th>班级名称</th>
+												<th>班级容量</th>
+												<th>开课日期</th>
+												<th>结课日期</th>
+												<th>报班学费</th>
+												<th>报名时间</th>
+												<th>操作</th>
+											</tr>
+										</tfoot>
+									</table>
 								</div>
+
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+									aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">×</button>
+												<h4 class="modal-title" id="myModalLabel">办理转班</h4>
+											</div>
+											<div class="modal-body">
+												<div class="col-sm-12" style="margin-top: 25px;">
+
+													<div id="showgrad"></div>
+												</div>
+												<div class="col-sm-12">
+													<div class="form-group">
+														<label class="col-sm-4 control-label">选择转入班级：</label>
+														<div class="col-sm-8">
+															<j:selector name="param._ne_csId" definition="#Gradlass"
+																cssClass="form-control"
+																condition="_sk_csName:;_orderby:csId;_desc:1;queryAll:true;" />
+														</div>
+
+													</div>
+												</div>
+
+												<div class="col-sm-12" style="margin-top: 25px;">
+
+													<div id="showgradss"></div>
+												</div>
+												<div class="col-sm-12">
+													<div class="col-xs-2 col-xs-offset-10">
+														<div>
+															<span>报名总费用:</span>￥<span id="charge" class="text-danger">0</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">关闭</button>
+												<button type="button" class="btn btn-primary"
+													data-dismiss="modal" onclick="$.page.config.fnFinish();">
+													确定</button>
+											</div>
+										</div>
+										<!-- /.modal-content -->
+									</div>
+									<!-- /.modal-dialog -->
+								</div>
+								<!-- /.modal -->
 							</div>
 						</div>
-
-						<a class="btn btn-primary" onclick="$.page.config.fnFinish();">
-							<i class="fa fa-save"></i>提交
-						</a> <a href="#info" data-toggle="tab"
-							class="btn btn-primary pull-right"> <i
-							class="glyphicon glyphicon-arrow-left"></i> 返回上一步
-						</a>
 					</form>
 
 				</div>
@@ -276,6 +296,9 @@
 
 
 	</div>
+
+
 	</section>
+
 </body>
 </html>

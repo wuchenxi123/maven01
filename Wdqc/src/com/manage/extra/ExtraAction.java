@@ -296,6 +296,7 @@ public class ExtraAction extends BaseAction {
 	 * 
 	 * @return
 	 */
+	@SuppressWarnings("unused")
 	private String getPageSize() {
 		return this.Mobile_PageSize;
 	}
@@ -305,6 +306,7 @@ public class ExtraAction extends BaseAction {
 	 * 
 	 * @return
 	 */
+	@SuppressWarnings("unused")
 	private String getPageNo() {
 		HttpServletRequest req = ServletActionContext.getRequest();
 		String pageno = req.getParameter("pageno");
@@ -340,4 +342,5 @@ public class ExtraAction extends BaseAction {
 		return String.valueOf(costsum);
 		
 	}
+	
 }

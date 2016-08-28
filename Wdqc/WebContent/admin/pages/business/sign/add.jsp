@@ -19,6 +19,9 @@
 <body>
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
+	<h1>
+		前台业务<small>学生报名</small>
+	</h1>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
 		<li><a href="#">前台业务</a></li>
@@ -275,9 +278,34 @@
 							</div>
 						</div>
 					</div>
+					<!--startprint-->
+					<div class="panel panel-primary ">
+							<div class="panel-heading">
+								<h3 class="panel-title">打印凭证</h3>
+							</div>
+							<div class="panel-body" style="height: 355px;">
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="box box-primary">
+											<div class="box-body">
+											
+												<div class="col-sm-12" style="margin-top: 30px;">
+													<div id="printgradlass" style="text-align: center;" align="center"></div>
+														
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+					<!--endprint-->
+					
 					<div class="box-footer ">
 						<a class="btn btn-primary" onclick="$.page.config.fnFinish();">
-							<i class="fa fa-save"></i>提交
+							<i class="fa fa-save"></i>提交并打印
 						</a>
 						<!--  <a href="#info" data-toggle="tab"
 							class="btn btn-primary pull-right"> <i

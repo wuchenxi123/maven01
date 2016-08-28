@@ -11,13 +11,18 @@
  <script src="<%=ctx %>/admin/plugins/echart/echarts.js"></script>
 </head>
 <body>
-
-</body>
-<div><h4>市场分析</h4></div>
-   <div id="bar" style="height:400px;width:800px;float:left"></div>
-   <div id="line" style="height:400px;width:800px;float:left"></div>
-   <div id="pie" style="height:400px;width:800px;float:left"></div>
-   <div id="lie" style="height:400px;width:800px;float:left"></div>
+	<section class="content">
+	<div class="row">
+		<div class="col-xs-12">
+		<div><h4>市场分析</h4></div>
+	   		<div id="bar" style="height:400px;width:800px;float:left"></div>
+	   		<div id="line" style="height:400px;width:800px;float:left"></div>
+	   		<div id="pie" style="height:400px;width:800px;float:left"></div>
+	   	<div id="lie" style="height:400px;width:800px;float:left"></div>
+	   	</div>
+	 </div>
+   	</section>
+ 
 <script type="text/javascript">
 var arr1=[];
 var arr=[];
@@ -63,7 +68,7 @@ require(
 	function DrawCharts(ec) {  
 	    FunDraw1(ec);  
 	    FunDraw2(ec);  
-	    FunDraw3(ec);  
+	  /*   FunDraw3(ec);   */
 	}  
     function FunDraw1(ec) {	
         // 基于准备好的dom，初始化echarts图表
@@ -237,4 +242,5 @@ require(
         myChart.setOption(option); 
     };
 </script>
+</body>
 </html>

@@ -83,6 +83,7 @@ $.page.set({
 			}
 		}).on('success.form.bv', function(e) {
 			e.preventDefault();
+			alert("---");
 			// 解绑事件
 			$.page.config.fnPreventTab(false);
 			$.page.config.infosave();
@@ -119,6 +120,7 @@ $.page.set({
 		$.post(url, formData, function(data, textStatus, jqXHR) {
 			if (data.success) {
 				alert("信息保存成功");
+				$.page.config.preview();
 				$.page.load(rtnUrl);
 			} else {
 				alert('保存失败！' + data.msg);
@@ -137,8 +139,7 @@ $.page.set({
 	fnUpdateClass : function() {
 
 		url = ctx + '/cs_UpdateRemain.ac';
-			pk = $("[id='form.csId']").val();;
-				alert(pk);
+			pk = $("[id='form.csId']").val();;	
 		if (pk) {
 			$.post(url, {
 				"param._pk" : pk
@@ -149,12 +150,19 @@ $.page.set({
 			});
 		}
 	},
-	getsum: function() {
-		var sum = $("#apply").text();
-		var b =$("[id='cltReduce']").val();
-		var costsum = parseInt(sum) - parseInt(b);
-		$("#charge").text(costsum);
-	},
+	preview : function()  {    
+       bdhtml=window.document.body.innerHTML;    
+       sprnstr="<!--startprint-->";    
+       eprnstr="<!--endprint-->";    
+       prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+17);    
+       prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));    
+       /*window.document.body.innerHTML=prnhtml;*/
+       var oPop = window.open('','oPop');  
+       oPop.document.write(prnhtml);  
+       oPop.print();  
+       oPop.close();
+     /*  window.print();    */
+    }  
 });
 
 

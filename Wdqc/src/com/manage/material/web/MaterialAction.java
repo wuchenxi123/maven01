@@ -90,7 +90,7 @@ public class MaterialAction extends BaseAction{
 			BeanUtils.copyProperties(vo, form);
 			Material bo = (Material) BOFactory.build(MaterialBO.class, this.getDBAccessUser());
 			if (null == vo.getMtlId()) {
-				/*vo.setCreator(this.getDBAccessUser().getOperid());*/
+				vo.setCreator(this.getDBAccessUser().getOperid());
 				vo.setMtlRemain(vo.getMtlVolume());
 				vo.setCreateTime(new Date());
 				vo = bo.doCreate(vo);

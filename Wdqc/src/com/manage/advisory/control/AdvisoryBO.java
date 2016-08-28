@@ -65,7 +65,10 @@ public class AdvisoryBO extends AbstractControlBean implements
 
 	public AdvisoryVO doFindByPk(Serializable pk) throws Exception {
 		AdvisoryDAO dao = (AdvisoryDAO) DAOFactory.build(AdvisoryDAO.class,user);
-		return (AdvisoryVO) dao.findByPk(pk);
+		Object vo= dao.findByPk(pk);
+		AdvisoryVO o = (AdvisoryVO) vo;
+		this.fillCourse(o);
+		return (AdvisoryVO) vo;
 	}
 
 	public DataPackage doQuery(AdvisoryDBParam params)

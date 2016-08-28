@@ -1,5 +1,4 @@
 package com.manage.student.web;
-
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -13,6 +12,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.ServletActionContext;
 
+import com.manage.student.persistent.StudentDAO;
+import com.manage.student.persistent.StudentVO;
 import com.core.jop.common.utils.bean.BeanUtils;
 import com.core.jop.infrastructure.control.BOFactory;
 import com.core.jop.infrastructure.db.DAOFactory;
@@ -22,8 +23,6 @@ import com.core.sys.util.PageUtils;
 import com.core.sys.util.object.DataTablePage;
 import com.manage.student.control.Student;
 import com.manage.student.control.StudentBO;
-import com.manage.student.persistent.StudentDAO;
-import com.manage.student.persistent.StudentVO;
 import com.util.Constants;
 
 /**
@@ -151,7 +150,7 @@ public class StudentAction extends BaseAction {
 		Student bo = (Student) BOFactory.build(StudentBO.class,
 				this.getDBAccessUser());
 		StudentVO form = bo.doFindByPk(Long.valueOf(params.get_pk()));
-		PageUtils.writePage(form, response, "yyyy-MM-dd");
+		PageUtils.writePage(form, response, "yyyy-MM-dd HH:mm:ss");
 		return null;
 	}
 
@@ -201,7 +200,10 @@ public class StudentAction extends BaseAction {
 				this.getDBAccessUser());
 		DataPackage dp = bo.doQuery(params);
 		StudentDAO dao = (StudentDAO) DAOFactory.build(StudentDAO.class, this.getDBAccessUser());
-		dao.extport(dp);
+		String path=dao.extport(dp);
+		Map<String, Object> dt = new HashMap<String, Object>();
+		dt.put("filepath", path);
+		PageUtils.writePage(dt, response);
 		return null;		
 	}
 }

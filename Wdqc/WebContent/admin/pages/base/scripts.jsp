@@ -1,12 +1,15 @@
 <%@page contentType="text/html; charset=utf-8"%>
 <!-- 页面通用JS -->
 <!-- jQuery 2.1.4 -->
-<script src="<%=ctx%>/admin/jquery/jQuery-2.1.4.js"></script>
+<%-- <script src="<%=ctx%>/admin/jquery/jQuery-2.1.4.js"></script> --%>
 <!-- Bootstrap 3.3.5 -->
 <script src="<%=ctx%>/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 <script src="<%=ctx%>/admin/plugins/bootstrap/js/bootstrap-select.js"></script>
 <!-- 页面通用JS End -->
+
+<!-- 提示框控件 -->
+<script src="<%=ctx%>/admin/plugins/sweetalert/sweet-alert.js"></script>
 
 <!-- 时间控件 -->
 <script src="<%=ctx%>/admin/plugins/timepicker/bootstrap-timepicker.js"></script>

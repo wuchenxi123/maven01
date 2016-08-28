@@ -36,7 +36,7 @@ public class StudentDBParam extends DBQueryParam {
     private String _sk_salerName;
     private String _ne_stCostid;
     private String _ne_stCommunicateid;
-
+    private String _ne_stLocationSchool;
 	/**
      * @return Returns the _ne_stId.
      */
@@ -385,6 +385,12 @@ public class StudentDBParam extends DBQueryParam {
 	}
 	public void set_sk_stEmail(String _sk_stEmail) {
 		this._sk_stEmail = _sk_stEmail;
+	}
+	public String get_ne_stLocationSchool() {
+		return _ne_stLocationSchool;
+	}
+	public void set_ne_stLocationSchool(String _ne_stLocationSchool) {
+		this._ne_stLocationSchool = _ne_stLocationSchool;
 	}
 
 }
