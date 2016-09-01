@@ -28,6 +28,7 @@ var cfg = {
 		formData = $.serializeJson(formData);
 		var pwd = formData['param._se_mbPassword'];
 		pwd = hex_md5(pwd);
+		
 		$.apply(formData, {
 			'param._se_mbPassword' : pwd,
 			'mobile' : formData['param._se_mbName'],

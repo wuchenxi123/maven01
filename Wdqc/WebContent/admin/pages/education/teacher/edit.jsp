@@ -163,30 +163,6 @@
 									</div>
 								</div>
 								
-								<div class="col-sm-12">
-									<div class="col-sm-4">
-										<div class="form-group">
-											<label class="col-sm-4 control-label"></label>
-											<div class="col-sm-8">
-																				
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-2">
-										<div class="form-group">
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<div class="form-group">
-											<label class="col-sm-4 control-label"></label>
-											<div class="col-sm-8" id="coursearea">
-												提示：修改所任课程后，原有课程无效
-											</div>
-										</div>
-									</div>
-									
-									
-								</div>
 								
 								
 								

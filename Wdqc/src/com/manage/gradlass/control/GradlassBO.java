@@ -232,13 +232,17 @@ public class GradlassBO extends AbstractControlBean implements Gradlass {
 		scparams.set_ne_csId(String.valueOf(vo.getGradlassTeacher()));
 		DataPackage stus = dao.query(scparams);
 		List<StudentclassVO> list = stus.getDatas();
-		StudentDAO studao = (StudentDAO) DAOFactory.build(StudentDAO.class,user);
-		StudentWebParam params = new StudentWebParam();
-		System.out.println(vo.getCsId());
-		for (int i = 0; i < list.size(); i++) {
-			params.set_ne_stId(String.valueOf(list.get(i).getStId()));
-			students = studao.query(params);
-			stuList.add((StudentVO) students.getDatas().get(0));
+		if(list.size()>0&&list!=null&&list.get(0).getCsId()!=null){
+			StudentDAO studao = (StudentDAO) DAOFactory.build(StudentDAO.class,user);
+			StudentWebParam params = new StudentWebParam();
+			System.out.println(vo.getCsId());
+			for (int i = 0; i < list.size(); i++) {
+				if(list.get(i).getStId()!=null){
+					params.set_ne_stId(String.valueOf(list.get(i).getStId()));
+					students = studao.query(params);
+					stuList.add((StudentVO) students.getDatas().get(0));
+				}
+			}
 		}
 			vo.setStudentList(stuList);
 		return vo;
